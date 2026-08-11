@@ -108,6 +108,7 @@ img {
 .overview-copy h2,
 .split-section h2,
 .video-layout h2,
+.update-layout h2,
 .contact-layout h2 {
   margin: 0 0 12px;
   color: inherit;
@@ -120,6 +121,7 @@ img {
 .overview-copy p,
 .split-section p,
 .video-layout p,
+.update-layout p,
 .contact-layout p {
   color: var(--muted);
   line-height: 1.7;
@@ -570,6 +572,23 @@ img {
   color: var(--accent);
 }
 
+.brand-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.brand-panel span {
+  padding: 8px 10px;
+  border: 1px solid #3b454d;
+  border-radius: 6px;
+  color: #f8f4e8;
+  background: #232a30;
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
 .notice-panel,
 .contact-box {
   padding: 24px;
@@ -578,6 +597,90 @@ img {
 .notice-panel strong {
   color: var(--ink);
   font-size: 1.25rem;
+}
+
+.spec-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #ffffff;
+}
+
+.spec-list div {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e3e7e4;
+}
+
+.spec-list div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.spec-list dt {
+  color: #39424b;
+  font-weight: 900;
+}
+
+.spec-list dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.update-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.update-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.update-list article {
+  display: grid;
+  gap: 4px;
+  min-height: 72px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #ffffff;
+}
+
+.update-list span {
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.update-list strong {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.detail-outline ol {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detail-outline li {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #ffffff;
+  color: #273039;
+  font-weight: 900;
 }
 
 .download-grid {
@@ -878,6 +981,7 @@ img {
   .overview-layout,
   .split-section,
   .video-layout,
+  .update-layout,
   .contact-layout {
     grid-template-columns: 1fr;
   }
@@ -888,6 +992,11 @@ img {
 
   .download-card dl div {
     grid-template-columns: 76px 1fr;
+  }
+
+  .spec-list div,
+  .update-list {
+    grid-template-columns: 1fr;
   }
 
   .floating-whatsapp {

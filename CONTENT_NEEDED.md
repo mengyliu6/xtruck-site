@@ -8,7 +8,6 @@
 - 后续提供的 Word 图文排版内容
 - 产品详情页需要使用的高清图
 - 产品包装图、配件图、软件截图说明
-- 官方卖点文案
 - 保修条款
 - 发货时间或物流说明
 
@@ -24,13 +23,23 @@
 
 ## 兼容性和诊断覆盖范围
 
-- 官方支持的工程机械品牌
-- 官方支持的农业机械品牌
 - 官方支持的车型、机型、年份
 - 支持的发动机系统
 - Diesel OBD 支持细节
 - 兼容性限制和不支持范围
 - 官方 Coverage List 文件
+
+已同步到网站的数据：
+
+- 支持品牌列表
+- OHW808 Update Log 品牌版本列表
+- Covers 100+ Brands
+- Worldwide compatibility for over 60 construction and agricultural machinery models
+- One-click online firmware upgrade
+- Continuously updated online vehicle database
+- Factory-level diagnostic access
+- Real-time vehicle data streams
+- Remote technical support
 
 ## 包装清单
 
@@ -42,6 +51,12 @@
 - 说明书
 - 软件或激活资料
 - 其他随箱配件
+
+已同步到网站的包装参数：
+
+- 名称：OHW808 彩箱
+- 材质：K9K9 彩印
+- 尺寸：525 mm x 155 mm x 405 mm
 
 ## 下载资料
 

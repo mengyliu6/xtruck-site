@@ -89,10 +89,10 @@ import { product } from '@/data/product'
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Diagnostic Coverage</p>
-          <h2>Coverage categories to confirm before ordering</h2>
+          <h2>Support brands and diagnostic scope</h2>
           <p>
-            Contact our team with the machine brand, model and year to confirm compatibility before
-            ordering.
+            Covers 100+ brands construction and agricultural machinery models. Contact our team with
+            the machine brand, model and year to confirm compatibility before ordering.
           </p>
         </div>
         <div class="coverage-grid">
@@ -100,6 +100,9 @@ import { product } from '@/data/product'
             <IconGlyph name="shield" />
             <span>{{ item }}</span>
           </article>
+        </div>
+        <div class="brand-panel" aria-label="Supported brands">
+          <span v-for="brand in product.supportBrands" :key="brand">{{ brand }}</span>
         </div>
       </div>
     </section>
@@ -125,24 +128,57 @@ import { product } from '@/data/product'
       <div class="section-shell split-section">
         <div>
           <p class="eyebrow">Specifications</p>
-          <h2>Technical specifications</h2>
+          <h2>Package and confirmed details</h2>
           <p>
-            Confirmed hardware specifications have not been provided yet. This section is ready for
-            accurate dimensions, screen, memory, connector, power, and system details when
-            available.
+            Confirmed package details are shown below. Hardware specifications that have not been
+            provided yet remain as placeholders in the content list.
           </p>
         </div>
-        <div class="notice-panel">
-          <strong>Need exact specs?</strong>
+        <dl class="spec-list">
+          <div v-for="item in product.specs" :key="item.label">
+            <dt>{{ item.label }}</dt>
+            <dd>{{ item.value }}</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell update-layout">
+        <div>
+          <p class="eyebrow">Update Log</p>
+          <h2>Xtruck OHW808 update list</h2>
           <p>
-            Send your application requirements to Xtruck and ask for the official OHW808 technical
-            sheet before ordering.
+            The following diagnostic list versions are based on the latest supplied product
+            information. Official files can be linked in Downloads when provided.
           </p>
+        </div>
+        <div class="update-list" aria-label="Xtruck OHW808 update log">
+          <article v-for="item in product.updateLog" :key="`${item.brand}-${item.version}`">
+            <span>{{ item.brand }}</span>
+            <strong>{{ item.version }}</strong>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="videos" class="section section--muted">
+    <section class="section section--muted">
+      <div class="section-shell detail-outline">
+        <div class="section-heading">
+          <p class="eyebrow">Product Details</p>
+          <h2>Detail content to be expanded</h2>
+          <p>
+            The next Word document can be mapped into these sections, with image and text layout
+            added after the official content is provided.
+          </p>
+        </div>
+        <ol>
+          <li v-for="item in product.detailOutline" :key="item">{{ item }}</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="videos" class="section">
       <div class="section-shell video-layout">
         <div>
           <p class="eyebrow">Product Video</p>
@@ -155,23 +191,6 @@ import { product } from '@/data/product'
           <source src="/videos/ohw808-demo.mp4" type="video/mp4" />
           Product video could not be loaded. Please contact Xtruck for the latest demo media.
         </video>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="section-heading">
-          <p class="eyebrow">Why Choose OHW808</p>
-          <h2>Focused information for professional diagnostic buyers</h2>
-        </div>
-        <div class="feature-grid feature-grid--four">
-          <article v-for="item in product.whyChoose" :key="item.title" class="feature-card">
-            <IconGlyph :name="item.icon" />
-            <h3>{{ item.title }}</h3>
-            <p class="feature-card__summary">{{ item.summary }}</p>
-            <p>{{ item.detail }}</p>
-          </article>
-        </div>
       </div>
     </section>
 

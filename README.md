@@ -82,6 +82,7 @@ npm run lint
 - 价格：`$2399`
 - WhatsApp：`8613684920569`
 - 支付开关：`paymentsEnabled: false`
+- 已同步资料：支持品牌列表、OHW808 Update Log、核心功能卖点、包装彩箱参数
 
 ## 下载资料说明
 
@@ -94,6 +95,14 @@ npm run lint
 3. 将对应项目的 `status` 改为 `available`
 
 ## 后续详情文案
+
+页面已预留产品详情目录：
+
+- Part 1. Xtruck OHW808 Update Log
+- Part 2. Xtruck OHW808 Features
+- Part 3. Xtruck OHW808 Download and Installation
+- Part 4. Xtruck OHW808 Update November, 2023
+- Part 5. What is Xtruck OHW808?
 
 后续会提供 Word 文档，用于补充产品详情页的图文排版和详细英文文案。建议将确认后的内容整理进 `src/data/product.ts`，再按页面需要拆分成新的 Vue 组件。
 

@@ -39,6 +39,11 @@ export interface ProductSpec {
   value: string
 }
 
+export interface ProductUpdateLog {
+  brand: string
+  version: string
+}
+
 export interface ProductData {
   brand: string
   name: string
@@ -48,10 +53,12 @@ export interface ProductData {
   shortDescription: string
   coreSellingPoints: string[]
   quickFunctions: string[]
-  whyChoose: ProductFeature[]
   overview: string[]
   useCases: string[]
   diagnosticCoverage: string[]
+  supportBrands: string[]
+  updateLog: ProductUpdateLog[]
+  detailOutline: string[]
   features: ProductFeature[]
   specs: ProductSpec[]
   packageContents: string[]
