@@ -15,14 +15,16 @@ export const product: ProductData = {
     'Nationwide shipping support and WhatsApp compatibility confirmation before ordering',
   ],
   quickFunctions: [
-    'Off-Road & Construction Vehicle Scanner',
-    'Off-Highway & Agricultural Vehicle Scanner',
-    'Covers 100+ Brands',
-    'Factory-Level Diagnostic Access',
-    'Real-Time Data Streams',
-    'Online Firmware Upgrade',
-    'Updated Online Vehicle Database',
-    'Remote Technical Support',
+    'International Construction Machinery',
+    'International Agricultural Machinery',
+    'Engine Diagnostics',
+    'Detect Toolbox',
+    'Chinese Construction Machinery',
+    'Chinese Agricultural Machinery',
+    'HD OBD',
+    'Remote Assistance',
+    'Update',
+    'Data Management',
   ],
   overview: [
     'Xtruck OHW808 is an off-road, construction, off-highway and agricultural vehicle scanner built for machinery service, diagnosis and support workflows.',
@@ -42,7 +44,9 @@ export const product: ProductData = {
     'Off-Road Vehicles',
     'Off-Highway Vehicles',
     'Engine Diagnostics',
-    'Diesel OBD',
+    'HD OBD',
+    'Detect Toolbox',
+    'Data Management',
     'Firmware Upgrade',
     'Remote Technical Support',
   ],
@@ -142,6 +146,20 @@ export const product: ProductData = {
       icon: 'database',
     },
     {
+      title: 'HD OBD',
+      summary: 'Includes the HD OBD function shown in the device main menu.',
+      detail:
+        'HD OBD is listed as a visible OHW808 menu function. Supported protocols and machine coverage should be confirmed before ordering.',
+      icon: 'obd',
+    },
+    {
+      title: 'Detect Toolbox',
+      summary: 'Includes toolbox utilities from the OHW808 main menu.',
+      detail:
+        'Detect Toolbox is presented as a confirmed menu item from the device interface photo. Detailed tool functions can be expanded after official documentation is provided.',
+      icon: 'toolbox',
+    },
+    {
       title: 'Online Firmware Upgrade',
       summary: 'Supports one-click online firmware upgrade.',
       detail:
@@ -154,6 +172,13 @@ export const product: ProductData = {
       detail:
         'Contact Xtruck for support with compatibility, installation, software and diagnostic workflow questions.',
       icon: 'remote',
+    },
+    {
+      title: 'Data Management',
+      summary: 'Includes data management access from the OHW808 main menu.',
+      detail:
+        'Data Management is listed as a visible device function. Workflow details can be added when the next product document is supplied.',
+      icon: 'database',
     },
   ],
   specs: [

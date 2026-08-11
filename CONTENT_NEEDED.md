@@ -25,7 +25,7 @@
 
 - 官方支持的车型、机型、年份
 - 支持的发动机系统
-- Diesel OBD 支持细节
+- HD OBD 支持细节
 - 兼容性限制和不支持范围
 - 官方 Coverage List 文件
 
@@ -40,6 +40,13 @@
 - Factory-level diagnostic access
 - Real-time vehicle data streams
 - Remote technical support
+- 设备主菜单功能：International Construction Machinery、International Agricultural Machinery、Engine Diagnostics、Detect Toolbox、Chinese Construction Machinery、Chinese Agricultural Machinery、HD OBD、Remote Assistance、Update、Data Management
+
+仍需补充：
+
+- HD OBD 支持协议细节
+- Detect Toolbox 内部工具清单
+- Data Management 具体工作流
 
 ## 包装清单
 

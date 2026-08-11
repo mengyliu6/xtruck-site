@@ -82,7 +82,7 @@ npm run lint
 - 价格：`$2399`
 - WhatsApp：`8613684920569`
 - 支付开关：`paymentsEnabled: false`
-- 已同步资料：支持品牌列表、OHW808 Update Log、核心功能卖点、包装彩箱参数
+- 已同步资料：支持品牌列表、OHW808 Update Log、设备主菜单功能、核心功能卖点、包装彩箱参数
 
 ## 下载资料说明
 
