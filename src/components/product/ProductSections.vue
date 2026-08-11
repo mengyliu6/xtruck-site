@@ -20,29 +20,47 @@ import { product } from '@/data/product'
 
     <section id="downloads" class="section section--downloads">
       <div class="section-shell">
-        <div class="download-heading">
-          <p class="eyebrow">Related Download Files</p>
+        <div class="section-heading">
+          <p class="eyebrow">Resources</p>
           <h2>Downloads & Resources</h2>
           <p>
             Official files will be linked here when available. Missing resources are marked Coming
             Soon instead of sending customers to fake files.
           </p>
         </div>
-        <ul class="download-list" aria-label="Related download files">
-          <li v-for="item in product.downloads" :key="item.name" class="download-row">
+        <div class="download-grid">
+          <article v-for="item in product.downloads" :key="item.name" class="download-card">
             <IconGlyph name="document" />
+            <h3>{{ item.name }}</h3>
+            <dl>
+              <div>
+                <dt>Type</dt>
+                <dd>{{ item.type }}</dd>
+              </div>
+              <div>
+                <dt>Size</dt>
+                <dd>{{ item.size || 'Pending' }}</dd>
+              </div>
+              <div>
+                <dt>Version</dt>
+                <dd>{{ item.version || 'Pending' }}</dd>
+              </div>
+              <div>
+                <dt>Updated</dt>
+                <dd>{{ item.updated || 'Pending' }}</dd>
+              </div>
+            </dl>
             <a
               v-if="item.status === 'available' && item.href"
               :href="item.href"
-              class="download-row__link"
+              class="button button--secondary"
               download
             >
-              {{ item.name }}
+              Download
             </a>
-            <span v-else class="download-row__name">{{ item.name }}</span>
-            <span class="download-row__meta">{{ item.size || 'Coming Soon' }}</span>
-          </li>
-        </ul>
+            <span v-else class="status-pill">Coming Soon</span>
+          </article>
+        </div>
       </div>
     </section>
 

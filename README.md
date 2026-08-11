@@ -85,7 +85,7 @@ npm run lint
 
 ## 下载资料说明
 
-首页靠前位置已经预留 `Related Download Files` 区域，样式参考示例站的文件列表结构。
+首页靠前位置已经预留 `Downloads & Resources` 区域，用于展示说明书、软件、驱动、覆盖列表等资料。
 
 目前没有真实下载文件，因此页面显示 `Coming Soon`，不会跳转到 404，也不会创建假的 PDF。后续拿到真实文件后：
 

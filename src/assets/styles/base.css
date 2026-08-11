@@ -460,74 +460,6 @@ img {
   border-radius: 2px;
 }
 
-.download-heading {
-  max-width: 880px;
-  margin-bottom: 22px;
-}
-
-.download-heading h2 {
-  margin: 0 0 12px;
-  color: #b84b12;
-  font-family: Georgia, Times New Roman, serif;
-  font-size: clamp(2.5rem, 6vw, 4.25rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0;
-}
-
-.download-heading p {
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.download-list {
-  display: grid;
-  gap: 18px;
-  max-width: 980px;
-  margin: 0;
-  padding: 10px 0 0;
-  list-style: none;
-}
-
-.download-row {
-  display: grid;
-  grid-template-columns: 28px minmax(0, auto) auto;
-  align-items: center;
-  justify-content: start;
-  gap: 10px;
-  min-height: 44px;
-  color: #0077c8;
-  font-size: clamp(1.12rem, 2.2vw, 1.65rem);
-  line-height: 1.35;
-}
-
-.download-row .icon-glyph {
-  width: 26px;
-  height: 26px;
-  color: #0077c8;
-}
-
-.download-row__link {
-  color: #0077c8;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-}
-
-.download-row__link:hover {
-  text-decoration-line: underline;
-}
-
-.download-row__name {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.download-row__meta {
-  color: #6b737b;
-  font-size: 0.82em;
-  white-space: nowrap;
-}
-
 .feature-grid,
 .coverage-grid,
 .download-grid {
@@ -956,17 +888,6 @@ img {
 
   .download-card dl div {
     grid-template-columns: 76px 1fr;
-  }
-
-  .download-row {
-    grid-template-columns: 26px minmax(0, 1fr);
-    gap: 8px 10px;
-    font-size: 1.08rem;
-  }
-
-  .download-row__meta {
-    grid-column: 2;
-    white-space: normal;
   }
 
   .floating-whatsapp {
