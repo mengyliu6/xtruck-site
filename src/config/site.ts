@@ -4,15 +4,16 @@ export const siteConfig = {
   brandName: 'Xtruck',
   contactEmail: '',
   whatsappNumber: '8613684920569',
+  whatsappDisplayNumber: '+86 136 8492 0569',
   whatsappDefaultMessage:
-    "Hello, I'm interested in the Xtruck OHW808. Could you please send me more product details and confirm compatibility?",
+    "Hello, I'm interested in the Xtruck OHW808.\n\nEquipment brand:\nEquipment model:\nYear:\nEngine model:\nDiagnostic requirements:\n\nCould you please confirm compatibility and send me more product details?",
   currency: {
     code: 'USD',
     symbol: '$',
     locale: 'en-US',
   },
   paymentsEnabled: false,
-  canonicalUrl: 'https://example.com/',
+  canonicalUrl: 'https://xtruck-site.vercel.app/',
   socialLinks: [],
   company: {
     name: 'Xtruck',
@@ -22,10 +23,10 @@ export const siteConfig = {
 
 export const navigationItems: NavItem[] = [
   { label: 'Overview', href: '#overview' },
-  { label: 'Downloads', href: '#downloads' },
   { label: 'Features', href: '#features' },
   { label: 'Coverage', href: '#coverage' },
-  { label: 'Videos', href: '#videos' },
+  { label: 'Specifications', href: '#specifications' },
+  { label: 'Package', href: '#package' },
   { label: 'FAQ', href: '#faq' },
 ]
 
@@ -38,7 +39,7 @@ export function formatPrice(value: number): string {
 }
 
 export function getWhatsAppUrl(pageUrl = ''): string {
-  const suffix = pageUrl ? ` Page: ${pageUrl}` : ''
+  const suffix = pageUrl ? `\n\nPage: ${pageUrl}` : ''
   const text = encodeURIComponent(`${siteConfig.whatsappDefaultMessage}${suffix}`)
   return `https://wa.me/${siteConfig.whatsappNumber}?text=${text}`
 }

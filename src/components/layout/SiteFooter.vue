@@ -11,10 +11,10 @@ import { siteConfig } from '@/config/site'
       </a>
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="#overview">OHW808 Product</a>
-        <a href="#downloads">Downloads</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#specifications">Specifications</a>
         <a href="#faq">Support</a>
         <a href="#contact">Contact</a>
-        <a href="#" aria-label="Privacy Policy placeholder">Privacy Policy</a>
       </nav>
       <p>
         Copyright © {{ new Date().getFullYear() }} {{ siteConfig.brandName }}. All rights reserved.

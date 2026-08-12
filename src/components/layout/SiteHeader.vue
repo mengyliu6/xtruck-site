@@ -13,7 +13,6 @@ function closeMenu() {
 
 <template>
   <header class="site-header">
-    <div class="top-strip">{{ siteConfig.company.tagline }}</div>
     <div class="site-header__bar section-shell">
       <a href="#top" class="brand-mark" aria-label="Xtruck home" @click="closeMenu">
         <span class="brand-mark__symbol">X</span>
@@ -39,7 +38,10 @@ function closeMenu() {
         </a>
       </nav>
 
-      <WhatsAppButton class="site-header__cta" />
+      <WhatsAppButton
+        class="site-header__cta"
+        :label="`WhatsApp ${siteConfig.whatsappDisplayNumber}`"
+      />
     </div>
   </header>
 </template>

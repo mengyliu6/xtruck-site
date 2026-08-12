@@ -18,9 +18,8 @@
 ```text
 xtruck-site/
   public/
-    images/        # 网站使用的本地图片
+    images/        # 产品图和从资料表筛选的软件截图
     videos/        # 网站使用的本地视频
-    downloads/     # 后续放置真实下载文件
   src/
     assets/styles/ # 全局样式
     components/
@@ -73,7 +72,7 @@ npm run lint
 
 - 品牌名、WhatsApp 号码、默认 WhatsApp 消息、货币、支付开关、公司信息：
   `src/config/site.ts`
-- 产品名称、型号、价格、图片、视频、功能、覆盖范围、下载资料、FAQ：
+- 产品名称、型号、价格、图片、功能、覆盖范围、参数、包装清单、FAQ：
   `src/data/product.ts`
 
 当前配置：
@@ -82,29 +81,29 @@ npm run lint
 - 价格：`$2399`
 - WhatsApp：`8613684920569`
 - 支付开关：`paymentsEnabled: false`
-- 已同步资料：支持品牌列表、OHW808 Update Log、设备主菜单功能、核心功能卖点、包装彩箱参数
+- 已同步资料：产品介绍、硬件参数、支持语言、诊断功能、Cummins 操作流程、设备覆盖、附加工具、包装清单、FAQ 和保修边界
+
+## 当前页面顺序
+
+- Header
+- Hero
+- Product Overview
+- Diagnostic Functions
+- Equipment Coverage
+- Diagnostic Workflow
+- Additional Tools
+- Specifications
+- Package Contents
+- FAQ
+- Final CTA
 
 ## 下载资料说明
 
-首页靠前位置已经预留 `Downloads & Resources` 区域，用于展示说明书、软件、驱动、覆盖列表等资料。
-
-目前没有真实下载文件，因此页面显示 `Coming Soon`，不会跳转到 404，也不会创建假的 PDF。后续拿到真实文件后：
-
-1. 将文件放入 `public/downloads/`
-2. 在 `src/data/product.ts` 的 `downloads` 数组中补充文件名、大小、版本、更新时间和 `href`
-3. 将对应项目的 `status` 改为 `available`
+当前没有可公开下载的真实文件，因此页面没有下载模块、假链接或 Coming Soon 卡片。拿到正式文件后，再根据内容单独设计资源区域。
 
 ## 后续详情文案
 
-页面已预留产品详情目录：
-
-- Part 1. Xtruck OHW808 Update Log
-- Part 2. Xtruck OHW808 Features
-- Part 3. Xtruck OHW808 Download and Installation
-- Part 4. Xtruck OHW808 Update November, 2023
-- Part 5. What is Xtruck OHW808?
-
-后续会提供 Word 文档，用于补充产品详情页的图文排版和详细英文文案。建议将确认后的内容整理进 `src/data/product.ts`，再按页面需要拆分成新的 Vue 组件。
+后续提供 Word 文档后，可继续补充经确认的产品图文内容。建议优先更新 `src/data/product.ts`，只在确有独立交互或版式需要时新增 Vue 组件。
 
 ## GitHub 仓库
 

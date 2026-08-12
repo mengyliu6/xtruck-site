@@ -13,19 +13,28 @@ export interface ProductMedia {
 
 export interface ProductFeature {
   title: string
-  summary: string
-  detail: string
+  description: string
   icon: IconName
+  image?: string
+  imageAlt?: string
 }
 
-export interface ProductDownload {
-  name: string
-  type: string
-  size?: string
-  version?: string
-  updated?: string
-  href?: string
-  status: 'available' | 'coming-soon'
+export interface ProductCoverageGroup {
+  title: string
+  icon: IconName
+  brands: string[]
+}
+
+export interface ProductWorkflowStep {
+  title: string
+  description: string
+  image?: string
+  imageAlt?: string
+}
+
+export interface ProductPackageGroup {
+  title: string
+  items: string[]
 }
 
 export interface ProductFaq {
@@ -39,11 +48,6 @@ export interface ProductSpec {
   value: string
 }
 
-export interface ProductUpdateLog {
-  brand: string
-  version: string
-}
-
 export interface ProductData {
   brand: string
   name: string
@@ -52,18 +56,16 @@ export interface ProductData {
   summary: string
   shortDescription: string
   coreSellingPoints: string[]
-  quickFunctions: string[]
   overview: string[]
   useCases: string[]
-  diagnosticCoverage: string[]
-  supportBrands: string[]
-  updateLog: ProductUpdateLog[]
-  detailOutline: string[]
   features: ProductFeature[]
+  coverageGroups: ProductCoverageGroup[]
+  workflow: ProductWorkflowStep[]
+  additionalTools: ProductFeature[]
   specs: ProductSpec[]
-  packageContents: string[]
+  languages: string[]
+  packageGroups: ProductPackageGroup[]
   media: ProductMedia[]
-  downloads: ProductDownload[]
   faqs: ProductFaq[]
 }
 
