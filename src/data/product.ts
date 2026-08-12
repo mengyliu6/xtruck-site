@@ -2,17 +2,18 @@ import type { ProductData } from '@/types/product'
 
 export const product: ProductData = {
   brand: 'Xtruck',
-  name: 'Xtruck OHW808',
+  name: 'Xtruck OHW808 Diagnostic Tool',
   model: 'OHW808',
   priceUsd: 2399,
-  summary:
-    'Off-road, construction, off-highway and agricultural vehicle scanner for professional service teams.',
+  summary: 'Off-Road & Construction Vehicle Scanner. Off-Highway & Agricultural Vehicle Scanner.',
   shortDescription:
-    'OHW808 supports construction and agricultural machinery diagnostic workflows, online firmware upgrades, real-time data streams, remote technical support, and a continuously updated model compatibility database.',
+    'Xtruck OHW808 covers 100+ construction and agricultural machinery brands, with a continuously updated online vehicle database, factory-level diagnostic access, real-time vehicle data streams, and remote technical support.',
   coreSellingPoints: [
-    'Worldwide compatibility for over 60 construction and agricultural machinery models',
-    'One-click online firmware upgrade and continuously updated compatibility database',
-    'Nationwide shipping support and WhatsApp compatibility confirmation before ordering',
+    'Covers 100+ brands construction and agricultural machinery models',
+    'Continuously updated online vehicle database',
+    'Factory-level diagnostic access',
+    'Read all real-time vehicle data streams',
+    'Remote technical support',
   ],
   quickFunctions: [
     'International Construction Machinery',

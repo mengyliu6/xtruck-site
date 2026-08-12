@@ -16,7 +16,7 @@ export const siteConfig = {
   socialLinks: [],
   company: {
     name: 'Xtruck',
-    tagline: 'Professional Diagnostic Solutions for Heavy-Duty & Off-Highway Equipment',
+    tagline: 'Off-Road, Construction, Off-Highway & Agricultural Vehicle Scanner',
   },
 }
 
