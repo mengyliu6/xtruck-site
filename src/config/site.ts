@@ -25,7 +25,6 @@ export const navigationItems: NavItem[] = [
   { label: 'Downloads', href: '#downloads' },
   { label: 'Features', href: '#features' },
   { label: 'Coverage', href: '#coverage' },
-  { label: 'Specifications', href: '#specifications' },
   { label: 'Videos', href: '#videos' },
   { label: 'FAQ', href: '#faq' },
 ]

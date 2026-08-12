@@ -124,25 +124,6 @@ import { product } from '@/data/product'
       </div>
     </section>
 
-    <section id="specifications" class="section section--muted">
-      <div class="section-shell split-section">
-        <div>
-          <p class="eyebrow">Specifications</p>
-          <h2>Package and confirmed details</h2>
-          <p>
-            Confirmed package details are shown below. Hardware specifications that have not been
-            provided yet remain as placeholders in the content list.
-          </p>
-        </div>
-        <dl class="spec-list">
-          <div v-for="item in product.specs" :key="item.label">
-            <dt>{{ item.label }}</dt>
-            <dd>{{ item.value }}</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
-
     <section class="section">
       <div class="section-shell update-layout">
         <div>
