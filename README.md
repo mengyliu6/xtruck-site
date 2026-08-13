@@ -79,7 +79,8 @@ npm run lint
 
 - 产品：`Xtruck OHW808`
 - 价格：`$2399`
-- WhatsApp：`8613684920569`
+- WhatsApp：`8613360519239`
+- Email：`xtruck@qq.com`
 - 支付开关：`paymentsEnabled: false`
 - 已同步资料：产品介绍、硬件参数、支持语言、诊断功能、Cummins 操作流程、设备覆盖、附加工具、包装清单、FAQ 和保修边界
 

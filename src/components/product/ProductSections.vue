@@ -256,6 +256,9 @@ const primaryBrands = [
         <div class="agent-panel">
           <span>Distribution inquiry</span>
           <strong>{{ siteConfig.whatsappDisplayNumber }}</strong>
+          <a class="contact-email" :href="`mailto:${siteConfig.contactEmail}`">
+            {{ siteConfig.contactEmail }}
+          </a>
           <WhatsAppButton label="Contact Xtruck" />
         </div>
       </div>
@@ -316,8 +319,7 @@ const primaryBrands = [
           <p>Use the prepared message to send your machine and diagnostic details.</p>
           <WhatsAppButton label="Send Equipment Details" />
           <p v-if="siteConfig.contactEmail">
-            Email:
-            <a :href="`mailto:${siteConfig.contactEmail}`">{{ siteConfig.contactEmail }}</a>
+            Email: <a :href="`mailto:${siteConfig.contactEmail}`">{{ siteConfig.contactEmail }}</a>
           </p>
         </div>
       </div>

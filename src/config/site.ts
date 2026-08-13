@@ -2,9 +2,9 @@ import type { NavItem } from '@/types/product'
 
 export const siteConfig = {
   brandName: 'Xtruck',
-  contactEmail: '',
-  whatsappNumber: '8613684920569',
-  whatsappDisplayNumber: '+86 136 8492 0569',
+  contactEmail: 'xtruck@qq.com',
+  whatsappNumber: '8613360519239',
+  whatsappDisplayNumber: '+86 133 6051 9239',
   whatsappDefaultMessage:
     "Hello, I'm interested in the Xtruck OHW808.\n\nEquipment brand:\nEquipment model:\nYear:\nEngine model:\nDiagnostic requirements:\n\nCould you please confirm compatibility and send me more product details?",
   currency: {
