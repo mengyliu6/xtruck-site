@@ -27,6 +27,34 @@ const primaryBrands = [
   'Zoomlion Heavy Industry',
   'Yuchai Machinery',
 ]
+
+const agentBenefits = [
+  {
+    title: 'Product Advantage',
+    description: 'A professional diagnostic platform built for demanding service environments.',
+    icon: 'screen' as const,
+  },
+  {
+    title: 'Commercial Support',
+    description: 'Competitive distributor terms structured around your market and sales plan.',
+    icon: 'document' as const,
+  },
+  {
+    title: 'Market Customization',
+    description: 'Interface languages, vehicle-brand coverage and functions tailored by agreement.',
+    icon: 'toolbox' as const,
+  },
+  {
+    title: 'Training & Technical Support',
+    description: 'Product onboarding, operating guidance and coordinated after-sales assistance.',
+    icon: 'remote' as const,
+  },
+  {
+    title: 'Marketing Resources',
+    description: 'Product materials, images and videos to support regional market development.',
+    icon: 'download' as const,
+  },
+]
 </script>
 
 <template>
@@ -260,41 +288,46 @@ const primaryBrands = [
     </section>
 
     <section id="agent" class="section agent-section">
-      <div class="section-shell agent-layout">
-        <div>
-          <p class="eyebrow">Agent</p>
-          <h2>Become an Xtruck OHW808 agent</h2>
-          <p>
-            Contact Xtruck to discuss regional distribution, product information, compatibility
-            support and after-sales coordination.
-          </p>
+      <div class="section-shell agent-content">
+        <div class="agent-layout">
+          <div>
+            <p class="eyebrow">Official Launch · August 2026</p>
+            <h2>Xtruck OHW808 global agent recruitment</h2>
+            <p>
+              OHW808 is now officially available for professional equipment diagnostics. Xtruck is
+              welcoming reliable agents and distributors who want to develop long-term regional
+              partnerships.
+            </p>
+            <p>
+              We support both direct product procurement and distributor inquiries, with product,
+              training and market support coordinated for each region.
+            </p>
+          </div>
+          <div class="agent-panel">
+            <span>Start a partnership conversation</span>
+            <strong>{{ siteConfig.whatsappDisplayNumber }}</strong>
+            <a class="contact-email" :href="`mailto:${siteConfig.contactEmail}`">
+              {{ siteConfig.contactEmail }}
+            </a>
+            <WhatsAppButton label="Discuss Agent Cooperation" />
+          </div>
         </div>
-        <div class="agent-panel">
-          <span>Distribution inquiry</span>
-          <strong>{{ siteConfig.whatsappDisplayNumber }}</strong>
-          <a class="contact-email" :href="`mailto:${siteConfig.contactEmail}`">
-            {{ siteConfig.contactEmail }}
-          </a>
-          <WhatsAppButton label="Contact Xtruck" />
-        </div>
-      </div>
-    </section>
-
-    <section id="blog" class="section section--muted">
-      <div class="section-shell">
-        <div class="section-heading">
-          <p class="eyebrow">Blog</p>
-          <h2>OHW808 service guides</h2>
-          <p>Practical guides for diagnostics, remote assistance and device maintenance.</p>
-        </div>
-        <div class="article-list">
-          <article v-for="article in product.articles" :key="article.title">
-            <h3>{{ article.title }}</h3>
-            <p>{{ article.description }}</p>
-            <ul>
-              <li v-for="point in article.points" :key="point">{{ point }}</li>
-            </ul>
+        <div class="agent-benefits" aria-label="Agent partnership advantages">
+          <article v-for="benefit in agentBenefits" :key="benefit.title">
+            <IconGlyph :name="benefit.icon" />
+            <h3>{{ benefit.title }}</h3>
+            <p>{{ benefit.description }}</p>
           </article>
+        </div>
+        <div class="agent-cta">
+          <div>
+            <strong>Interested in purchasing or representing OHW808?</strong>
+            <p>
+              Contact our team for product details, pricing, ordering information and regional
+              cooperation terms.
+            </p>
+          </div>
+          <WhatsAppButton label="Contact Xtruck" />
         </div>
       </div>
     </section>

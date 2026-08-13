@@ -13,7 +13,7 @@ function closeMenu() {
 <template>
   <header class="site-header">
     <div class="site-header__bar section-shell">
-      <a href="#top" class="brand-mark" aria-label="Xtruck home" @click="closeMenu">
+      <a href="/" class="brand-mark" aria-label="Xtruck home" @click="closeMenu">
         <span class="brand-mark__symbol">X</span>
         <span>{{ siteConfig.brandName }}</span>
       </a>
