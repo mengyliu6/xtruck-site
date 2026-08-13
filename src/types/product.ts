@@ -40,6 +40,9 @@ export interface ProductPackageGroup {
 export interface ProductResource {
   title: string
   description: string
+  href?: string
+  downloadName?: string
+  actionLabel?: string
 }
 
 export interface ProductArticle {

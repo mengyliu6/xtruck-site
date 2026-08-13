@@ -159,12 +159,14 @@ const primaryBrands = [
 
     <section id="specifications" class="section">
       <div class="section-shell specs-layout">
-        <div>
-          <p class="eyebrow">Specifications</p>
-          <h2>OHW808 hardware</h2>
-          <p class="section-intro">
-            Professional-grade hardware for demanding workshop and field diagnostic work.
-          </p>
+        <div class="specs-summary">
+          <div>
+            <p class="eyebrow">Specifications</p>
+            <h2>OHW808 hardware</h2>
+            <p class="section-intro">
+              Professional-grade hardware for demanding workshop and field diagnostic work.
+            </p>
+          </div>
           <div class="language-panel">
             <h3>Supported Languages</h3>
             <ul>
@@ -209,10 +211,10 @@ const primaryBrands = [
           <p class="eyebrow">Download</p>
           <h2>Official OHW808 resources</h2>
           <p>
-            Request the latest documents from Xtruck so the files match your device and software
-            version.
+            Download the English user manual or contact Xtruck for the latest support list and
+            software assistance.
           </p>
-          <WhatsAppButton label="Request Official Files" />
+          <WhatsAppButton label="Contact for More Files" />
         </div>
         <div class="resource-list">
           <article v-for="resource in product.resources" :key="resource.title">
@@ -221,7 +223,16 @@ const primaryBrands = [
               <h3>{{ resource.title }}</h3>
               <p>{{ resource.description }}</p>
             </div>
-            <span>Contact Xtruck</span>
+            <a
+              v-if="resource.href"
+              class="resource-action"
+              :href="resource.href"
+              :download="resource.downloadName"
+            >
+              <IconGlyph name="download" />
+              {{ resource.actionLabel ?? 'Download' }}
+            </a>
+            <span v-else>Contact Xtruck</span>
           </article>
         </div>
       </div>

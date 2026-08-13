@@ -33,26 +33,28 @@ export const product: ProductData = {
       title: 'Read ECU Information',
       description: 'Read and display control-system module information detected from the ECU.',
       icon: 'engine',
-      image: '/images/diagnostics/read-ecu-information.jpeg',
+      image: '/images/diagnostics/read-ecu-information.png',
       imageAlt: 'OHW808 screen showing ECU information',
     },
     {
       title: 'Read Fault Codes',
       description: 'Retrieve and display fault-code information from the selected vehicle system.',
       icon: 'document',
-      image: '/images/diagnostics/read-fault-codes.jpeg',
+      image: '/images/diagnostics/read-fault-codes.png',
       imageAlt: 'OHW808 screen showing fault codes',
     },
     {
       title: 'Clear Fault Codes',
       description: 'Clear stored fault codes and freeze-frame data after the fault is resolved.',
       icon: 'toolbox',
+      image: '/images/diagnostics/read-fault-codes.png',
+      imageAlt: 'OHW808 fault-code screen with erase function',
     },
     {
       title: 'Live Data',
       description: 'Read real-time operating parameters from the current system module.',
       icon: 'database',
-      image: '/images/diagnostics/live-data.jpeg',
+      image: '/images/diagnostics/live-data.png',
       imageAlt: 'OHW808 live data screen',
     },
     {
@@ -60,7 +62,7 @@ export const product: ProductData = {
       description:
         'Test supported actuators; available tests depend on the manufacturer and model.',
       icon: 'machine',
-      image: '/images/diagnostics/actuation-test.jpeg',
+      image: '/images/diagnostics/actuation-test.png',
       imageAlt: 'OHW808 actuation test screen',
     },
     {
@@ -153,25 +155,25 @@ export const product: ProductData = {
     {
       title: 'Select Cummins',
       description: 'Open Engine Diagnostics and select Cummins.',
-      image: '/images/workflow/cummins-select.jpeg',
+      image: '/images/workflow/cummins-select.png',
       imageAlt: 'OHW808 Cummins engine diagnostic selection',
     },
     {
       title: 'Choose Diagnostic Mode',
       description: 'Select DEMO or the target equipment diagnostic mode.',
-      image: '/images/workflow/cummins-demo.jpeg',
+      image: '/images/workflow/cummins-demo.png',
       imageAlt: 'OHW808 Cummins DEMO selection',
     },
     {
       title: 'Choose Engine System',
       description: 'Select the corresponding engine system for the equipment.',
-      image: '/images/workflow/cummins-system.jpeg',
+      image: '/images/workflow/cummins-system.png',
       imageAlt: 'OHW808 Cummins engine system selection',
     },
     {
       title: 'Start Diagnosis',
       description: 'Enter the main diagnostic interface and choose the required function.',
-      image: '/images/workflow/cummins-functions.jpeg',
+      image: '/images/workflow/cummins-functions.png',
       imageAlt: 'OHW808 Cummins main diagnostic interface',
     },
   ],
@@ -189,7 +191,7 @@ export const product: ProductData = {
       description:
         'Connect the online tablet to after-sales technicians and approve a remote support request when needed.',
       icon: 'remote',
-      image: '/images/tools/remote-diagnosis.jpeg',
+      image: '/images/tools/remote-diagnosis.png',
       imageAlt: 'OHW808 remote diagnosis interface',
     },
     {
@@ -282,7 +284,11 @@ export const product: ProductData = {
   resources: [
     {
       title: 'User Manual',
-      description: 'Operating instructions, interface guidance and diagnostic workflow reference.',
+      description:
+        'English V1.0 operating instructions, interface guidance and diagnostic workflow.',
+      href: '/downloads/xtruck-ohw808-user-manual-en-v1.0.pdf',
+      downloadName: 'Xtruck-OHW808-User-Manual-EN-V1.0.pdf',
+      actionLabel: 'Download PDF',
     },
     {
       title: 'Equipment Support List',
