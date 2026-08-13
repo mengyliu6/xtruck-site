@@ -94,12 +94,16 @@ npm run lint
 - Additional Tools
 - Specifications
 - Package Contents
-- FAQ
+- Download
+- Video
+- Agent
+- Blog
+- Q&A
 - Final CTA
 
 ## 下载资料说明
 
-当前没有可公开下载的真实文件，因此页面没有下载模块、假链接或 Coming Soon 卡片。拿到正式文件后，再根据内容单独设计资源区域。
+当前没有可公开下载的真实文件。页面的 Download 区域仅列出可以向 Xtruck 申请的官方资料，并通过 WhatsApp 获取匹配设备和软件版本的文件，不使用假链接或 Coming Soon 下载卡片。
 
 ## 后续详情文案
 

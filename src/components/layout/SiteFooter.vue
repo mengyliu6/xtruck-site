@@ -12,8 +12,11 @@ import { siteConfig } from '@/config/site'
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="#overview">OHW808 Product</a>
         <a href="#coverage">Coverage</a>
-        <a href="#specifications">Specifications</a>
-        <a href="#faq">Support</a>
+        <a href="#download">Download</a>
+        <a href="#video">Video</a>
+        <a href="#agent">Agent</a>
+        <a href="#blog">Blog</a>
+        <a href="#faq">Q&amp;A</a>
         <a href="#contact">Contact</a>
       </nav>
       <p>

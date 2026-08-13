@@ -37,6 +37,17 @@ export interface ProductPackageGroup {
   items: string[]
 }
 
+export interface ProductResource {
+  title: string
+  description: string
+}
+
+export interface ProductArticle {
+  title: string
+  description: string
+  points: string[]
+}
+
 export interface ProductFaq {
   category: string
   question: string
@@ -65,6 +76,8 @@ export interface ProductData {
   specs: ProductSpec[]
   languages: string[]
   packageGroups: ProductPackageGroup[]
+  resources: ProductResource[]
+  articles: ProductArticle[]
   media: ProductMedia[]
   faqs: ProductFaq[]
 }

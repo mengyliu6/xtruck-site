@@ -76,8 +76,8 @@ const primaryBrands = [
           <p class="eyebrow">Equipment Coverage</p>
           <h2>Construction, agriculture, engines and HD OBD</h2>
           <p>
-            OHW808 covers international and Chinese equipment categories. The brands below are drawn
-            from the supplied product data.
+            OHW808 covers international and Chinese construction machinery, agricultural equipment,
+            diesel engines and heavy-duty OBD diagnostics.
           </p>
         </div>
 
@@ -163,7 +163,7 @@ const primaryBrands = [
           <p class="eyebrow">Specifications</p>
           <h2>OHW808 hardware</h2>
           <p class="section-intro">
-            Hardware details and supported languages from the supplied product specification.
+            Professional-grade hardware for demanding workshop and field diagnostic work.
           </p>
           <div class="language-panel">
             <h3>Supported Languages</h3>
@@ -190,7 +190,7 @@ const primaryBrands = [
         <div class="section-heading">
           <p class="eyebrow">Package Contents</p>
           <h2>Equipment, cables and accessories</h2>
-          <p>The supplied package list is grouped for quick checking before shipment.</p>
+          <p>Check the included equipment, diagnostic cables and accessories.</p>
         </div>
         <div class="package-grid">
           <section v-for="group in product.packageGroups" :key="group.title">
@@ -203,16 +203,95 @@ const primaryBrands = [
       </div>
     </section>
 
+    <section id="download" class="section resource-section">
+      <div class="section-shell resource-layout">
+        <div class="section-heading">
+          <p class="eyebrow">Download</p>
+          <h2>Official OHW808 resources</h2>
+          <p>
+            Request the latest documents from Xtruck so the files match your device and software
+            version.
+          </p>
+          <WhatsAppButton label="Request Official Files" />
+        </div>
+        <div class="resource-list">
+          <article v-for="resource in product.resources" :key="resource.title">
+            <IconGlyph name="document" />
+            <div>
+              <h3>{{ resource.title }}</h3>
+              <p>{{ resource.description }}</p>
+            </div>
+            <span>Contact Xtruck</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="video" class="section section--dark video-section">
+      <div class="section-shell video-layout">
+        <div>
+          <p class="eyebrow">Video</p>
+          <h2>See OHW808 in operation</h2>
+          <p>
+            Watch the product demonstration to review the tablet interface and diagnostic workflow.
+          </p>
+        </div>
+        <video class="product-video" controls preload="metadata" poster="/images/ohw808-ui.jpg">
+          <source src="/videos/ohw808-demo.mp4" type="video/mp4" />
+          Your browser does not support the OHW808 product video.
+        </video>
+      </div>
+    </section>
+
+    <section id="agent" class="section agent-section">
+      <div class="section-shell agent-layout">
+        <div>
+          <p class="eyebrow">Agent</p>
+          <h2>Become an Xtruck OHW808 agent</h2>
+          <p>
+            Contact Xtruck to discuss regional distribution, product information, compatibility
+            support and after-sales coordination.
+          </p>
+        </div>
+        <div class="agent-panel">
+          <span>Distribution inquiry</span>
+          <strong>{{ siteConfig.whatsappDisplayNumber }}</strong>
+          <WhatsAppButton label="Contact Xtruck" />
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" class="section section--muted">
+      <div class="section-shell">
+        <div class="section-heading">
+          <p class="eyebrow">Blog</p>
+          <h2>OHW808 service guides</h2>
+          <p>Practical guides for diagnostics, remote assistance and device maintenance.</p>
+        </div>
+        <div class="article-list">
+          <article v-for="article in product.articles" :key="article.title">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.description }}</p>
+            <ul>
+              <li v-for="point in article.points" :key="point">{{ point }}</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="faq" class="section">
       <div class="section-shell faq-layout">
         <div class="section-heading">
-          <p class="eyebrow">FAQ</p>
-          <h2>Compatibility, updates and warranty</h2>
-          <p>Important details to review before ordering and using OHW808.</p>
+          <p class="eyebrow">Q&amp;A</p>
+          <h2>Using, updating and supporting OHW808</h2>
         </div>
         <div class="faq-list">
           <details v-for="item in product.faqs" :key="item.question" class="faq-item">
-            <summary>{{ item.question }}</summary>
+            <summary>
+              <span>{{ item.category }}</span>
+              {{ item.question }}
+            </summary>
             <p>{{ item.answer }}</p>
           </details>
         </div>

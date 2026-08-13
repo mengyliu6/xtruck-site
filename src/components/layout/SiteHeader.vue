@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 
 import { navigationItems, siteConfig } from '@/config/site'
-import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
 
 const isOpen = ref(false)
 
@@ -37,11 +36,6 @@ function closeMenu() {
           {{ item.label }}
         </a>
       </nav>
-
-      <WhatsAppButton
-        class="site-header__cta"
-        :label="`WhatsApp ${siteConfig.whatsappDisplayNumber}`"
-      />
     </div>
   </header>
 </template>

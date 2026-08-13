@@ -279,6 +279,38 @@ export const product: ProductData = {
       ],
     },
   ],
+  resources: [
+    {
+      title: 'User Manual',
+      description: 'Operating instructions, interface guidance and diagnostic workflow reference.',
+    },
+    {
+      title: 'Equipment Support List',
+      description: 'Current supported equipment and available diagnostic-function reference.',
+    },
+    {
+      title: 'Software & Update Support',
+      description: 'Installation, activation and software-upgrade assistance for OHW808 users.',
+    },
+  ],
+  articles: [
+    {
+      title: 'How to start a Cummins diagnosis',
+      description: 'A clear four-step workflow for entering Cummins engine diagnostics.',
+      points: ['Open Engine Diagnostics', 'Select Cummins', 'Choose the engine system'],
+    },
+    {
+      title: 'Using remote diagnosis safely',
+      description:
+        'Connect the tablet to the internet and approve support access only when needed.',
+      points: ['Open Remote Diagnosis', 'Share the device ID', 'Accept or reject the request'],
+    },
+    {
+      title: 'Keep the tablet ready for service',
+      description: 'Keep software current and storage optimized for reliable daily operation.',
+      points: ['Install available upgrades', 'Run Data Cleanup', 'Confirm activation status'],
+    },
+  ],
   media: [
     {
       type: 'image',
@@ -295,46 +327,46 @@ export const product: ProductData = {
   ],
   faqs: [
     {
-      category: 'Compatibility',
-      question: 'What equipment does OHW808 support?',
-      answer:
-        'OHW808 covers supported international and Chinese construction machinery, agricultural machinery, diesel engine systems and HD OBD. Coverage and functions vary by equipment.',
-    },
-    {
-      category: 'Compatibility',
-      question: 'How can I confirm compatibility?',
-      answer:
-        'Send the equipment brand, model, year, engine model and required diagnostic functions to Xtruck on WhatsApp before ordering.',
-    },
-    {
       category: 'Languages',
-      question: 'Which languages are supported?',
+      question: 'What languages does OHW808 support?',
       answer:
-        'The supplied product information lists Simplified Chinese, Traditional Chinese, English, Spanish and Russian. More languages may be added through future updates.',
+        'OHW808 currently supports Simplified Chinese, Traditional Chinese, English, Spanish and Russian. More languages will be added through future upgrades.',
     },
     {
       category: 'Activation',
-      question: 'How does machine activation work?',
+      question: 'How is the OHW808 machine activated?',
       answer:
-        'When the trial-use prompt appears, connect OHW808 to the internet, open Settings and select Machine Activation.',
+        'When the trial prompt appears, connect the tablet to the internet, open Settings and select Machine Activation.',
     },
     {
-      category: 'Updates',
-      question: 'How are software updates installed?',
+      category: 'Upgrade',
+      question: 'How do I upgrade the diagnostic software?',
       answer:
-        'Connect the tablet to the internet, open Upgrade from the main menu and install the available diagnostic software updates.',
+        'Connect the OHW808 tablet to the internet and open Upgrade from the main function menu. The system will search for available update programs; select Upgrade to update supported vehicle models and applications.',
     },
     {
-      category: 'Support',
-      question: 'How does remote technical support work?',
+      category: 'Remote Diagnosis',
+      question: 'How do I receive remote technical support?',
       answer:
-        'Open Remote Diagnosis while connected to the internet, share the displayed device ID with the after-sales team and approve the remote request when it arrives.',
+        'Connect OHW808 to the internet and open Remote Diagnosis. Share the displayed device ID with the after-sales team, wait for the remote-control request, then select Allow to accept or Reject to decline it.',
+    },
+    {
+      category: 'Inspection Toolbox',
+      question: 'What does Pin Inspection do?',
+      answer:
+        'Pin Inspection measures voltage at the 16-pin OBD diagnostic connector and helps identify K-line and CAN-line pin positions. Connect the vehicle interface, open Inspection Toolbox and select Pin Inspection.',
+    },
+    {
+      category: 'Storage',
+      question: 'What should I do when storage is running low?',
+      answer:
+        'Open Data Cleanup to remove unused data and free storage space. Regular cleanup helps the system run more steadily.',
     },
     {
       category: 'Warranty',
       question: 'What is covered by the warranty?',
       answer:
-        'The main unit and power adapter have a 1-year warranty. Non-man-made quality issues reported within one month are eligible for repair or same-model replacement under the supplied policy.',
+        'The main unit and power adapter have a 1-year warranty. Non-man-made quality issues reported within one month are eligible for repair or same-model replacement.',
     },
     {
       category: 'Warranty',

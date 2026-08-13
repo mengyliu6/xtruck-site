@@ -25,9 +25,11 @@ export const navigationItems: NavItem[] = [
   { label: 'Overview', href: '#overview' },
   { label: 'Features', href: '#features' },
   { label: 'Coverage', href: '#coverage' },
-  { label: 'Specifications', href: '#specifications' },
-  { label: 'Package', href: '#package' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Download', href: '#download' },
+  { label: 'Video', href: '#video' },
+  { label: 'Agent', href: '#agent' },
+  { label: 'Blog', href: '#blog' },
+  { label: 'Q&A', href: '#faq' },
 ]
 
 export function formatPrice(value: number): string {
