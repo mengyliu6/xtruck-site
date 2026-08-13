@@ -181,7 +181,7 @@ export const product: ProductData = {
       description:
         'Measure voltage at the 16-pin OBD connector and identify supported K-line and CAN-line pin positions.',
       icon: 'obd',
-      image: '/images/tools/pin-inspection.jpeg',
+      image: '/images/ui/pin-inspection.png',
       imageAlt: 'OHW808 pin inspection interface',
     },
     {
@@ -197,7 +197,7 @@ export const product: ProductData = {
       description:
         'Connect to the internet to search for and install available diagnostic software updates.',
       icon: 'update',
-      image: '/images/tools/software-upgrade.jpeg',
+      image: '/images/ui/software-upgrade.png',
       imageAlt: 'OHW808 software upgrade interface',
     },
     {
@@ -213,7 +213,7 @@ export const product: ProductData = {
       description:
         'Remove unused data with one click to free storage and help the system run steadily.',
       icon: 'database',
-      image: '/images/tools/data-cleanup.jpeg',
+      image: '/images/ui/data-cleanup.png',
       imageAlt: 'OHW808 data cleanup interface',
     },
   ],
@@ -321,7 +321,7 @@ export const product: ProductData = {
     {
       type: 'image',
       label: 'OHW808 software interface',
-      src: '/images/ohw808-ui.jpg',
+      src: '/images/ui/ohw808-home.png',
       alt: 'Xtruck OHW808 software interface screenshot',
     },
   ],

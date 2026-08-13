@@ -236,7 +236,12 @@ const primaryBrands = [
             Watch the product demonstration to review the tablet interface and diagnostic workflow.
           </p>
         </div>
-        <video class="product-video" controls preload="metadata" poster="/images/ohw808-ui.jpg">
+        <video
+          class="product-video"
+          controls
+          preload="metadata"
+          poster="/images/ui/ohw808-home.png"
+        >
           <source src="/videos/ohw808-demo.mp4" type="video/mp4" />
           Your browser does not support the OHW808 product video.
         </video>

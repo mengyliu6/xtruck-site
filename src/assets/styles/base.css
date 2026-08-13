@@ -371,7 +371,7 @@ p {
 }
 
 .hero__interface-image img {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .hero__interface-image figcaption {
@@ -659,7 +659,7 @@ p {
 .tool-list .preview-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top;
 }
 

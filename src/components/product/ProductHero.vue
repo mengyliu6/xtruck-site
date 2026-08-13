@@ -29,7 +29,7 @@ import { product } from '@/data/product'
         loading="eager"
       />
       <figure class="hero__interface-image">
-        <PreviewImage src="/images/ohw808-ui.jpg" alt="Xtruck OHW808 main software menu" />
+        <PreviewImage src="/images/ui/ohw808-home.png" alt="Xtruck OHW808 main software menu" />
         <figcaption>Construction, agriculture, engine and HD OBD diagnostics</figcaption>
       </figure>
     </div>
