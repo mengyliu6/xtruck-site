@@ -14,7 +14,7 @@ import { siteConfig } from '@/config/site'
         <a href="/#coverage">Coverage</a>
         <a href="/#download">Download</a>
         <a href="/#video">Video</a>
-        <a href="/#agent">Agent</a>
+        <a href="/agent">Agent</a>
         <a href="/blog">Blog</a>
         <a href="/#faq">Q&amp;A</a>
         <a href="/#contact">Contact</a>

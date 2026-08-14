@@ -27,34 +27,6 @@ const primaryBrands = [
   'Zoomlion Heavy Industry',
   'Yuchai Machinery',
 ]
-
-const agentBenefits = [
-  {
-    title: 'Product Advantage',
-    description: 'A professional diagnostic platform built for demanding service environments.',
-    icon: 'screen' as const,
-  },
-  {
-    title: 'Commercial Support',
-    description: 'Competitive distributor terms structured around your market and sales plan.',
-    icon: 'document' as const,
-  },
-  {
-    title: 'Market Customization',
-    description: 'Interface languages, vehicle-brand coverage and functions tailored by agreement.',
-    icon: 'toolbox' as const,
-  },
-  {
-    title: 'Training & Technical Support',
-    description: 'Product onboarding, operating guidance and coordinated after-sales assistance.',
-    icon: 'remote' as const,
-  },
-  {
-    title: 'Marketing Resources',
-    description: 'Product materials, images and videos to support regional market development.',
-    icon: 'download' as const,
-  },
-]
 </script>
 
 <template>
@@ -93,6 +65,17 @@ const agentBenefits = [
         </div>
       </div>
     </section>
+
+    <nav class="product-section-nav" aria-label="OHW808 product sections">
+      <div class="section-shell product-section-nav__inner">
+        <a href="#features">Functions</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#specifications">Specifications</a>
+        <a href="#download">Download</a>
+        <a href="#video">Video</a>
+      </div>
+    </nav>
 
     <section id="overview" class="section section--overview">
       <div class="section-shell overview-layout">
@@ -169,17 +152,21 @@ const agentBenefits = [
         </details>
 
         <div class="compatibility-note">
-          <strong>Not sure about compatibility?</strong>
-          <p>
-            Send us the equipment brand, model, year, engine model and diagnostic requirements on
-            WhatsApp before ordering.
-          </p>
+          <div class="compatibility-note__heading">
+            <span>Compatibility check</span>
+            <strong>Confirm your equipment before ordering</strong>
+          </div>
+          <ol class="compatibility-steps">
+            <li><span>01</span>Equipment brand &amp; model</li>
+            <li><span>02</span>Year &amp; engine model</li>
+            <li><span>03</span>Required diagnostic functions</li>
+          </ol>
           <WhatsAppButton label="Confirm Compatibility" />
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section id="workflow" class="section">
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Diagnostic Workflow</p>
@@ -201,7 +188,7 @@ const agentBenefits = [
       </div>
     </section>
 
-    <section class="section section--muted">
+    <section id="tools" class="section section--muted">
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Additional Tools</p>
@@ -223,19 +210,11 @@ const agentBenefits = [
     <section id="specifications" class="section">
       <div class="section-shell specs-layout">
         <div class="specs-summary">
-          <div>
-            <p class="eyebrow">Specifications</p>
-            <h2>OHW808 hardware</h2>
-            <p class="section-intro">
-              Professional-grade hardware for demanding workshop and field diagnostic work.
-            </p>
-          </div>
-          <div class="language-panel">
-            <h3>Supported Languages</h3>
-            <ul>
-              <li v-for="language in product.languages" :key="language">{{ language }}</li>
-            </ul>
-          </div>
+          <p class="eyebrow">Specifications</p>
+          <h2>OHW808 hardware</h2>
+          <p class="section-intro">
+            Professional-grade hardware for demanding workshop and field diagnostic work.
+          </p>
         </div>
         <div class="spec-table-wrap">
           <table class="spec-table">
@@ -243,6 +222,10 @@ const agentBenefits = [
               <tr v-for="item in product.specs" :key="item.label">
                 <th scope="row">{{ item.label }}</th>
                 <td>{{ item.value }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Supported Languages</th>
+                <td>{{ product.languages.join(', ') }}</td>
               </tr>
             </tbody>
           </table>
@@ -319,51 +302,6 @@ const agentBenefits = [
           <source src="/videos/ohw808-demo.mp4" type="video/mp4" />
           Your browser does not support the OHW808 product video.
         </video>
-      </div>
-    </section>
-
-    <section id="agent" class="section agent-section">
-      <div class="section-shell agent-content">
-        <div class="agent-layout">
-          <div>
-            <p class="eyebrow">Official Launch · August 2026</p>
-            <h2>Xtruck OHW808 global agent recruitment</h2>
-            <p>
-              OHW808 is now officially available for professional equipment diagnostics. Xtruck is
-              welcoming reliable agents and distributors who want to develop long-term regional
-              partnerships.
-            </p>
-            <p>
-              We support both direct product procurement and distributor inquiries, with product,
-              training and market support coordinated for each region.
-            </p>
-          </div>
-          <div class="agent-panel">
-            <span>Start a partnership conversation</span>
-            <strong>{{ siteConfig.whatsappDisplayNumber }}</strong>
-            <a class="contact-email" :href="`mailto:${siteConfig.contactEmail}`">
-              {{ siteConfig.contactEmail }}
-            </a>
-            <WhatsAppButton label="Discuss Agent Cooperation" />
-          </div>
-        </div>
-        <div class="agent-benefits" aria-label="Agent partnership advantages">
-          <article v-for="benefit in agentBenefits" :key="benefit.title">
-            <IconGlyph :name="benefit.icon" />
-            <h3>{{ benefit.title }}</h3>
-            <p>{{ benefit.description }}</p>
-          </article>
-        </div>
-        <div class="agent-cta">
-          <div>
-            <strong>Interested in purchasing or representing OHW808?</strong>
-            <p>
-              Contact our team for product details, pricing, ordering information and regional
-              cooperation terms.
-            </p>
-          </div>
-          <WhatsAppButton label="Contact Xtruck" />
-        </div>
       </div>
     </section>
 

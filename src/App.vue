@@ -8,15 +8,33 @@ import ProductHero from '@/components/product/ProductHero.vue'
 import ProductSections from '@/components/product/ProductSections.vue'
 import { siteConfig } from '@/config/site'
 import { product } from '@/data/product'
+import AgentPage from '@/pages/AgentPage.vue'
 import BlogPage from '@/pages/BlogPage.vue'
 
-const isBlogPage = window.location.pathname.replace(/\/+$/, '') === '/blog'
+const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
+const isAgentPage = currentPath === '/agent'
+const isBlogPage = currentPath === '/blog'
 
 function setMetaContent(selector: string, content: string) {
   document.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', content)
 }
 
 onMounted(() => {
+  if (isAgentPage) {
+    document.title = 'Global OHW808 Agent & Distributor Program | Xtruck'
+    const description =
+      'Join the Xtruck OHW808 global agent and distributor program for professional off-highway and agricultural equipment diagnostics.'
+    const agentUrl = new URL('/agent', siteConfig.canonicalUrl).href
+
+    setMetaContent('meta[name="description"]', description)
+    setMetaContent('meta[property="og:title"]', document.title)
+    setMetaContent('meta[property="og:description"]', description)
+    setMetaContent('meta[property="og:type"]', 'website')
+    setMetaContent('meta[property="og:url"]', agentUrl)
+    document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', agentUrl)
+    return
+  }
+
   if (isBlogPage) {
     document.title = 'OHW808 Service Guides & Product News | Xtruck Blog'
     const description =
@@ -60,7 +78,10 @@ onMounted(() => {
 
 <template>
   <SiteHeader />
-  <template v-if="isBlogPage">
+  <template v-if="isAgentPage">
+    <AgentPage />
+  </template>
+  <template v-else-if="isBlogPage">
     <BlogPage />
   </template>
   <template v-else>
@@ -69,5 +90,5 @@ onMounted(() => {
   </template>
   <SiteFooter />
   <WhatsAppButton class="floating-whatsapp" label="WhatsApp" variant="floating" />
-  <WhatsAppButton class="mobile-contact-bar" label="Contact on WhatsApp" variant="mobile" />
+  <WhatsAppButton class="mobile-contact-bar" label="WhatsApp" variant="mobile" />
 </template>
