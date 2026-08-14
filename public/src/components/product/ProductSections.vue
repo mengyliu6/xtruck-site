@@ -59,6 +59,41 @@ const agentBenefits = [
 
 <template>
   <main>
+    <section class="capability-banner" aria-labelledby="capability-banner-title">
+      <div class="section-shell capability-banner__inner">
+        <div class="capability-banner__copy">
+          <p class="eyebrow">Professional Factory-Grade Diagnostics</p>
+          <h2 id="capability-banner-title">Off-highway &amp; agricultural vehicle scanner</h2>
+          <p>
+            Built for professional service teams working with construction machinery, agricultural
+            equipment and diesel engines.
+          </p>
+          <div class="capability-banner__features">
+            <div>
+              <IconGlyph name="machine" />
+              <span>100+ Brands</span>
+              <small>Coverage</small>
+            </div>
+            <div>
+              <IconGlyph name="shield" />
+              <span>Factory-Level</span>
+              <small>Access</small>
+            </div>
+            <div>
+              <IconGlyph name="database" />
+              <span>Real-Time</span>
+              <small>Live Data</small>
+            </div>
+            <div>
+              <IconGlyph name="remote" />
+              <span>Remote</span>
+              <small>Support</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="overview" class="section section--overview">
       <div class="section-shell overview-layout">
         <div class="overview-copy">

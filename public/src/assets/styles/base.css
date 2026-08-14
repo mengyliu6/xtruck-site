@@ -382,6 +382,89 @@ p {
   line-height: 1.35;
 }
 
+.capability-banner {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+  color: #f7f9f6;
+  background-color: #0a0b09;
+  background-image: url('/images/ohw808-capability-banner.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.capability-banner__inner {
+  display: flex;
+  min-height: 500px;
+  align-items: center;
+}
+
+.capability-banner__copy {
+  width: min(52%, 650px);
+  padding: 58px 0;
+}
+
+.capability-banner__copy h2 {
+  margin: 0 0 18px;
+  color: #ffd34f;
+  font-size: clamp(2.35rem, 4vw, 4.25rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.capability-banner__copy > p:not(.eyebrow) {
+  max-width: 600px;
+  margin: 0;
+  color: #f2ddb0;
+  font-size: clamp(1rem, 1.7vw, 1.3rem);
+  line-height: 1.55;
+}
+
+.capability-banner__features {
+  display: grid;
+  max-width: 620px;
+  margin-top: 32px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.capability-banner__features > div {
+  display: grid;
+  min-height: 132px;
+  align-content: center;
+  justify-items: center;
+  padding: 16px 10px;
+  color: #fff6d6;
+  background: rgba(7, 8, 6, 0.62);
+  border: 1px solid rgba(255, 204, 55, 0.72);
+  border-radius: var(--radius);
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.capability-banner__features svg {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 12px;
+  color: #ffd34f;
+}
+
+.capability-banner__features span,
+.capability-banner__features small {
+  display: block;
+  line-height: 1.25;
+}
+
+.capability-banner__features span {
+  font-size: 0.88rem;
+  font-weight: 900;
+}
+
+.capability-banner__features small {
+  color: #d7cab0;
+  font-size: 0.75rem;
+}
+
 .overview-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
@@ -1430,6 +1513,25 @@ p {
     height: 440px;
   }
 
+  .capability-banner {
+    padding-top: min(64vw, 470px);
+    background-position: 66% top;
+    background-size: auto min(64vw, 470px);
+    background-repeat: no-repeat;
+  }
+
+  .capability-banner__inner {
+    width: 100%;
+    min-height: 0;
+    background: #0a0b09;
+  }
+
+  .capability-banner__copy {
+    width: min(calc(100% - 40px), 680px);
+    margin: 0 auto;
+    padding: 42px 0 48px;
+  }
+
   .diagnostic-grid,
   .coverage-categories,
   .tool-list,
@@ -1499,6 +1601,25 @@ p {
     right: 8px;
     bottom: 8px;
     width: 58%;
+  }
+
+  .capability-banner {
+    padding-top: 61vw;
+    background-position: 67% top;
+    background-size: auto 61vw;
+  }
+
+  .capability-banner__copy {
+    width: min(calc(100% - 24px), 680px);
+    padding: 34px 0 40px;
+  }
+
+  .capability-banner__copy h2 {
+    font-size: 2.1rem;
+  }
+
+  .capability-banner__features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .agent-benefits {
