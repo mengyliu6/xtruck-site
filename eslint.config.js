@@ -8,6 +8,17 @@ export default [
     ignores: ['dist/**', 'node_modules/**'],
   },
   js.configs.recommended,
+  {
+    files: ['api/**/*.js'],
+    languageOptions: {
+      globals: {
+        Buffer: 'readonly',
+        URLSearchParams: 'readonly',
+        fetch: 'readonly',
+        process: 'readonly',
+      },
+    },
+  },
   ...pluginVue.configs['flat/recommended'],
   ...tseslint(),
   prettier,
