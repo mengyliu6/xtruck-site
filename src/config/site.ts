@@ -13,7 +13,7 @@ export const siteConfig = {
     locale: 'en-US',
   },
   paymentsEnabled: false,
-  canonicalUrl: 'https://xtruck-site.vercel.app/',
+  canonicalUrl: import.meta.env.VITE_CANONICAL_URL || 'https://www.xtruckohw808.com/',
   socialLinks: [],
   company: {
     name: 'Xtruck',

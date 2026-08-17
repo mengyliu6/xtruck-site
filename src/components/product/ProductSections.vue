@@ -1,32 +1,27 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
+
 import IconGlyph from '@/components/common/IconGlyph.vue'
 import PreviewImage from '@/components/common/PreviewImage.vue'
 import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
 import { siteConfig } from '@/config/site'
+import { buildCoverageDirectory, coverageFilters, type CoverageCategory } from '@/data/coverage'
 import { product } from '@/data/product'
 
-const primaryBrands = [
-  'Bobcat',
-  'Caterpillar Pro',
-  'Case',
-  'JCB',
-  'Komatsu',
-  'Kubota',
-  'Volvo Construction Machinery',
-  'Hitachi Machinery',
-  'Hyundai',
-  'John Deere',
-  'New Holland',
-  'Fendt',
-  'Claas',
-  'Massey Ferguson',
-  'XCMG',
-  'SANY Heavy Industry',
-  'LiuGong Machinery',
-  'Shandong Shantui',
-  'Zoomlion Heavy Industry',
-  'Yuchai Machinery',
-]
+const coverageBrands = buildCoverageDirectory(product.coverageGroups)
+const coverageCategory = ref<CoverageCategory>('all')
+const coverageQuery = ref('')
+const availableSupportListCount = coverageBrands.filter((brand) => brand.downloadHref).length
+
+const visibleCoverageBrands = computed(() => {
+  const query = coverageQuery.value.trim().toLocaleLowerCase()
+  return coverageBrands.filter((brand) => {
+    const categoryMatches =
+      coverageCategory.value === 'all' || brand.category === coverageCategory.value
+    const queryMatches = !query || brand.name.toLocaleLowerCase().includes(query)
+    return categoryMatches && queryMatches
+  })
+})
 </script>
 
 <template>
@@ -135,21 +130,63 @@ const primaryBrands = [
           </article>
         </div>
 
-        <div class="brand-panel" aria-label="Primary supported brands">
-          <span v-for="brand in primaryBrands" :key="brand">{{ brand }}</span>
-        </div>
-
-        <details class="coverage-details">
-          <summary>View Full Coverage</summary>
-          <div class="coverage-details__grid">
-            <section v-for="group in product.coverageGroups" :key="group.title">
-              <h3>{{ group.title }}</h3>
-              <ul>
-                <li v-for="brand in group.brands" :key="brand">{{ brand }}</li>
-              </ul>
-            </section>
+        <div id="coverage-directory" class="coverage-directory">
+          <div class="coverage-directory__header">
+            <div>
+              <p class="coverage-directory__eyebrow">Brand Directory</p>
+              <h3>All supported brands</h3>
+              <p>
+                {{ coverageBrands.length }} unique entries, ordered by global brand recognition.
+              </p>
+            </div>
+            <label class="coverage-search">
+              <span>Search brands</span>
+              <input v-model="coverageQuery" type="search" placeholder="Enter a brand name" />
+            </label>
           </div>
-        </details>
+
+          <div class="coverage-filters" role="group" aria-label="Filter supported brands">
+            <button
+              v-for="filter in coverageFilters"
+              :key="filter.value"
+              type="button"
+              :aria-pressed="coverageCategory === filter.value"
+              @click="coverageCategory = filter.value"
+            >
+              {{ filter.label }}
+            </button>
+          </div>
+
+          <div class="coverage-file-status">
+            <strong>{{ availableSupportListCount }} support lists available</strong>
+            <span>More brand support-list PDFs are being prepared.</span>
+          </div>
+
+          <div v-if="visibleCoverageBrands.length" class="coverage-brand-grid">
+            <article v-for="brand in visibleCoverageBrands" :key="brand.name">
+              <div class="coverage-brand__identity">
+                <h4>{{ brand.name }}</h4>
+                <span>{{ brand.categoryLabel }}</span>
+              </div>
+              <a
+                v-if="brand.downloadHref"
+                class="coverage-brand__download"
+                :href="brand.downloadHref"
+                :download="brand.downloadName"
+                :aria-label="`Download ${brand.name} support list PDF`"
+                title="Download support list PDF"
+              >
+                <IconGlyph name="download" />
+                <span>Support list</span>
+              </a>
+              <span v-else class="coverage-brand__pending" title="Support list PDF coming soon">
+                <IconGlyph name="document" />
+                <span>PDF pending</span>
+              </span>
+            </article>
+          </div>
+          <p v-else class="coverage-empty">No supported brands match this search.</p>
+        </div>
 
         <div class="compatibility-note">
           <div class="compatibility-note__heading">
@@ -277,6 +314,13 @@ const primaryBrands = [
             >
               <IconGlyph name="download" />
               {{ resource.actionLabel ?? 'Download' }}
+            </a>
+            <a
+              v-else-if="resource.title === 'Equipment Support List'"
+              class="resource-action"
+              href="#coverage-directory"
+            >
+              View Support Lists
             </a>
             <span v-else>Contact Xtruck</span>
           </article>

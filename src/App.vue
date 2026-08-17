@@ -10,16 +10,35 @@ import { siteConfig } from '@/config/site'
 import { product } from '@/data/product'
 import AgentPage from '@/pages/AgentPage.vue'
 import BlogPage from '@/pages/BlogPage.vue'
+import ProductPage from '@/pages/ProductPage.vue'
 
 const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
 const isAgentPage = currentPath === '/agent'
 const isBlogPage = currentPath === '/blog'
+const isProductPage = currentPath === '/product/ohw808'
 
 function setMetaContent(selector: string, content: string) {
   document.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', content)
 }
 
 onMounted(() => {
+  if (isProductPage) {
+    document.title = 'Buy Xtruck OHW808 | Secure PayPal Checkout'
+    const description =
+      'Order the Xtruck OHW808 professional off-highway diagnostic tool using secure PayPal checkout.'
+    const productUrl = new URL('/product/ohw808', siteConfig.canonicalUrl).href
+
+    setMetaContent('meta[name="description"]', description)
+    setMetaContent('meta[property="og:title"]', document.title)
+    setMetaContent('meta[property="og:description"]', description)
+    setMetaContent('meta[property="og:type"]', 'product')
+    setMetaContent('meta[property="og:url"]', productUrl)
+    document
+      .querySelector<HTMLLinkElement>('link[rel="canonical"]')
+      ?.setAttribute('href', productUrl)
+    return
+  }
+
   if (isAgentPage) {
     document.title = 'Global OHW808 Agent & Distributor Program | Xtruck'
     const description =
@@ -78,7 +97,10 @@ onMounted(() => {
 
 <template>
   <SiteHeader />
-  <template v-if="isAgentPage">
+  <template v-if="isProductPage">
+    <ProductPage />
+  </template>
+  <template v-else-if="isAgentPage">
     <AgentPage />
   </template>
   <template v-else-if="isBlogPage">
@@ -89,6 +111,8 @@ onMounted(() => {
     <ProductSections />
   </template>
   <SiteFooter />
-  <WhatsAppButton class="floating-whatsapp" label="WhatsApp" variant="floating" />
-  <WhatsAppButton class="mobile-contact-bar" label="WhatsApp" variant="mobile" />
+  <template v-if="!isProductPage">
+    <WhatsAppButton class="floating-whatsapp" label="WhatsApp" variant="floating" />
+    <WhatsAppButton class="mobile-contact-bar" label="WhatsApp" variant="mobile" />
+  </template>
 </template>
