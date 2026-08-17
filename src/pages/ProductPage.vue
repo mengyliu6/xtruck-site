@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 
 import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
+import PreviewImage from '@/components/common/PreviewImage.vue'
 import PayPalCheckout from '@/components/payment/PayPalCheckout.vue'
 import { formatPrice } from '@/config/site'
 import { product } from '@/data/product'
@@ -9,6 +10,39 @@ import { product } from '@/data/product'
 const quantity = ref(1)
 const paymentProcessing = ref(false)
 const totalPrice = computed(() => formatPrice(product.priceUsd * quantity.value))
+const productImages = [
+  {
+    src: '/images/product/ohw808-complete-set.jpg',
+    alt: 'Xtruck OHW808 diagnostic tablet and VCI complete set on a white background',
+    label: 'Complete set',
+  },
+  {
+    src: '/images/product/ohw808-tablet-front.jpg',
+    alt: 'Xtruck OHW808 diagnostic tablet front view with the latest interface',
+    label: 'Tablet',
+  },
+  {
+    src: '/images/product/ohw808-vci.jpg',
+    alt: 'Xtruck OHW808 vehicle communication interface on a white background',
+    label: 'VCI',
+  },
+  {
+    src: '/images/product/ohw808-full-kit.jpg',
+    alt: 'Xtruck OHW808 complete diagnostic kit and accessories on a white background',
+    label: 'Full kit',
+  },
+]
+const activeImageIndex = ref(0)
+const activeImage = computed(() => productImages[activeImageIndex.value]!)
+
+function showPreviousImage() {
+  activeImageIndex.value =
+    (activeImageIndex.value - 1 + productImages.length) % productImages.length
+}
+
+function showNextImage() {
+  activeImageIndex.value = (activeImageIndex.value + 1) % productImages.length
+}
 
 function changeQuantity(amount: number) {
   const currentQuantity = Math.round(Number(quantity.value) || 1)
@@ -32,48 +66,40 @@ function normalizeQuantity() {
     <section class="section-shell product-purchase" aria-labelledby="product-purchase-title">
       <div class="product-gallery">
         <div class="product-purchase__media">
-          <img
-            src="/images/ohw808-device.jpg"
-            alt="Xtruck OHW808 diagnostic tablet on a white background"
-            loading="eager"
-          />
+          <PreviewImage :src="activeImage.src" :alt="activeImage.alt" loading="eager" />
+          <span class="product-gallery__position">
+            {{ activeImageIndex + 1 }} / {{ productImages.length }}
+          </span>
         </div>
         <div class="product-gallery__rail" aria-label="OHW808 product gallery">
           <button
             type="button"
             class="product-gallery__nav"
-            disabled
             aria-label="Previous image"
             title="Previous image"
+            @click="showPreviousImage"
           >
             <span aria-hidden="true">&lt;</span>
           </button>
           <button
+            v-for="(image, index) in productImages"
+            :key="image.src"
             type="button"
-            class="product-gallery__thumb product-gallery__thumb--active"
-            aria-label="View OHW808 front image"
-            aria-current="true"
+            class="product-gallery__thumb"
+            :class="{ 'product-gallery__thumb--active': activeImageIndex === index }"
+            :aria-label="`View ${image.label}`"
+            :aria-current="activeImageIndex === index ? 'true' : undefined"
+            @click="activeImageIndex = index"
           >
-            <img src="/images/ohw808-device.jpg" alt="" />
-            <span>Front</span>
-          </button>
-          <button
-            v-for="imageNumber in [2, 3, 4]"
-            :key="imageNumber"
-            type="button"
-            class="product-gallery__thumb product-gallery__thumb--placeholder"
-            disabled
-            :aria-label="`Product image ${imageNumber} coming soon`"
-          >
-            <strong>{{ String(imageNumber).padStart(2, '0') }}</strong>
-            <span>Coming soon</span>
+            <img :src="image.src" alt="" />
+            <span>{{ image.label }}</span>
           </button>
           <button
             type="button"
             class="product-gallery__nav"
-            disabled
             aria-label="Next image"
             title="Next image"
+            @click="showNextImage"
           >
             <span aria-hidden="true">&gt;</span>
           </button>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, useAttrs } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -10,7 +10,6 @@ defineProps<{
 }>()
 
 const isOpen = ref(false)
-const attrs = useAttrs()
 
 function openPreview() {
   isOpen.value = true
@@ -36,7 +35,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <button type="button" class="preview-image" aria-label="Open image preview" @click="openPreview">
+  <button
+    v-bind="$attrs"
+    type="button"
+    class="preview-image"
+    aria-label="Open image preview"
+    @click="openPreview"
+  >
     <img :src="src" :alt="alt" :loading="loading || 'lazy'" />
     <span class="preview-image__hint" aria-hidden="true">View</span>
   </button>
@@ -51,7 +56,6 @@ onBeforeUnmount(() => {
       @click.self="closePreview"
     >
       <button
-        v-bind="attrs"
         type="button"
         class="image-preview__close"
         aria-label="Close image preview"

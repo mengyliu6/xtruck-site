@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import IconGlyph from '@/components/common/IconGlyph.vue'
+import PreviewImage from '@/components/common/PreviewImage.vue'
 import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
 import { siteConfig } from '@/config/site'
 
@@ -70,7 +71,7 @@ const cooperationSteps = [
     <section class="agent-hero" aria-labelledby="agent-title">
       <div class="section-shell agent-hero__inner">
         <div class="agent-hero__copy">
-          <p class="eyebrow">Official Launch · August 2026</p>
+          <p class="eyebrow">Official Launch | August 2026</p>
           <h1 id="agent-title">Grow your market with Xtruck OHW808</h1>
           <p>
             Xtruck is welcoming reliable agents and distributors to develop long-term regional
@@ -113,6 +114,53 @@ const cooperationSteps = [
       </div>
     </section>
 
+    <section class="section agent-production" aria-labelledby="agent-production-title">
+      <div class="section-shell">
+        <div class="section-heading agent-production__heading">
+          <div>
+            <p class="eyebrow">Production &amp; Preparation</p>
+            <h2 id="agent-production-title">A closer look at the team behind OHW808</h2>
+          </div>
+          <p>
+            From production coordination to device inspection and batch preparation, our team works
+            directly with the hardware our partners depend on.
+          </p>
+        </div>
+        <div class="agent-production__gallery">
+          <figure class="agent-production__feature">
+            <PreviewImage
+              src="/images/agent/factory-production-line.jpg"
+              alt="Xtruck production line and assembly workstations"
+            />
+            <figcaption>
+              <strong>Production coordination</strong>
+              <span>Organized workstations for product assembly and preparation.</span>
+            </figcaption>
+          </figure>
+          <figure>
+            <PreviewImage
+              src="/images/agent/factory-device-testing.jpg"
+              alt="Xtruck technician inspecting an OHW808 diagnostic tablet"
+            />
+            <figcaption>
+              <strong>Device inspection</strong>
+              <span>Hands-on checking of OHW808 hardware and software.</span>
+            </figcaption>
+          </figure>
+          <figure>
+            <PreviewImage
+              src="/images/agent/factory-batch-testing.jpg"
+              alt="Multiple diagnostic tablets prepared for batch testing"
+            />
+            <figcaption>
+              <strong>Batch preparation</strong>
+              <span>Multiple devices organized for verification and delivery preparation.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="section section--dark agent-customization">
       <div class="section-shell agent-customization__layout">
         <div>
@@ -129,9 +177,9 @@ const cooperationSteps = [
           </ul>
         </div>
         <div class="agent-customization__image">
-          <img
-            src="/images/ui/ohw808-home.png"
-            alt="OHW808 diagnostic interface showing equipment categories and support tools"
+          <PreviewImage
+            src="/images/product/ohw808-complete-set.jpg"
+            alt="Xtruck OHW808 tablet and VCI prepared for professional diagnostics"
           />
         </div>
       </div>

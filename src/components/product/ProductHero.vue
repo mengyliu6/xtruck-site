@@ -25,13 +25,15 @@ import { product } from '@/data/product'
     <div class="hero__media" aria-label="Xtruck OHW808 product and software">
       <PreviewImage
         class="hero__product-image"
-        src="/images/ohw808-device.jpg"
-        alt="Xtruck OHW808 diagnostic tablet"
+        src="/images/product/ohw808-complete-set.jpg"
+        alt="Xtruck OHW808 diagnostic tablet and VCI on a white background"
         loading="eager"
       />
       <figure class="hero__interface-image">
         <PreviewImage src="/images/ui/ohw808-home.png" alt="Xtruck OHW808 main software menu" />
-        <figcaption>Construction, agriculture, engine and HD OBD diagnostics</figcaption>
+        <figcaption>
+          Latest OHW808 interface for construction, agriculture, engine and HD OBD
+        </figcaption>
       </figure>
     </div>
   </section>
