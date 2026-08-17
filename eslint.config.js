@@ -7,6 +7,18 @@ export default [
   {
     ignores: ['dist/**', 'node_modules/**'],
   },
+  {
+    files: ['api/**/*.js'],
+    languageOptions: {
+      globals: {
+        Buffer: 'readonly',
+        console: 'readonly',
+        fetch: 'readonly',
+        process: 'readonly',
+        URLSearchParams: 'readonly',
+      },
+    },
+  },
   js.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
   ...tseslint(),

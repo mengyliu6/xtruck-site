@@ -17,7 +17,7 @@ import { product } from '@/data/product'
       <div class="hero__price" aria-label="Product price">{{ formatPrice(product.priceUsd) }}</div>
       <div class="hero__actions">
         <WhatsAppButton />
-        <a href="#overview" class="button button--secondary">View Product Details</a>
+        <a href="/product/ohw808" class="button button--secondary">View Product Details</a>
       </div>
     </div>
 
