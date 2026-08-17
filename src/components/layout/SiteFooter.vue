@@ -10,10 +10,13 @@ import { siteConfig } from '@/config/site'
         <span>{{ siteConfig.brandName }}</span>
       </a>
       <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="/">Home</a>
-        <a href="/product/ohw808">OHW808 Product</a>
+        <a href="/#overview">OHW808 Product</a>
+        <a href="/#coverage">Coverage</a>
+        <a href="/#download">Download</a>
+        <a href="/#video">Video</a>
         <a href="/agent">Agent</a>
         <a href="/blog">Blog</a>
+        <a href="/#faq">Q&amp;A</a>
         <a href="/#contact">Contact</a>
       </nav>
       <p>

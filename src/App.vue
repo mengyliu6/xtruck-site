@@ -4,17 +4,16 @@ import { onMounted } from 'vue'
 import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
 import SiteFooter from '@/components/layout/SiteFooter.vue'
 import SiteHeader from '@/components/layout/SiteHeader.vue'
+import ProductHero from '@/components/product/ProductHero.vue'
+import ProductSections from '@/components/product/ProductSections.vue'
 import { siteConfig } from '@/config/site'
 import { product } from '@/data/product'
 import AgentPage from '@/pages/AgentPage.vue'
 import BlogPage from '@/pages/BlogPage.vue'
-import HomePage from '@/pages/HomePage.vue'
-import ProductPage from '@/pages/ProductPage.vue'
 
 const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
 const isAgentPage = currentPath === '/agent'
 const isBlogPage = currentPath === '/blog'
-const isProductPage = currentPath === '/product/ohw808'
 
 function setMetaContent(selector: string, content: string) {
   document.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', content)
@@ -51,31 +50,6 @@ onMounted(() => {
     return
   }
 
-  if (!isProductPage) {
-    document.title = 'Xtruck | Professional Off-Highway Diagnostic Solutions'
-    const description =
-      'Explore Xtruck professional diagnostic solutions for construction machinery, agricultural equipment and diesel engines.'
-
-    setMetaContent('meta[name="description"]', description)
-    setMetaContent('meta[property="og:title"]', document.title)
-    setMetaContent('meta[property="og:description"]', description)
-    setMetaContent('meta[property="og:type"]', 'website')
-    setMetaContent('meta[property="og:url"]', siteConfig.canonicalUrl)
-    document
-      .querySelector<HTMLLinkElement>('link[rel="canonical"]')
-      ?.setAttribute('href', siteConfig.canonicalUrl)
-    return
-  }
-
-  document.title = 'Buy Xtruck OHW808 | Professional Diagnostic Tool'
-  const productUrl = new URL('/product/ohw808', siteConfig.canonicalUrl).href
-  setMetaContent('meta[name="description"]', product.shortDescription)
-  setMetaContent('meta[property="og:title"]', document.title)
-  setMetaContent('meta[property="og:description"]', product.shortDescription)
-  setMetaContent('meta[property="og:type"]', 'product')
-  setMetaContent('meta[property="og:url"]', productUrl)
-  document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', productUrl)
-
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -91,7 +65,7 @@ onMounted(() => {
       '@type': 'Offer',
       priceCurrency: siteConfig.currency.code,
       price: product.priceUsd,
-      url: productUrl,
+      url: window.location.href,
     },
   }
 
@@ -110,11 +84,9 @@ onMounted(() => {
   <template v-else-if="isBlogPage">
     <BlogPage />
   </template>
-  <template v-else-if="isProductPage">
-    <ProductPage />
-  </template>
   <template v-else>
-    <HomePage />
+    <ProductHero />
+    <ProductSections />
   </template>
   <SiteFooter />
   <WhatsAppButton class="floating-whatsapp" label="WhatsApp" variant="floating" />

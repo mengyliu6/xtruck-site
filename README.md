@@ -1,6 +1,6 @@
 # Xtruck OHW808 单品官网
 
-这是一个面向海外客户的 Xtruck OHW808 英文单品官网项目。当前包含独立首页、OHW808 商品详情页、PayPal 在线支付、香港银行转账申请、WhatsApp 询盘和 Supabase 订单保存。
+这是一个面向海外客户的 Xtruck OHW808 英文单品官网项目。当前定位是“单产品官网 + 产品详情页 + WhatsApp 销售询盘落地页”，暂不接入数据库、登录、购物车或在线支付。
 
 ## 技术栈
 
@@ -12,9 +12,6 @@
 - ESLint
 - Prettier
 - npm
-- Vercel Functions
-- PayPal Checkout
-- Supabase PostgreSQL
 
 ## 项目目录
 
@@ -28,19 +25,13 @@ xtruck-site/
     components/
       common/      # 通用组件
       layout/      # Header / Footer
-      payment/     # PayPal 和银行转账组件
-      product/     # 原产品详情模块，保留供后续内容恢复
-    pages/         # 首页、商品页、Agent、Blog
+      product/     # 产品页面模块
     config/site.ts # 站点配置
     data/product.ts# 产品内容数据
     types/         # TypeScript 类型
     App.vue
     main.ts
   CONTENT_NEEDED.md
-  CODEX_PAYMENT_PROMPT.md
-  PAYMENT_SETUP.md
-  api/             # Vercel 后端支付接口
-  supabase/        # 数据库建表 SQL
 ```
 
 原始素材保留在 `D:\MLS\source-assets`，网站内使用的是复制到 `public/` 下的文件。
@@ -90,27 +81,26 @@ npm run lint
 - 价格：`$2399`
 - WhatsApp：`8613360519239`
 - Email：`xtruck@qq.com`
-- 支付开关：`paymentsEnabled: true`，但必须配置 PayPal 和 Supabase 环境变量后才能收款
+- 支付开关：`paymentsEnabled: false`
 - 已同步资料：产品介绍、硬件参数、支持语言、诊断功能、Cummins 操作流程、设备覆盖、附加工具、包装清单、FAQ 和保修边界
 
-## 当前页面
+## 当前页面顺序
 
-- `/`：网站首页和 OHW808 商品入口
-- `/product/ohw808`：商品图片、价格、数量、PayPal 和银行转账
-- `/agent`：代理合作页面
-- `/blog`：内容页面
-
-商品详情页下方的详细描述区域暂时留空，等待正式英文图文资料和高清图片。
-
-## 支付配置
-
-支付代码不会把密钥写入前端。完成数据库、PayPal 和 Vercel 配置前，线上按钮不会执行真实收款。
-
-请严格按照 [`PAYMENT_SETUP.md`](./PAYMENT_SETUP.md) 操作，并在 Supabase SQL Editor 中执行：
-
-```text
-supabase/schema.sql
-```
+- Header
+- Hero
+- Product Overview
+- Diagnostic Functions
+- Equipment Coverage
+- Diagnostic Workflow
+- Additional Tools
+- Specifications
+- Package Contents
+- Download
+- Video
+- Agent
+- Blog
+- Q&A
+- Final CTA
 
 ## 下载资料说明
 
@@ -149,4 +139,4 @@ git push -u origin main
 - Output directory：`dist`
 - Install command：`npm install`
 
-GitHub `main` 分支更新后，由当前 Vercel 项目自动部署。正式支付上线前必须先通过 PayPal Sandbox 测试。
+当前不自动部署、不自动发布。
