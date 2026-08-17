@@ -32,7 +32,8 @@ import { product } from '@/data/product'
       <figure class="hero__interface-image">
         <PreviewImage src="/images/ui/ohw808-home.png" alt="Xtruck OHW808 main software menu" />
         <figcaption>
-          Latest OHW808 interface for construction, agriculture, engine and HD OBD
+          <strong>OHW808 operating interface</strong>
+          <span>Construction, agriculture, engine and HD OBD diagnostics</span>
         </figcaption>
       </figure>
     </div>

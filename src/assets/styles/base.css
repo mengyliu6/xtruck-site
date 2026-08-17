@@ -270,7 +270,7 @@ p {
 
 .hero {
   display: grid;
-  min-height: min(780px, calc(100vh - 72px));
+  min-height: min(720px, calc(100vh - 72px));
   grid-template-columns: minmax(0, 0.95fr) minmax(440px, 1.05fr);
   gap: 48px;
   align-items: center;
@@ -363,38 +363,49 @@ p {
 
 .hero__media {
   position: relative;
+  display: grid;
   min-width: 0;
-  min-height: 500px;
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow: hidden;
+  background: #f1f3f1;
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .hero__product-image {
   width: 100%;
-  height: 500px;
+  height: 350px;
   padding: 0;
-  background: #f8f9f7;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  background: #f1f3f1;
+  border: 0;
+  border-radius: 0;
 }
 
 .hero__product-image > img {
   width: 100%;
   height: 100%;
-  padding: 18px;
+  padding: 4px 14px 0;
+  mix-blend-mode: multiply;
   object-fit: contain;
+  transform: scale(1.05);
 }
 
 .hero__interface-image {
-  position: absolute;
-  right: -12px;
-  bottom: 22px;
-  width: min(46%, 285px);
-  margin: 0;
-  padding: 8px;
-  background: #ffffff;
-  border: 1px solid #ccd2cf;
+  position: static;
+  display: grid;
+  width: auto;
+  grid-template-columns: 126px minmax(0, 1fr);
+  gap: 15px;
+  align-items: center;
+  margin: 0 16px 16px;
+  padding: 10px;
+  color: #ffffff;
+  background: #20272b;
+  border: 0;
   border-radius: var(--radius);
-  box-shadow: 0 14px 28px rgba(22, 27, 32, 0.18);
+  box-shadow: none;
 }
 
 .hero__interface-image .preview-image,
@@ -412,11 +423,22 @@ p {
 }
 
 .hero__interface-image figcaption {
-  padding: 8px 4px 2px;
-  color: var(--muted);
-  font-size: 0.75rem;
+  display: grid;
+  gap: 3px;
+  padding: 0 6px 0 0;
+  color: #cbd2ce;
+  font-size: 0.72rem;
   font-weight: 800;
   line-height: 1.35;
+}
+
+.hero__interface-image figcaption strong {
+  color: #ffffff;
+  font-size: 0.84rem;
+}
+
+.hero__interface-image figcaption span {
+  display: block;
 }
 
 .capability-banner {
@@ -2063,11 +2085,11 @@ p {
   }
 
   .hero__media {
-    min-height: 440px;
+    min-height: 0;
   }
 
   .hero__product-image {
-    height: 440px;
+    height: 340px;
   }
 
   .capability-banner {
@@ -2185,11 +2207,11 @@ p {
   }
 
   .hero__media {
-    min-height: 340px;
+    min-height: 0;
   }
 
   .hero__product-image {
-    height: 340px;
+    height: 210px;
   }
 
   .hero__product-image > img {
@@ -2197,9 +2219,9 @@ p {
   }
 
   .hero__interface-image {
-    right: 8px;
-    bottom: 8px;
-    width: 52%;
+    width: auto;
+    grid-template-columns: 96px minmax(0, 1fr);
+    margin: 0 8px 8px;
   }
 
   .capability-banner {

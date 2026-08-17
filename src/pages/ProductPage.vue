@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 
 import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
 import PreviewImage from '@/components/common/PreviewImage.vue'
@@ -17,14 +17,29 @@ const productImages = [
     label: 'Complete set',
   },
   {
+    src: '/images/product/ohw808-controls.jpg',
+    alt: 'Xtruck OHW808 diagnostic tablet controls and software interface',
+    label: 'Controls',
+  },
+  {
     src: '/images/product/ohw808-tablet-front.jpg',
     alt: 'Xtruck OHW808 diagnostic tablet front view with the latest interface',
     label: 'Tablet',
   },
   {
+    src: '/images/product/ohw808-ports.jpg',
+    alt: 'Xtruck OHW808 diagnostic tablet USB and USB-C connection ports',
+    label: 'Ports',
+  },
+  {
     src: '/images/product/ohw808-vci.jpg',
     alt: 'Xtruck OHW808 vehicle communication interface on a white background',
     label: 'VCI',
+  },
+  {
+    src: '/images/product/ohw808-rear-stand.jpg',
+    alt: 'Xtruck OHW808 diagnostic tablet rear stand and product label',
+    label: 'Rear stand',
   },
   {
     src: '/images/product/ohw808-full-kit.jpg',
@@ -34,14 +49,36 @@ const productImages = [
 ]
 const activeImageIndex = ref(0)
 const activeImage = computed(() => productImages[activeImageIndex.value]!)
+const thumbnailRail = ref<HTMLDivElement | null>(null)
+const isZooming = ref(false)
+
+function showImage(index: number) {
+  activeImageIndex.value = index
+  isZooming.value = false
+
+  void nextTick(() => {
+    thumbnailRail.value
+      ?.querySelector<HTMLElement>('[aria-current="true"]')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' })
+  })
+}
 
 function showPreviousImage() {
-  activeImageIndex.value =
-    (activeImageIndex.value - 1 + productImages.length) % productImages.length
+  showImage((activeImageIndex.value - 1 + productImages.length) % productImages.length)
 }
 
 function showNextImage() {
-  activeImageIndex.value = (activeImageIndex.value + 1) % productImages.length
+  showImage((activeImageIndex.value + 1) % productImages.length)
+}
+
+function updateZoomPosition(event: MouseEvent) {
+  const media = event.currentTarget as HTMLElement
+  const bounds = media.getBoundingClientRect()
+  const x = ((event.clientX - bounds.left) / bounds.width) * 100
+  const y = ((event.clientY - bounds.top) / bounds.height) * 100
+
+  media.style.setProperty('--zoom-x', `${Math.min(100, Math.max(0, x))}%`)
+  media.style.setProperty('--zoom-y', `${Math.min(100, Math.max(0, y))}%`)
 }
 
 function changeQuantity(amount: number) {
@@ -65,7 +102,13 @@ function normalizeQuantity() {
 
     <section class="section-shell product-purchase" aria-labelledby="product-purchase-title">
       <div class="product-gallery">
-        <div class="product-purchase__media">
+        <div
+          class="product-purchase__media"
+          :class="{ 'product-purchase__media--zooming': isZooming }"
+          @mouseenter="isZooming = true"
+          @mousemove="updateZoomPosition"
+          @mouseleave="isZooming = false"
+        >
           <PreviewImage :src="activeImage.src" :alt="activeImage.alt" loading="eager" />
           <span class="product-gallery__position">
             {{ activeImageIndex + 1 }} / {{ productImages.length }}
@@ -81,19 +124,21 @@ function normalizeQuantity() {
           >
             <span aria-hidden="true">&lt;</span>
           </button>
-          <button
-            v-for="(image, index) in productImages"
-            :key="image.src"
-            type="button"
-            class="product-gallery__thumb"
-            :class="{ 'product-gallery__thumb--active': activeImageIndex === index }"
-            :aria-label="`View ${image.label}`"
-            :aria-current="activeImageIndex === index ? 'true' : undefined"
-            @click="activeImageIndex = index"
-          >
-            <img :src="image.src" alt="" />
-            <span>{{ image.label }}</span>
-          </button>
+          <div ref="thumbnailRail" class="product-gallery__thumbs">
+            <button
+              v-for="(image, index) in productImages"
+              :key="image.src"
+              type="button"
+              class="product-gallery__thumb"
+              :class="{ 'product-gallery__thumb--active': activeImageIndex === index }"
+              :aria-label="`View ${image.label}`"
+              :aria-current="activeImageIndex === index ? 'true' : undefined"
+              @click="showImage(index)"
+            >
+              <img :src="image.src" alt="" />
+              <span>{{ image.label }}</span>
+            </button>
+          </div>
           <button
             type="button"
             class="product-gallery__nav"
