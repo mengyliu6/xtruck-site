@@ -12,8 +12,10 @@ export const siteConfig = {
     symbol: '$',
     locale: 'en-US',
   },
-  paymentsEnabled: false,
-  canonicalUrl: 'https://xtruck-site.vercel.app/',
+  paymentsEnabled: true,
+  paypalClientId: import.meta.env.VITE_PAYPAL_CLIENT_ID || '',
+  bankTransferEnabled: import.meta.env.VITE_BANK_TRANSFER_ENABLED === 'true',
+  canonicalUrl: import.meta.env.VITE_CANONICAL_URL || 'https://www.xtruckohw808.com/',
   socialLinks: [],
   company: {
     name: 'Xtruck',
@@ -22,14 +24,11 @@ export const siteConfig = {
 }
 
 export const navigationItems: NavItem[] = [
-  { label: 'Overview', href: '/#overview' },
-  { label: 'Features', href: '/#features' },
-  { label: 'Coverage', href: '/#coverage' },
-  { label: 'Download', href: '/#download' },
-  { label: 'Video', href: '/#video' },
+  { label: 'Home', href: '/' },
+  { label: 'OHW808', href: '/product/ohw808' },
   { label: 'Agent', href: '/agent' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Q&A', href: '/#faq' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 export function formatPrice(value: number): string {
