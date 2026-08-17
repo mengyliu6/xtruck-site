@@ -83,11 +83,12 @@ export const product: ProductData = {
       icon: 'machine',
       brands: [
         'Bobcat',
+        'Caterpillar',
         'Isuzu CM',
         'Yanmar',
         'Volvo Construction Machinery',
         'JCB',
-        'Case',
+        'CASE',
         'Caterpillar Pro',
         'New Holland',
         'Hitachi Machinery',
@@ -103,7 +104,7 @@ export const product: ProductData = {
     {
       title: 'International Agricultural Machinery',
       icon: 'tractor',
-      brands: ['Fendt', 'Massey Ferguson', 'Claas', 'John Deere', 'New Holland'],
+      brands: ['Fendt', 'Massey Ferguson', 'CLAAS', 'John Deere', 'New Holland'],
     },
     {
       title: 'Chinese Construction Machinery',

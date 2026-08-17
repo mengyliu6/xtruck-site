@@ -3,6 +3,16 @@
   background: #ffffff;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
 .product-breadcrumb {
   display: flex;
   gap: 9px;
@@ -28,6 +38,10 @@
   padding-bottom: 86px;
 }
 
+.product-gallery {
+  min-width: 0;
+}
+
 .product-purchase__media {
   display: grid;
   min-height: 610px;
@@ -41,6 +55,83 @@
   width: 100%;
   max-height: 580px;
   object-fit: contain;
+}
+
+.product-gallery__rail {
+  display: grid;
+  grid-template-columns: 42px repeat(4, minmax(0, 1fr)) 42px;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.product-gallery__nav,
+.product-gallery__thumb {
+  min-width: 0;
+  height: 76px;
+  padding: 0;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.product-gallery__nav {
+  color: #78817d;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.product-gallery__nav:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.product-gallery__thumb {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+}
+
+.product-gallery__thumb--active {
+  border: 2px solid var(--accent);
+  cursor: pointer;
+}
+
+.product-gallery__thumb--active img {
+  width: 100%;
+  height: 54px;
+  padding: 3px;
+  object-fit: contain;
+}
+
+.product-gallery__thumb--active > span {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  padding: 2px 5px;
+  color: #151a1d;
+  background: var(--accent);
+  border-radius: 3px;
+  font-size: 0.58rem;
+  font-weight: 900;
+}
+
+.product-gallery__thumb--placeholder {
+  gap: 3px;
+  align-content: center;
+  color: #8b9591;
+  background: #f3f5f3;
+  cursor: not-allowed;
+}
+
+.product-gallery__thumb--placeholder strong {
+  color: #5f6965;
+  font-size: 0.9rem;
+}
+
+.product-gallery__thumb--placeholder span {
+  font-size: 0.58rem;
+  font-weight: 800;
 }
 
 .product-purchase__summary h1 {
@@ -73,25 +164,80 @@
   border-bottom: 1px solid var(--line);
 }
 
+.quantity-control > div:first-child {
+  display: grid;
+  gap: 4px;
+}
+
 .quantity-control label {
   font-weight: 900;
 }
 
-.quantity-control select {
-  width: 92px;
-  min-height: 44px;
-  padding: 0 12px;
-  color: var(--ink);
-  background: #ffffff;
-  border: 1px solid #aeb6b2;
-  border-radius: var(--radius);
-  font: inherit;
-  font-weight: 800;
+.quantity-control > div:first-child > span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
 }
 
-.quantity-control select:disabled {
+.quantity-stepper {
+  display: grid;
+  grid-template-columns: 44px 54px 44px;
+  overflow: hidden;
+  border: 1px solid #aeb6b2;
+  border-radius: var(--radius);
+}
+
+.quantity-stepper button,
+.quantity-stepper input {
+  width: 100%;
+  height: 44px;
+  padding: 0;
+  color: var(--ink);
+  background: #ffffff;
+  border: 0;
+  font: inherit;
+  font-weight: 900;
+  text-align: center;
+}
+
+.quantity-stepper button {
+  cursor: pointer;
+  font-size: 1.15rem;
+}
+
+.quantity-stepper button:first-child {
+  border-right: 1px solid var(--line);
+}
+
+.quantity-stepper button:last-child {
+  border-left: 1px solid var(--line);
+}
+
+.quantity-stepper button:hover:not(:disabled) {
+  background: var(--accent);
+}
+
+.quantity-stepper input {
+  appearance: textfield;
+}
+
+.quantity-stepper input::-webkit-inner-spin-button,
+.quantity-stepper input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.quantity-stepper input:focus {
+  position: relative;
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.quantity-stepper button:disabled,
+.quantity-stepper input:disabled {
   cursor: not-allowed;
-  opacity: 0.6;
+  color: #9aa39f;
+  background: #f0f2f0;
 }
 
 .order-total {
@@ -236,6 +382,24 @@
 
   .product-purchase__media {
     min-height: 300px;
+  }
+
+  .product-gallery__rail {
+    grid-template-columns: 34px repeat(4, minmax(0, 1fr)) 34px;
+    gap: 5px;
+  }
+
+  .product-gallery__nav,
+  .product-gallery__thumb {
+    height: 64px;
+  }
+
+  .product-gallery__thumb--active img {
+    height: 48px;
+  }
+
+  .product-gallery__thumb--placeholder span {
+    display: none;
   }
 
   .product-purchase__summary h1 {

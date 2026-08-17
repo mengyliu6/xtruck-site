@@ -265,6 +265,7 @@ onBeforeUnmount(() => {
     </div>
 
     <div
+      v-if="status !== 'setup-required'"
       class="payment-status"
       :class="`payment-status--${status}`"
       :role="status === 'failed' ? 'alert' : 'status'"
