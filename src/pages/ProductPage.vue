@@ -11,6 +11,16 @@ const paymentProcessing = ref(false)
 const totalPrice = computed(() => formatPrice(product.priceUsd * quantity.value))
 const productImages = [
   {
+    src: '/images/product/ohw808-tablet-front-render.jpg',
+    alt: 'Xtruck OHW808 rugged diagnostic tablet front view on a white background',
+    label: 'Front view',
+  },
+  {
+    src: '/images/product/ohw808-tablet-angle-render.jpg',
+    alt: 'Xtruck OHW808 rugged diagnostic tablet angled view on a white background',
+    label: 'Angle view',
+  },
+  {
     src: '/images/product/ohw808-complete-set.jpg',
     alt: 'Xtruck OHW808 diagnostic tablet and VCI complete set on a white background',
     label: 'Complete set',

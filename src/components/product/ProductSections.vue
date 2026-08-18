@@ -247,29 +247,25 @@ const visibleCoverageBrands = computed(() => {
       </div>
     </section>
 
-    <section id="specifications" class="section">
-      <div class="section-shell specs-layout">
-        <div class="specs-summary">
-          <p class="eyebrow">Specifications</p>
-          <h2>OHW808 Hardware</h2>
-          <p class="section-intro">
-            Professional-grade hardware for demanding workshop and field diagnostic work.
-          </p>
+    <section id="specifications" class="section specs-section">
+      <div class="section-shell">
+        <div class="specs-heading">
+          <div>
+            <p class="eyebrow">Specifications</p>
+            <h2>OHW808 Hardware</h2>
+          </div>
+          <p>Professional-grade hardware for demanding workshop and field diagnostic work.</p>
         </div>
-        <div class="spec-table-wrap">
-          <table class="spec-table">
-            <tbody>
-              <tr v-for="item in product.specs" :key="item.label">
-                <th scope="row">{{ item.label }}</th>
-                <td>{{ item.value }}</td>
-              </tr>
-              <tr>
-                <th scope="row">Supported Languages</th>
-                <td>{{ product.languages.join(', ') }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <dl class="spec-grid">
+          <div v-for="item in product.specs" :key="item.label" class="spec-item">
+            <dt>{{ item.label }}</dt>
+            <dd>{{ item.value }}</dd>
+          </div>
+          <div class="spec-item spec-item--languages">
+            <dt>Supported Languages</dt>
+            <dd>{{ product.languages.join(', ') }}</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
