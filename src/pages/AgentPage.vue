@@ -69,6 +69,13 @@ const cooperationSteps = [
 <template>
   <main class="agent-page">
     <section class="agent-hero" aria-labelledby="agent-title">
+      <img
+        class="agent-hero__product"
+        src="/images/product/ohw808-complete-set.jpg"
+        alt="Xtruck OHW808 diagnostic tablet and VCI"
+        loading="eager"
+        fetchpriority="high"
+      />
       <div class="section-shell agent-hero__inner">
         <div class="agent-hero__copy">
           <p class="eyebrow">Official Launch | August 2026</p>
