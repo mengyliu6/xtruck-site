@@ -30,6 +30,7 @@ export const navigationItems: NavItem[] = [
   { label: 'Agent', href: '/agent' },
   { label: 'Blog', href: '/blog' },
   { label: 'Q&A', href: '/#faq' },
+  { label: 'Buy', href: '/product/ohw808' },
 ]
 
 export function formatPrice(value: number): string {

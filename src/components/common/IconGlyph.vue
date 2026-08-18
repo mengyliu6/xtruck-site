@@ -191,6 +191,26 @@ defineProps<{
     <path d="M5 20h14" />
   </svg>
   <svg
+    v-else-if="name === 'expand'"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    class="icon-glyph"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M8 3H3v5" />
+    <path d="m3 3 6 6" />
+    <path d="M16 3h5v5" />
+    <path d="m21 3-6 6" />
+    <path d="M8 21H3v-5" />
+    <path d="m3 21 6-6" />
+    <path d="M16 21h5v-5" />
+    <path d="m21 21-6-6" />
+  </svg>
+  <svg
     v-else
     viewBox="0 0 24 24"
     aria-hidden="true"

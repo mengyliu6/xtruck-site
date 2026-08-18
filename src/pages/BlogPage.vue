@@ -19,7 +19,7 @@ const articleIcons = ['engine', 'remote', 'update'] as const
       <div class="section-shell blog-hero__inner">
         <div>
           <p class="eyebrow">Xtruck Blog</p>
-          <h1>OHW808 service guides and product news</h1>
+          <h1>OHW808 Service Guides and Product News</h1>
           <p>
             Practical reference for diagnostic workflows, remote support, software updates and
             professional use of Xtruck OHW808.
@@ -36,7 +36,7 @@ const articleIcons = ['engine', 'remote', 'update'] as const
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Service Guides</p>
-          <h2>Work confidently with OHW808</h2>
+          <h2>Work Confidently with OHW808</h2>
           <p>Focused guidance for common workshop and field-service tasks.</p>
         </div>
         <div class="blog-card-grid">
@@ -83,7 +83,7 @@ const articleIcons = ['engine', 'remote', 'update'] as const
       <div class="section-shell blog-contact__inner">
         <div>
           <p class="eyebrow">Product Support</p>
-          <h2>Need help with an OHW808 application?</h2>
+          <h2>Need Help with an OHW808 Application?</h2>
           <p>Send your equipment details and diagnostic requirements to the Xtruck team.</p>
         </div>
         <WhatsAppButton label="Contact Xtruck" />

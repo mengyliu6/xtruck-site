@@ -2,7 +2,6 @@
 import { computed, nextTick, ref } from 'vue'
 
 import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
-import PreviewImage from '@/components/common/PreviewImage.vue'
 import PayPalCheckout from '@/components/payment/PayPalCheckout.vue'
 import { formatPrice } from '@/config/site'
 import { product } from '@/data/product'
@@ -109,7 +108,7 @@ function normalizeQuantity() {
           @mousemove="updateZoomPosition"
           @mouseleave="isZooming = false"
         >
-          <PreviewImage :src="activeImage.src" :alt="activeImage.alt" loading="eager" />
+          <img :src="activeImage.src" :alt="activeImage.alt" loading="eager" />
           <span class="product-gallery__position">
             {{ activeImageIndex + 1 }} / {{ productImages.length }}
           </span>

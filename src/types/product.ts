@@ -98,4 +98,5 @@ export type IconName =
   | 'screen'
   | 'message'
   | 'download'
+  | 'expand'
   | 'document'

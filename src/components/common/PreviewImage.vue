@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
+import IconGlyph from '@/components/common/IconGlyph.vue'
+
 defineOptions({ inheritAttrs: false })
 
 defineProps<{
@@ -40,10 +42,11 @@ onBeforeUnmount(() => {
     type="button"
     class="preview-image"
     aria-label="Open image preview"
+    title="Open image preview"
     @click="openPreview"
   >
     <img :src="src" :alt="alt" :loading="loading || 'lazy'" />
-    <span class="preview-image__hint" aria-hidden="true">View</span>
+    <span class="preview-image__hint" aria-hidden="true"><IconGlyph name="expand" /></span>
   </button>
 
   <Teleport to="body">

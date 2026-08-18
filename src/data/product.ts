@@ -302,18 +302,18 @@ export const product: ProductData = {
   ],
   articles: [
     {
-      title: 'How to start a Cummins diagnosis',
+      title: 'How to Start a Cummins Diagnosis',
       description: 'A clear four-step workflow for entering Cummins engine diagnostics.',
       points: ['Open Engine Diagnostics', 'Select Cummins', 'Choose the engine system'],
     },
     {
-      title: 'Using remote diagnosis safely',
+      title: 'Using Remote Diagnosis Safely',
       description:
         'Connect the tablet to the internet and approve support access only when needed.',
       points: ['Open Remote Diagnosis', 'Share the device ID', 'Accept or reject the request'],
     },
     {
-      title: 'Keep the tablet ready for service',
+      title: 'Keep the Tablet Ready for Service',
       description: 'Keep software current and storage optimized for reliable daily operation.',
       points: ['Install available upgrades', 'Run Data Cleanup', 'Confirm activation status'],
     },

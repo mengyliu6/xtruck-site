@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import IconGlyph from '@/components/common/IconGlyph.vue'
-import PreviewImage from '@/components/common/PreviewImage.vue'
 import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
 import { siteConfig } from '@/config/site'
 
@@ -79,7 +78,7 @@ const cooperationSteps = [
       <div class="section-shell agent-hero__inner">
         <div class="agent-hero__copy">
           <p class="eyebrow">Official Launch | August 2026</p>
-          <h1 id="agent-title">Grow your market with Xtruck OHW808</h1>
+          <h1 id="agent-title">Grow Your Market with Xtruck OHW808</h1>
           <p>
             Xtruck is welcoming reliable agents and distributors to develop long-term regional
             partnerships for professional equipment diagnostics.
@@ -105,7 +104,7 @@ const cooperationSteps = [
       <div class="section-shell">
         <div class="section-heading agent-heading">
           <p class="eyebrow">Partnership Advantages</p>
-          <h2>A practical foundation for regional growth</h2>
+          <h2>A Practical Foundation for Regional Growth</h2>
           <p>
             The program combines a focused professional product with the commercial, technical and
             market resources needed to serve customers with confidence.
@@ -126,7 +125,7 @@ const cooperationSteps = [
         <div class="section-heading agent-production__heading">
           <div>
             <p class="eyebrow">Production &amp; Preparation</p>
-            <h2 id="agent-production-title">A closer look at the team behind OHW808</h2>
+            <h2 id="agent-production-title">A Closer Look at the Team Behind OHW808</h2>
           </div>
           <p>
             From production coordination to device inspection and batch preparation, our team works
@@ -135,9 +134,10 @@ const cooperationSteps = [
         </div>
         <div class="agent-production__gallery">
           <figure class="agent-production__feature">
-            <PreviewImage
+            <img
               src="/images/agent/factory-production-line.jpg"
               alt="Xtruck production line and assembly workstations"
+              loading="lazy"
             />
             <figcaption>
               <strong>Production coordination</strong>
@@ -145,9 +145,10 @@ const cooperationSteps = [
             </figcaption>
           </figure>
           <figure>
-            <PreviewImage
+            <img
               src="/images/agent/factory-device-testing.jpg"
               alt="Xtruck technician inspecting an OHW808 diagnostic tablet"
+              loading="lazy"
             />
             <figcaption>
               <strong>Device inspection</strong>
@@ -155,9 +156,10 @@ const cooperationSteps = [
             </figcaption>
           </figure>
           <figure>
-            <PreviewImage
+            <img
               src="/images/agent/factory-batch-testing.jpg"
               alt="Multiple diagnostic tablets prepared for batch testing"
+              loading="lazy"
             />
             <figcaption>
               <strong>Batch preparation</strong>
@@ -172,7 +174,7 @@ const cooperationSteps = [
       <div class="section-shell agent-customization__layout">
         <div>
           <p class="eyebrow">Localization Support</p>
-          <h2>Adapt OHW808 to your market</h2>
+          <h2>Adapt OHW808 to Your Market</h2>
           <p>
             Local markets differ in language, equipment population and workshop priorities. Our team
             can evaluate practical customization requirements as part of the cooperation plan.
@@ -184,9 +186,10 @@ const cooperationSteps = [
           </ul>
         </div>
         <div class="agent-customization__image">
-          <PreviewImage
+          <img
             src="/images/product/ohw808-complete-set.jpg"
             alt="Xtruck OHW808 tablet and VCI prepared for professional diagnostics"
+            loading="lazy"
           />
         </div>
       </div>
@@ -196,7 +199,7 @@ const cooperationSteps = [
       <div class="section-shell">
         <div class="section-heading agent-heading">
           <p class="eyebrow">Cooperation Process</p>
-          <h2>A clear path from inquiry to market launch</h2>
+          <h2>A Clear Path from Inquiry to Market Launch</h2>
         </div>
         <ol class="cooperation-steps">
           <li v-for="(step, index) in cooperationSteps" :key="step.title">
@@ -212,7 +215,7 @@ const cooperationSteps = [
       <div class="section-shell agent-inquiry__inner">
         <div>
           <p class="eyebrow">Start Your Cooperation Journey</p>
-          <h2>Tell us about your market</h2>
+          <h2>Tell Us About Your Market</h2>
           <p>
             Contact our team for product details, official pricing, ordering guidance and regional
             cooperation terms.

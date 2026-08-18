@@ -30,7 +30,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell capability-banner__inner">
         <div class="capability-banner__copy">
           <p class="eyebrow">Professional Factory-Grade Diagnostics</p>
-          <h2 id="capability-banner-title">Off-highway &amp; agricultural vehicle scanner</h2>
+          <h2 id="capability-banner-title">Off-Highway &amp; Agricultural Vehicle Scanner</h2>
           <p>
             Built for professional service teams working with construction machinery, agricultural
             equipment and diesel engines.
@@ -76,7 +76,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell overview-layout">
         <div class="overview-copy">
           <p class="eyebrow">Product Overview</p>
-          <h2>Built for professional off-highway service work</h2>
+          <h2>Built for Professional Off-Highway Service Work</h2>
           <p v-for="paragraph in product.overview" :key="paragraph">{{ paragraph }}</p>
         </div>
         <div class="overview-side">
@@ -92,7 +92,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Diagnostic Functions</p>
-          <h2>Core functions in one diagnostic workflow</h2>
+          <h2>Core Functions in One Diagnostic Workflow</h2>
           <p>
             Available functions depend on the selected manufacturer, equipment model and control
             system.
@@ -101,6 +101,9 @@ const visibleCoverageBrands = computed(() => {
         <div class="diagnostic-grid">
           <article v-for="item in product.features" :key="item.title" class="diagnostic-item">
             <PreviewImage v-if="item.image" :src="item.image" :alt="item.imageAlt || item.title" />
+            <div v-else class="diagnostic-item__placeholder" aria-hidden="true">
+              <IconGlyph :name="item.icon" />
+            </div>
             <div>
               <IconGlyph :name="item.icon" />
               <h3>{{ item.title }}</h3>
@@ -115,7 +118,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Equipment Coverage</p>
-          <h2>Construction, agriculture, engines and HD OBD</h2>
+          <h2>Construction, Agriculture, Engines and HD OBD</h2>
           <p>
             OHW808 covers international and Chinese construction machinery, agricultural equipment,
             diesel engines and heavy-duty OBD diagnostics.
@@ -207,7 +210,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Diagnostic Workflow</p>
-          <h2>Cummins diagnostic example</h2>
+          <h2>Cummins Diagnostic Example</h2>
           <p>A clear four-step path from engine selection to the main diagnostic interface.</p>
         </div>
         <ol class="workflow-grid">
@@ -229,7 +232,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Additional Tools</p>
-          <h2>Support functions for daily service work</h2>
+          <h2>Support Functions for Daily Service Work</h2>
         </div>
         <div class="tool-list">
           <article v-for="item in product.additionalTools" :key="item.title">
@@ -248,7 +251,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell specs-layout">
         <div class="specs-summary">
           <p class="eyebrow">Specifications</p>
-          <h2>OHW808 hardware</h2>
+          <h2>OHW808 Hardware</h2>
           <p class="section-intro">
             Professional-grade hardware for demanding workshop and field diagnostic work.
           </p>
@@ -274,7 +277,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Package Contents</p>
-          <h2>Equipment, cables and accessories</h2>
+          <h2>Equipment, Cables and Accessories</h2>
           <p>Check the included equipment, diagnostic cables and accessories.</p>
         </div>
         <div class="package-grid">
@@ -292,7 +295,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell resource-layout">
         <div class="section-heading">
           <p class="eyebrow">Download</p>
-          <h2>Official OHW808 resources</h2>
+          <h2>Official OHW808 Resources</h2>
           <p>
             Download the English user manual or contact Xtruck for the latest support list and
             software assistance.
@@ -332,7 +335,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell video-layout">
         <div>
           <p class="eyebrow">Video</p>
-          <h2>See OHW808 in operation</h2>
+          <h2>See OHW808 in Operation</h2>
           <p>
             Watch the product demonstration to review the tablet interface and diagnostic workflow.
           </p>
@@ -353,7 +356,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell faq-layout">
         <div class="section-heading">
           <p class="eyebrow">Q&amp;A</p>
-          <h2>Using, updating and supporting OHW808</h2>
+          <h2>Using, Updating and Supporting OHW808</h2>
         </div>
         <div class="faq-list">
           <details v-for="item in product.faqs" :key="item.question" class="faq-item">
@@ -371,7 +374,7 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell contact-layout">
         <div>
           <p class="eyebrow">Before You Order</p>
-          <h2>Need to confirm OHW808 compatibility?</h2>
+          <h2>Need to Confirm OHW808 Compatibility?</h2>
           <p>Send us your equipment details and our team will help you verify before ordering.</p>
           <ul class="contact-list">
             <li>Equipment brand and model</li>
