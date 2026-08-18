@@ -168,7 +168,7 @@ function normalizeQuantity() {
         <div class="quantity-control">
           <div>
             <label for="product-quantity">Quantity</label>
-            <span>Maximum 5 per order</span>
+            <span>Minimum order: 1 unit &middot; Maximum 5 per online order</span>
           </div>
           <div class="quantity-stepper">
             <button

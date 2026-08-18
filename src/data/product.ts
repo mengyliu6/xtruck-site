@@ -98,7 +98,6 @@ export const product: ProductData = {
         'Komatsu',
         'Kubota',
         'Sumitomo',
-        'Zhenyu',
       ],
     },
     {

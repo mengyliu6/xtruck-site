@@ -63,6 +63,37 @@ const cooperationSteps = [
       'Begin regional promotion with coordinated product, training and technical support.',
   },
 ]
+
+const factoryProcessGroups = [
+  {
+    eyebrow: 'Production & Assembly',
+    title: 'Advanced Production Floor',
+    items: [
+      'Precision manufacturing with uncompromising quality',
+      'End-to-end assembly line with meticulous attention to detail',
+      'Precision machining for wires and housings',
+      'Expert technicians for PCB debugging and testing',
+      'Tablet and diagnostic equipment assembly',
+      'Assembly, calibration and final exterior cleaning',
+    ],
+  },
+  {
+    eyebrow: 'Testing & Quality Control',
+    title: 'Verification Before Delivery',
+    items: [
+      'Touchscreen functionality test',
+      'Multi-touch response testing',
+      'Tactile button testing',
+      'Stress and endurance testing',
+      'Long-term reliability testing',
+    ],
+  },
+  {
+    eyebrow: 'Packaging',
+    title: 'Prepared for Secure Delivery',
+    items: ['Product and cable packaging', 'Secure packaging and final inspection'],
+  },
+]
 </script>
 
 <template>
@@ -124,12 +155,12 @@ const cooperationSteps = [
       <div class="section-shell">
         <div class="section-heading agent-production__heading">
           <div>
-            <p class="eyebrow">Production &amp; Preparation</p>
-            <h2 id="agent-production-title">A Closer Look at the Team Behind OHW808</h2>
+            <p class="eyebrow">Factory Overview</p>
+            <h2 id="agent-production-title">Inside Xtruck's Manufacturing Facility</h2>
           </div>
           <p>
-            From production coordination to device inspection and batch preparation, our team works
-            directly with the hardware our partners depend on.
+            State-of-the-art production, assembly and verification processes built to perform for
+            professional diagnostic equipment partners.
           </p>
         </div>
         <div class="agent-production__gallery">
@@ -140,8 +171,8 @@ const cooperationSteps = [
               loading="lazy"
             />
             <figcaption>
-              <strong>Production coordination</strong>
-              <span>Organized workstations for product assembly and preparation.</span>
+              <strong>Advanced Production Floor</strong>
+              <span>Precision manufacturing across an end-to-end assembly line.</span>
             </figcaption>
           </figure>
           <figure>
@@ -151,8 +182,8 @@ const cooperationSteps = [
               loading="lazy"
             />
             <figcaption>
-              <strong>Device inspection</strong>
-              <span>Hands-on checking of OHW808 hardware and software.</span>
+              <strong>Assembly &amp; Calibration</strong>
+              <span>Expert technicians perform PCB debugging, testing and device calibration.</span>
             </figcaption>
           </figure>
           <figure>
@@ -162,10 +193,19 @@ const cooperationSteps = [
               loading="lazy"
             />
             <figcaption>
-              <strong>Batch preparation</strong>
-              <span>Multiple devices organized for verification and delivery preparation.</span>
+              <strong>Testing &amp; Quality Control</strong>
+              <span>Touch, button, endurance and reliability checks before packaging.</span>
             </figcaption>
           </figure>
+        </div>
+        <div class="agent-production__process" aria-label="Xtruck manufacturing process">
+          <article v-for="group in factoryProcessGroups" :key="group.title">
+            <p>{{ group.eyebrow }}</p>
+            <h3>{{ group.title }}</h3>
+            <ul>
+              <li v-for="item in group.items" :key="item">{{ item }}</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>

@@ -10,11 +10,13 @@ import { siteConfig } from '@/config/site'
 import { product } from '@/data/product'
 import AgentPage from '@/pages/AgentPage.vue'
 import BlogPage from '@/pages/BlogPage.vue'
+import BrandDetailPage from '@/pages/BrandDetailPage.vue'
 import ProductPage from '@/pages/ProductPage.vue'
 
 const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
 const isAgentPage = currentPath === '/agent'
 const isBlogPage = currentPath === '/blog'
+const isVolvoBrandPage = currentPath === '/brand/volvo'
 const isProductPage = currentPath === '/product/ohw808'
 
 function setMetaContent(selector: string, content: string) {
@@ -69,6 +71,21 @@ onMounted(() => {
     return
   }
 
+  if (isVolvoBrandPage) {
+    document.title = 'Volvo Engine Diagnostic Capabilities | Xtruck OHW808'
+    const description =
+      'Review Xtruck OHW808 Volvo J1708 and Volvo 500K engine-related diagnostic capabilities, core functions and model-dependent service functions.'
+    const brandUrl = new URL('/brand/volvo', siteConfig.canonicalUrl).href
+
+    setMetaContent('meta[name="description"]', description)
+    setMetaContent('meta[property="og:title"]', document.title)
+    setMetaContent('meta[property="og:description"]', description)
+    setMetaContent('meta[property="og:type"]', 'website')
+    setMetaContent('meta[property="og:url"]', brandUrl)
+    document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', brandUrl)
+    return
+  }
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -105,6 +122,9 @@ onMounted(() => {
   </template>
   <template v-else-if="isBlogPage">
     <BlogPage />
+  </template>
+  <template v-else-if="isVolvoBrandPage">
+    <BrandDetailPage />
   </template>
   <template v-else>
     <ProductHero />

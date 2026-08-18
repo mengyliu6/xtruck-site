@@ -11,6 +11,7 @@ export type CoverageCategory =
 export interface CoverageBrand {
   category: Exclude<CoverageCategory, 'all'>
   categoryLabel: string
+  detailsHref?: string
   downloadHref?: string
   downloadName?: string
   name: string
@@ -56,6 +57,7 @@ const supportListFiles: Record<string, string> = {
   'Hitachi Machinery': 'OHW808 Function for HITACHI MACHINERY.pdf',
   Hyundai: 'OHW808 Function for HYUNDAI.pdf',
   Isuzu: 'OHW808 Function for ISUZU .pdf',
+  'Isuzu CM': 'OHW808 Function for ISUZU .pdf',
   JCB: 'OHW808 Function for JCB.pdf',
   'John Deere': 'OHW808 Function for JOHN DEERE.pdf',
   Kato: 'OHW808 Function for KATO.pdf',
@@ -148,6 +150,7 @@ export function buildCoverageDirectory(groups: ProductCoverageGroup[]): Coverage
       brands.set(name.toLocaleLowerCase(), {
         category: category.value,
         categoryLabel: category.label,
+        detailsHref: name === 'Volvo Construction Machinery' ? '/brand/volvo' : undefined,
         downloadHref: filename ? `/downloads/${encodeURIComponent(filename)}` : undefined,
         downloadName: filename,
         name,

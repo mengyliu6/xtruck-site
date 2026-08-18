@@ -11,7 +11,9 @@ import { product } from '@/data/product'
 const coverageBrands = buildCoverageDirectory(product.coverageGroups)
 const coverageCategory = ref<CoverageCategory>('all')
 const coverageQuery = ref('')
-const availableSupportListCount = coverageBrands.filter((brand) => brand.downloadHref).length
+const availableSupportListCount = new Set(
+  coverageBrands.flatMap((brand) => (brand.downloadHref ? [brand.downloadHref] : [])),
+).size
 
 const visibleCoverageBrands = computed(() => {
   const query = coverageQuery.value.trim().toLocaleLowerCase()
@@ -167,7 +169,19 @@ const visibleCoverageBrands = computed(() => {
 
           <div v-if="visibleCoverageBrands.length" class="coverage-brand-grid">
             <article v-for="brand in visibleCoverageBrands" :key="brand.name">
-              <div class="coverage-brand__identity">
+              <a
+                v-if="brand.detailsHref"
+                class="coverage-brand__identity coverage-brand__identity--link"
+                :href="brand.detailsHref"
+                :aria-label="`View detailed ${brand.name} information`"
+              >
+                <h4>{{ brand.name }}</h4>
+                <span>{{ brand.categoryLabel }}</span>
+                <strong
+                  >View detailed brand information <span aria-hidden="true">&rarr;</span></strong
+                >
+              </a>
+              <div v-else class="coverage-brand__identity">
                 <h4>{{ brand.name }}</h4>
                 <span>{{ brand.categoryLabel }}</span>
               </div>
