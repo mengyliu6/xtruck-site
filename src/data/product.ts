@@ -249,7 +249,7 @@ export const product: ProductData = {
     { label: 'Operating Temperature', value: '-10°C to 50°C' },
     { label: 'Storage Temperature', value: '-20°C to 60°C' },
   ],
-  languages: ['Simplified Chinese', 'Traditional Chinese', 'English', 'Spanish', 'Russian'],
+  languages: ['English', 'Spanish', 'Russian', 'Simplified Chinese', 'Traditional Chinese'],
   packageGroups: [
     {
       title: 'Main Equipment',
@@ -351,7 +351,7 @@ export const product: ProductData = {
       category: 'Languages',
       question: 'What languages does OHW808 support?',
       answer:
-        'OHW808 currently supports Simplified Chinese, Traditional Chinese, English, Spanish and Russian. More languages will be added through future upgrades.',
+        'OHW808 currently supports English, Spanish, Russian, Simplified Chinese and Traditional Chinese. More languages will be added through future upgrades.',
     },
     {
       category: 'Activation',
