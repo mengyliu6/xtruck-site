@@ -5,7 +5,7 @@ import IconGlyph from '@/components/common/IconGlyph.vue'
 import PreviewImage from '@/components/common/PreviewImage.vue'
 import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
 import { siteConfig } from '@/config/site'
-import { buildCoverageDirectory, coverageFilters, type CoverageCategory } from '@/data/coverage'
+import { buildCoverageDirectory, getCoverageCategory, type CoverageCategory } from '@/data/coverage'
 import { product } from '@/data/product'
 
 const coverageBrands = buildCoverageDirectory(product.coverageGroups)
@@ -24,6 +24,26 @@ const visibleCoverageBrands = computed(() => {
     return categoryMatches && queryMatches
   })
 })
+
+const activeCoverageTitle = computed(() => {
+  if (coverageCategory.value === 'all') return 'All Supported Brands'
+
+  return (
+    product.coverageGroups.find(
+      (group) => getCoverageCategory(group.title) === coverageCategory.value,
+    )?.title ?? 'Supported Brands'
+  )
+})
+
+function selectCoverageGroup(title: string) {
+  coverageCategory.value = getCoverageCategory(title) ?? 'all'
+  coverageQuery.value = ''
+}
+
+function showAllBrands() {
+  coverageCategory.value = 'all'
+  coverageQuery.value = ''
+}
 </script>
 
 <template>
@@ -120,28 +140,20 @@ const visibleCoverageBrands = computed(() => {
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Equipment Coverage</p>
-          <h2>Construction, Agriculture, Engines and HD OBD</h2>
+          <h2>Construction, Agriculture, Engine Diagnostics and Diesel OBD</h2>
           <p>
-            OHW808 covers international and Chinese construction machinery, agricultural equipment,
-            diesel engines and heavy-duty OBD diagnostics.
+            OHW808 covers international and Chinese construction and agricultural machinery, diesel
+            engines and Diesel OBD diagnostics.
           </p>
-        </div>
-
-        <div class="coverage-categories">
-          <article v-for="group in product.coverageGroups" :key="group.title">
-            <IconGlyph :name="group.icon" />
-            <h3>{{ group.title }}</h3>
-            <p>{{ group.brands.length }} listed option{{ group.brands.length === 1 ? '' : 's' }}</p>
-          </article>
         </div>
 
         <div id="coverage-directory" class="coverage-directory">
           <div class="coverage-directory__header">
             <div>
               <p class="coverage-directory__eyebrow">Brand Directory</p>
-              <h3>All supported brands</h3>
+              <h3>{{ activeCoverageTitle }}</h3>
               <p>
-                {{ coverageBrands.length }} unique entries, ordered by global brand recognition.
+                {{ visibleCoverageBrands.length }} of {{ coverageBrands.length }} brands displayed.
               </p>
             </div>
             <label class="coverage-search">
@@ -150,16 +162,31 @@ const visibleCoverageBrands = computed(() => {
             </label>
           </div>
 
-          <div class="coverage-filters" role="group" aria-label="Filter supported brands">
+          <div class="coverage-categories" role="group" aria-label="Filter brands by industry">
             <button
-              v-for="filter in coverageFilters"
-              :key="filter.value"
+              v-for="group in product.coverageGroups"
+              :key="group.title"
               type="button"
-              :aria-pressed="coverageCategory === filter.value"
-              @click="coverageCategory = filter.value"
+              :aria-pressed="coverageCategory === getCoverageCategory(group.title)"
+              @click="selectCoverageGroup(group.title)"
             >
-              {{ filter.label }}
+              <IconGlyph :name="group.icon" />
+              <span>{{ group.title }}</span>
+              <small>
+                {{ group.brands.length }} brand{{ group.brands.length === 1 ? '' : 's' }}
+              </small>
             </button>
+          </div>
+
+          <div class="coverage-directory__toolbar">
+            <button type="button" :aria-pressed="coverageCategory === 'all'" @click="showAllBrands">
+              All Brands
+            </button>
+            <span aria-live="polite">
+              Showing {{ visibleCoverageBrands.length }} brand{{
+                visibleCoverageBrands.length === 1 ? '' : 's'
+              }}
+            </span>
           </div>
 
           <div class="coverage-file-status">

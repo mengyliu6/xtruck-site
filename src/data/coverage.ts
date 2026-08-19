@@ -3,10 +3,11 @@ import type { ProductCoverageGroup } from '@/types/product'
 export type CoverageCategory =
   | 'all'
   | 'international-construction'
-  | 'agriculture'
+  | 'international-agriculture'
   | 'chinese-construction'
+  | 'chinese-agriculture'
   | 'engines'
-  | 'hd-obd'
+  | 'diesel-obd'
 
 export interface CoverageBrand {
   category: Exclude<CoverageCategory, 'all'>
@@ -17,29 +18,31 @@ export interface CoverageBrand {
   name: string
 }
 
-export const coverageFilters: Array<{ label: string; value: CoverageCategory }> = [
-  { label: 'All brands', value: 'all' },
-  { label: 'Construction', value: 'international-construction' },
-  { label: 'Agriculture', value: 'agriculture' },
-  { label: 'China brands', value: 'chinese-construction' },
-  { label: 'Engines', value: 'engines' },
-  { label: 'HD OBD', value: 'hd-obd' },
-]
-
 const categoryByTitle: Record<string, { label: string; value: Exclude<CoverageCategory, 'all'> }> =
   {
     'International Construction Machinery': {
-      label: 'Construction',
+      label: 'International construction',
       value: 'international-construction',
     },
-    'International Agricultural Machinery': { label: 'Agriculture', value: 'agriculture' },
+    'International Agricultural Machinery': {
+      label: 'International agriculture',
+      value: 'international-agriculture',
+    },
     'Chinese Construction Machinery': {
-      label: 'China construction',
+      label: 'Chinese construction',
       value: 'chinese-construction',
     },
+    'Chinese Agricultural Machinery': {
+      label: 'Chinese agriculture',
+      value: 'chinese-agriculture',
+    },
     'Engine Diagnostics': { label: 'Engine diagnostics', value: 'engines' },
-    'HD OBD': { label: 'HD OBD', value: 'hd-obd' },
+    'Diesel OBD': { label: 'Diesel OBD', value: 'diesel-obd' },
   }
+
+export function getCoverageCategory(title: string): Exclude<CoverageCategory, 'all'> | undefined {
+  return categoryByTitle[title]?.value
+}
 
 // Add filenames here as new brand support-list PDFs are placed in public/downloads.
 const supportListFiles: Record<string, string> = {
@@ -96,6 +99,15 @@ const popularityOrder = [
   'CLAAS',
   'Fendt',
   'Massey Ferguson',
+  'Lovol Arbos',
+  'Lovol Gusher',
+  'Tianli Yikong',
+  'Nanyue Agricultural Machinery',
+  'Jinning',
+  'Leiheng',
+  'Leimu',
+  'LONGBENG',
+  'Ruike',
   'Yanmar',
   'Kobelco Machinery',
   'Sumitomo',
@@ -133,7 +145,7 @@ const popularityOrder = [
   'Xinyuan Heavy Industry',
   'Zhenyu Machinery',
   'Zhongyou Machinery',
-  'Heavy-duty OBD diagnostics',
+  'Diesel OBD',
 ]
 
 const popularityRank = new Map(popularityOrder.map((brand, index) => [brand, index]))

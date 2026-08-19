@@ -106,6 +106,11 @@ export const product: ProductData = {
       brands: ['Fendt', 'Massey Ferguson', 'CLAAS', 'John Deere', 'New Holland'],
     },
     {
+      title: 'Engine Diagnostics',
+      icon: 'engine',
+      brands: ['Cummins', 'DAF', 'Daewoo', 'Deutz', 'Doosan', 'Isuzu', 'Perkins', 'Volvo Penta'],
+    },
+    {
       title: 'Chinese Construction Machinery',
       icon: 'machine',
       brands: [
@@ -141,14 +146,24 @@ export const product: ProductData = {
       ],
     },
     {
-      title: 'Engine Diagnostics',
-      icon: 'engine',
-      brands: ['Cummins', 'DAF', 'Daewoo', 'Deutz', 'Doosan', 'Isuzu', 'Perkins', 'Volvo Penta'],
+      title: 'Chinese Agricultural Machinery',
+      icon: 'tractor',
+      brands: [
+        'Nanyue Agricultural Machinery',
+        'Jinning',
+        'Leiheng',
+        'Leimu',
+        'LONGBENG',
+        'Lovol Arbos',
+        'Lovol Gusher',
+        'Ruike',
+        'Tianli Yikong',
+      ],
     },
     {
-      title: 'HD OBD',
+      title: 'Diesel OBD',
       icon: 'obd',
-      brands: ['Heavy-duty OBD diagnostics'],
+      brands: ['Diesel OBD'],
     },
   ],
   workflow: [

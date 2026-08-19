@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import IconGlyph from '@/components/common/IconGlyph.vue'
-import WhatsAppButton from '@/components/common/WhatsAppButton.vue'
 
 const productFamilies = [
   'Volvo Trucks',
@@ -77,15 +76,14 @@ const j1708Functions = [
             >
               Download Support List
             </a>
-            <WhatsAppButton label="Confirm Volvo Compatibility" variant="secondary" />
           </div>
         </div>
         <aside class="brand-model-note">
           <IconGlyph name="shield" />
           <strong>Model-Dependent Support</strong>
           <p>
-            Advanced special functions depend on the exact vehicle, equipment model, ECU and
-            installed control system. Confirm compatibility before ordering.
+            Available advanced functions vary by vehicle, equipment model, ECU and installed control
+            system.
           </p>
         </aside>
       </div>
@@ -129,8 +127,8 @@ const j1708Functions = [
           <p class="eyebrow">Volvo J1708</p>
           <h2 id="volvo-j1708-title">Special Engine Service Functions</h2>
           <p>
-            The following advanced operations are conditionally supported and must be confirmed
-            against the target model and control system.
+            The following advanced operations are conditionally supported depending on the target
+            model and control system.
           </p>
         </div>
         <dl class="brand-function-list">
@@ -199,17 +197,6 @@ const j1708Functions = [
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="section brand-contact">
-      <div class="section-shell brand-contact__inner">
-        <div>
-          <p class="eyebrow">Compatibility Support</p>
-          <h2>Confirm Your Volvo Model Before Ordering</h2>
-          <p>Send the model, year, engine and required functions for a targeted coverage check.</p>
-        </div>
-        <WhatsAppButton label="Check Volvo Compatibility" />
       </div>
     </section>
   </main>
