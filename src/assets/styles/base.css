@@ -1931,8 +1931,18 @@ p {
 }
 
 .brand-family-list strong {
+  display: block;
   font-size: 0.98rem;
   line-height: 1.35;
+}
+
+.brand-family-list small {
+  display: block;
+  margin-top: 7px;
+  color: #697477;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .section-heading--compact {

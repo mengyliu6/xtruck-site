@@ -35,6 +35,37 @@ const activeCoverageTitle = computed(() => {
   )
 })
 
+const activeCoverageVideo = computed(() => {
+  if (coverageCategory.value === 'chinese-construction') {
+    return {
+      id: 'chinese-construction-video-title',
+      title: 'OHW808 Functions for Chinese Construction Machinery',
+      description:
+        'Watch the OHW808 software workflow and diagnostic operations for supported Chinese construction machinery.',
+      src: '/videos/ohw808-chinese-construction-machinery.mp4',
+      fallback: 'Chinese construction machinery',
+    }
+  }
+
+  if (coverageCategory.value === 'chinese-agriculture') {
+    return {
+      id: 'chinese-agriculture-video-title',
+      title: 'OHW808 Functions for Chinese Agricultural Machinery',
+      description:
+        'Watch the OHW808 software workflow and available diagnostic operations for supported Chinese agricultural machinery.',
+      src: '/videos/ohw808-chinese-agriculture-functions-h264.mp4',
+      fallback: 'Chinese agricultural machinery',
+    }
+  }
+
+  return null
+})
+
+function coverageGroupHasVideo(title: string) {
+  const category = getCoverageCategory(title)
+  return category === 'chinese-construction' || category === 'chinese-agriculture'
+}
+
 function selectCoverageGroup(title: string) {
   coverageCategory.value = getCoverageCategory(title) ?? 'all'
   coverageQuery.value = ''
@@ -176,7 +207,7 @@ function showAllBrands() {
                 {{ group.brands.length }} brand{{ group.brands.length === 1 ? '' : 's' }}
               </small>
               <strong
-                v-if="group.title === 'Chinese Agricultural Machinery'"
+                v-if="coverageGroupHasVideo(group.title)"
                 class="coverage-categories__video-label"
               >
                 Function video
@@ -185,26 +216,18 @@ function showAllBrands() {
           </div>
 
           <section
-            v-if="coverageCategory === 'chinese-agriculture'"
+            v-if="activeCoverageVideo"
             class="coverage-category-video"
-            aria-labelledby="chinese-agriculture-video-title"
+            :aria-labelledby="activeCoverageVideo.id"
           >
             <div class="coverage-category-video__copy">
               <span>Category Video</span>
-              <h4 id="chinese-agriculture-video-title">
-                OHW808 Functions for Chinese Agricultural Machinery
-              </h4>
-              <p>
-                Watch the OHW808 software workflow and available diagnostic operations for supported
-                Chinese agricultural machinery.
-              </p>
+              <h4 :id="activeCoverageVideo.id">{{ activeCoverageVideo.title }}</h4>
+              <p>{{ activeCoverageVideo.description }}</p>
             </div>
             <video controls playsinline preload="metadata" poster="/images/ui/ohw808-home.png">
-              <source
-                src="/videos/ohw808-chinese-agriculture-functions-h264.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the OHW808 Chinese agricultural machinery video.
+              <source :src="activeCoverageVideo.src" type="video/mp4" />
+              Your browser does not support the OHW808 {{ activeCoverageVideo.fallback }} video.
             </video>
           </section>
 

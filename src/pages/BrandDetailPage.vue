@@ -5,33 +5,39 @@ import PreviewImage from '@/components/common/PreviewImage.vue'
 const productFamilies = [
   {
     title: 'Volvo Trucks',
+    reference: 'Representative line: Volvo FH',
     image: '/images/brands/volvo/families/volvo-trucks.jpg',
-    alt: 'Heavy-duty truck representing Volvo Trucks diagnostic coverage',
+    alt: 'European cab-over heavy-duty truck representing the Volvo FH product line',
   },
   {
     title: 'Volvo Construction Equipment',
+    reference: 'Representative line: Volvo EC Series',
     image: '/images/brands/volvo/families/volvo-construction-equipment.jpg',
-    alt: 'Tracked excavator representing Volvo Construction Equipment diagnostic coverage',
+    alt: 'Crawler excavator representing the Volvo EC Series construction equipment line',
   },
   {
     title: 'Volvo OEM Component Customer',
+    reference: 'Representative line: Volvo Penta Industrial',
     image: '/images/brands/volvo/families/volvo-oem-components.jpg',
-    alt: 'Diesel control components representing Volvo OEM component diagnostic coverage',
+    alt: 'Industrial inline-six engine power unit representing Volvo Penta OEM applications',
   },
   {
     title: 'Renault Trucks',
+    reference: 'Representative line: Renault Trucks T',
     image: '/images/brands/volvo/families/renault-trucks.jpg',
-    alt: 'Heavy-duty truck representing Renault Trucks diagnostic coverage',
+    alt: 'European high-roof cab-over truck representing the Renault Trucks T product line',
   },
   {
     title: 'Shandong Lingong Construction Machinery Co., Ltd.',
+    reference: 'Representative line: SDLG Wheel Loader',
     image: '/images/brands/volvo/families/shandong-lingong.jpg',
-    alt: 'Wheel loader representing Shandong Lingong construction machinery diagnostic coverage',
+    alt: 'Articulated wheel loader representing Shandong Lingong SDLG construction machinery',
   },
   {
     title: 'UD Trucks',
+    reference: 'Representative line: UD Quon',
     image: '/images/brands/volvo/families/ud-trucks.jpg',
-    alt: 'Heavy-duty truck representing UD Trucks diagnostic coverage',
+    alt: 'Japanese cab-over heavy-duty truck representing the UD Quon product line',
   },
 ]
 
@@ -184,7 +190,10 @@ const liveDataViews = [
             </div>
             <div class="brand-family-list__content">
               <span>{{ String(index + 1).padStart(2, '0') }}</span>
-              <strong>{{ family.title }}</strong>
+              <div>
+                <strong>{{ family.title }}</strong>
+                <small>{{ family.reference }}</small>
+              </div>
             </div>
           </li>
         </ol>

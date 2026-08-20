@@ -224,25 +224,39 @@ function normalizeQuantity() {
     </section>
 
     <section class="section product-details-section" aria-labelledby="product-details-title">
-      <div class="section-shell">
+      <div class="section-shell product-details-heading">
         <p class="eyebrow">OHW808</p>
         <h2 id="product-details-title">Product Details</h2>
-        <div class="product-details-content">
-          <figure class="product-detail-visual">
-            <img
-              src="/images/product/details/coverage-100-brands.png"
-              alt="OHW808 coverage for more than 100 construction and agricultural machinery brands"
-              loading="lazy"
-            />
-          </figure>
-          <figure class="product-detail-visual">
-            <img
-              src="/images/product/details/connectivity-and-hdmi-features.png"
-              alt="OHW808 Bluetooth, USB and HDMI screen mirroring features"
-              loading="lazy"
-            />
-          </figure>
-        </div>
+      </div>
+      <div class="product-details-content">
+        <figure class="product-detail-visual product-detail-visual--full">
+          <img
+            src="/images/product/details/coverage-100-brands.png"
+            alt="OHW808 coverage for more than 100 construction and agricultural machinery brands"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="product-detail-visual product-detail-visual--feature">
+          <img
+            src="/images/product/details/oe-level-system-diagnosis.png"
+            alt="OHW808 OE-level system diagnostic functions"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="product-detail-visual product-detail-visual--full">
+          <img
+            src="/images/product/details/multi-dimensional-live-data.png"
+            alt="OHW808 multi-dimensional live data comparison and graphing functions"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="product-detail-visual product-detail-visual--contained">
+          <img
+            src="/images/product/details/connectivity-and-hdmi-features-triptych.png"
+            alt="OHW808 Bluetooth, USB and HDMI screen mirroring features"
+            loading="lazy"
+          />
+        </figure>
       </div>
     </section>
   </main>
