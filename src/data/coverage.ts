@@ -75,6 +75,7 @@ const supportListFiles: Record<string, string> = {
   'Volvo Penta': 'OHW808 Function for VOLVO PENTA.pdf',
   Yanmar: 'OHW808 Function for YANMAR.pdf',
   'Zhenyu Machinery': 'OHW808 Function for ZHENYU.pdf',
+  'Diesel OBD': 'OHW808 Function for HDOBD.pdf',
 }
 
 const popularityOrder = [

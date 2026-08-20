@@ -175,8 +175,38 @@ function showAllBrands() {
               <small>
                 {{ group.brands.length }} brand{{ group.brands.length === 1 ? '' : 's' }}
               </small>
+              <strong
+                v-if="group.title === 'Chinese Agricultural Machinery'"
+                class="coverage-categories__video-label"
+              >
+                Function video
+              </strong>
             </button>
           </div>
+
+          <section
+            v-if="coverageCategory === 'chinese-agriculture'"
+            class="coverage-category-video"
+            aria-labelledby="chinese-agriculture-video-title"
+          >
+            <div class="coverage-category-video__copy">
+              <span>Category Video</span>
+              <h4 id="chinese-agriculture-video-title">
+                OHW808 Functions for Chinese Agricultural Machinery
+              </h4>
+              <p>
+                Watch the OHW808 software workflow and available diagnostic operations for supported
+                Chinese agricultural machinery.
+              </p>
+            </div>
+            <video controls playsinline preload="metadata" poster="/images/ui/ohw808-home.png">
+              <source
+                src="/videos/ohw808-chinese-agriculture-functions-h264.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the OHW808 Chinese agricultural machinery video.
+            </video>
+          </section>
 
           <div class="coverage-directory__toolbar">
             <button type="button" :aria-pressed="coverageCategory === 'all'" @click="showAllBrands">
