@@ -228,7 +228,20 @@ function normalizeQuantity() {
         <p class="eyebrow">OHW808</p>
         <h2 id="product-details-title">Product Details</h2>
         <div class="product-details-content">
-          <!-- Product detail content will be supplied later. -->
+          <figure class="product-detail-visual">
+            <img
+              src="/images/product/details/coverage-100-brands.png"
+              alt="OHW808 coverage for more than 100 construction and agricultural machinery brands"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="product-detail-visual">
+            <img
+              src="/images/product/details/connectivity-and-hdmi-features.png"
+              alt="OHW808 Bluetooth, USB and HDMI screen mirroring features"
+              loading="lazy"
+            />
+          </figure>
         </div>
       </div>
     </section>

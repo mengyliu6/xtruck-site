@@ -1,13 +1,59 @@
 <script setup lang="ts">
 import IconGlyph from '@/components/common/IconGlyph.vue'
+import PreviewImage from '@/components/common/PreviewImage.vue'
 
 const productFamilies = [
-  'Volvo Trucks',
-  'Volvo Construction Equipment',
-  'Volvo OEM Component Customer',
-  'Renault Trucks',
-  'Shandong Lingong Construction Machinery Co., Ltd.',
-  'UD Trucks',
+  {
+    title: 'Volvo Trucks',
+    image: '/images/brands/volvo/families/volvo-trucks.jpg',
+    alt: 'Heavy-duty truck representing Volvo Trucks diagnostic coverage',
+  },
+  {
+    title: 'Volvo Construction Equipment',
+    image: '/images/brands/volvo/families/volvo-construction-equipment.jpg',
+    alt: 'Tracked excavator representing Volvo Construction Equipment diagnostic coverage',
+  },
+  {
+    title: 'Volvo OEM Component Customer',
+    image: '/images/brands/volvo/families/volvo-oem-components.jpg',
+    alt: 'Diesel control components representing Volvo OEM component diagnostic coverage',
+  },
+  {
+    title: 'Renault Trucks',
+    image: '/images/brands/volvo/families/renault-trucks.jpg',
+    alt: 'Heavy-duty truck representing Renault Trucks diagnostic coverage',
+  },
+  {
+    title: 'Shandong Lingong Construction Machinery Co., Ltd.',
+    image: '/images/brands/volvo/families/shandong-lingong.jpg',
+    alt: 'Wheel loader representing Shandong Lingong construction machinery diagnostic coverage',
+  },
+  {
+    title: 'UD Trucks',
+    image: '/images/brands/volvo/families/ud-trucks.jpg',
+    alt: 'Heavy-duty truck representing UD Trucks diagnostic coverage',
+  },
+]
+
+const diagnosticWorkflow = [
+  {
+    title: 'Choose the Connection',
+    description: 'Select the connector that matches the target Volvo vehicle or equipment.',
+    image: '/images/brands/volvo/protocol-selection.png',
+    alt: 'OHW808 Volvo connector selection screen',
+  },
+  {
+    title: 'Scan the J1708 Network',
+    description: 'Identify available control modules across the connected J1708 network.',
+    image: '/images/brands/volvo/j1708-system-topology.png',
+    alt: 'OHW808 Volvo J1708 control-system topology screen',
+  },
+  {
+    title: 'Review Fault Status',
+    description: 'See detected control systems and fault counts before opening diagnostics.',
+    image: '/images/brands/volvo/j1708-fault-scan.png',
+    alt: 'OHW808 Volvo J1708 network fault status screen',
+  },
 ]
 
 const coreFunctions = [
@@ -15,21 +61,29 @@ const coreFunctions = [
     title: 'Read ECU Information',
     description: 'Read and display available ECU version and identification information.',
     icon: 'engine' as const,
+    image: '/images/brands/volvo/ecu-information.png',
+    alt: 'Volvo ECU identification information displayed by OHW808',
   },
   {
     title: 'Read DTCs',
     description: 'Retrieve diagnostic trouble codes from the selected control system.',
     icon: 'document' as const,
+    image: '/images/brands/volvo/fault-codes.png',
+    alt: 'Volvo diagnostic trouble codes displayed by OHW808',
   },
   {
     title: 'Clear DTCs',
     description: 'Clear supported diagnostic trouble codes after the fault is resolved.',
     icon: 'toolbox' as const,
+    image: '/images/brands/volvo/clear-dtc-success.png',
+    alt: 'OHW808 confirmation after clearing Volvo diagnostic trouble codes',
   },
   {
     title: 'Read Live Data',
     description: 'Display available real-time data streams for diagnostic analysis.',
     icon: 'database' as const,
+    image: '/images/brands/volvo/live-data-overview.png',
+    alt: 'Volvo live data values displayed by OHW808',
   },
 ]
 
@@ -42,6 +96,33 @@ const j1708Functions = [
   ['VGT Calibration', 'Variable-geometry turbocharger calibration'],
   ['Parameter Programming', 'Programming for engine-relevant parameters'],
   ['TECU Actuation Test', 'Actuation test for the TECU'],
+]
+
+const liveDataViews = [
+  {
+    title: 'Engine Operating Values',
+    description: 'Review torque, pressure, temperature and turbocharger values together.',
+    image: '/images/brands/volvo/live-data-engine-values.png',
+    alt: 'OHW808 Volvo engine operating live data values',
+  },
+  {
+    title: 'Operating Totals',
+    description: 'Inspect engine speed, vehicle distance, engine hours and related totals.',
+    image: '/images/brands/volvo/live-data-operating-totals.png',
+    alt: 'OHW808 Volvo operating totals and live data values',
+  },
+  {
+    title: 'Live Data Graph',
+    description: 'Plot selected parameters to make changing values easier to compare.',
+    image: '/images/brands/volvo/live-data-graph.png',
+    alt: 'OHW808 Volvo live data graph view',
+  },
+  {
+    title: 'Parameter Comparison',
+    description: 'Compare multiple live parameters in one visual diagnostic view.',
+    image: '/images/brands/volvo/live-data-comparison.png',
+    alt: 'OHW808 Volvo live parameter comparison graph',
+  },
 ]
 </script>
 
@@ -97,15 +178,44 @@ const j1708Functions = [
           <p>Engine-related diagnosis is available for the following product families.</p>
         </div>
         <ol class="brand-family-list">
-          <li v-for="(family, index) in productFamilies" :key="family">
-            <span>{{ String(index + 1).padStart(2, '0') }}</span>
-            <strong>{{ family }}</strong>
+          <li v-for="(family, index) in productFamilies" :key="family.title">
+            <div class="brand-family-list__media">
+              <img :src="family.image" :alt="family.alt" loading="lazy" />
+            </div>
+            <div class="brand-family-list__content">
+              <span>{{ String(index + 1).padStart(2, '0') }}</span>
+              <strong>{{ family.title }}</strong>
+            </div>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="section section--muted" aria-labelledby="volvo-core-functions-title">
+    <section class="section section--muted" aria-labelledby="volvo-workflow-title">
+      <div class="section-shell">
+        <div class="section-heading section-heading--compact">
+          <p class="eyebrow">Volvo J1708 Workflow</p>
+          <h2 id="volvo-workflow-title">From Connection to System Scan</h2>
+          <p>
+            Follow the on-screen workflow to identify the connection and available control systems.
+          </p>
+        </div>
+        <div class="brand-workflow-grid">
+          <article v-for="(step, index) in diagnosticWorkflow" :key="step.title">
+            <PreviewImage class="brand-ui-shot" :src="step.image" :alt="step.alt" />
+            <div class="brand-workflow-grid__body">
+              <span>{{ String(index + 1).padStart(2, '0') }}</span>
+              <div>
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.description }}</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="volvo-core-functions-title">
       <div class="section-shell">
         <div class="section-heading">
           <p class="eyebrow">Core Diagnostics</p>
@@ -113,9 +223,14 @@ const j1708Functions = [
         </div>
         <div class="brand-core-grid">
           <article v-for="item in coreFunctions" :key="item.title">
-            <IconGlyph :name="item.icon" />
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
+            <PreviewImage class="brand-ui-shot" :src="item.image" :alt="item.alt" />
+            <div class="brand-core-grid__body">
+              <IconGlyph :name="item.icon" />
+              <div>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -130,6 +245,16 @@ const j1708Functions = [
             The following advanced operations are conditionally supported depending on the target
             model and control system.
           </p>
+          <figure class="brand-protocol-visual">
+            <PreviewImage
+              class="brand-ui-shot"
+              src="/images/brands/volvo/diagnostic-function-menu.png"
+              alt="OHW808 Volvo diagnostic function menu"
+            />
+            <figcaption>
+              Available function groups for the selected Volvo control system.
+            </figcaption>
+          </figure>
         </div>
         <dl class="brand-function-list">
           <div v-for="item in j1708Functions" :key="item[0]">
@@ -175,25 +300,16 @@ const j1708Functions = [
     <section class="section brand-media" aria-labelledby="volvo-media-title">
       <div class="section-shell">
         <div class="section-heading">
-          <p class="eyebrow">Software &amp; Testing</p>
-          <h2 id="volvo-media-title">Volvo Interface and Test Media</h2>
-          <p>Verified Volvo interface screenshots and test videos will be added here.</p>
+          <p class="eyebrow">Live Data Analysis</p>
+          <h2 id="volvo-media-title">Live Data and Graph Views</h2>
+          <p>Inspect detailed values or switch to graph views for visual comparison.</p>
         </div>
         <div class="brand-media-grid">
-          <article class="brand-media-placeholder">
-            <IconGlyph name="screen" />
-            <div>
-              <span>Software Interface</span>
-              <h3>Volvo Diagnostic UI</h3>
-              <p>Interface images are being prepared.</p>
-            </div>
-          </article>
-          <article class="brand-media-placeholder">
-            <IconGlyph name="toolbox" />
-            <div>
-              <span>Diagnostic Test</span>
-              <h3>Volvo Test Video</h3>
-              <p>Equipment test footage is being prepared.</p>
+          <article v-for="view in liveDataViews" :key="view.title" class="brand-media-card">
+            <PreviewImage class="brand-ui-shot" :src="view.image" :alt="view.alt" />
+            <div class="brand-media-card__body">
+              <h3>{{ view.title }}</h3>
+              <p>{{ view.description }}</p>
             </div>
           </article>
         </div>
