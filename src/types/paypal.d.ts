@@ -4,6 +4,7 @@ interface PayPalButtonActions {
 }
 
 interface PayPalButtonsConfig {
+  fundingSource?: string
   style?: Record<string, string | boolean | number>
   createOrder(): Promise<string>
   onApprove(data: { orderID: string }): Promise<void>
@@ -18,6 +19,9 @@ interface PayPalButtonsComponent {
 }
 
 interface PayPalNamespace {
+  readonly FUNDING: {
+    readonly PAYPAL: string
+  }
   Buttons(config: PayPalButtonsConfig): PayPalButtonsComponent
 }
 

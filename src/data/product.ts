@@ -210,8 +210,8 @@ export const product: ProductData = {
       description:
         'Connect the online tablet to after-sales technicians and approve a remote support request when needed.',
       icon: 'remote',
-      image: '/images/tools/remote-diagnosis.png',
-      imageAlt: 'OHW808 remote diagnosis interface',
+      image: '/images/tools/remote-support-teamviewer.png',
+      imageAlt: 'TeamViewer QuickSupport interface used for OHW808 remote technical assistance',
     },
     {
       title: 'Software Upgrade',
@@ -226,8 +226,8 @@ export const product: ProductData = {
       description:
         'Connect the device to the internet and activate it from Settings when the trial prompt appears.',
       icon: 'shield',
-      image: '/images/tools/machine-activation.jpeg',
-      imageAlt: 'OHW808 machine activation interface',
+      image: '/images/tools/machine-activation-settings.jpeg',
+      imageAlt: 'OHW808 Settings screen showing the machine activation status',
     },
     {
       title: 'Data Cleanup',

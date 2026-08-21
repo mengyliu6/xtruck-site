@@ -140,10 +140,12 @@ async function renderButtons() {
     }
 
     buttons = window.paypal.Buttons({
+      fundingSource: window.paypal.FUNDING.PAYPAL,
       style: {
         color: 'gold',
+        disableMaxWidth: true,
         height: 48,
-        label: 'paypal',
+        label: 'buynow',
         layout: 'vertical',
         shape: 'rect',
         tagline: false,
