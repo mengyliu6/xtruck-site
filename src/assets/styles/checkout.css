@@ -227,9 +227,17 @@
 }
 
 .product-purchase__price {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 10px;
+  align-items: baseline;
   margin: 24px 0 30px;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
+}
+
+.product-purchase__price strong {
+  font: inherit;
 }
 
 .product-purchase__price span {
@@ -237,6 +245,12 @@
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   vertical-align: middle;
+}
+
+.product-purchase__price small {
+  color: #6b5a23;
+  font-size: 0.8rem;
+  font-weight: 800;
 }
 
 .quantity-control {

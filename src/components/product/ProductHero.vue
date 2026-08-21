@@ -14,7 +14,11 @@ import { product } from '@/data/product'
       <ul class="hero__points">
         <li v-for="point in product.coreSellingPoints" :key="point">{{ point }}</li>
       </ul>
-      <div class="hero__price" aria-label="Product price">{{ formatPrice(product.priceUsd) }}</div>
+      <div class="hero__price" aria-label="Product price, plus shipping">
+        <strong>{{ formatPrice(product.priceUsd) }}</strong>
+        <span>USD</span>
+        <small>+ Shipping</small>
+      </div>
       <div class="hero__actions">
         <a href="/product/ohw808" class="button button--primary hero__buy-button">Buy OHW808</a>
         <WhatsAppButton label="Ask on WhatsApp" variant="secondary" />

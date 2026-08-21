@@ -335,10 +335,30 @@ p {
 }
 
 .hero__price {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 10px;
+  align-items: baseline;
   margin-bottom: 22px;
   color: var(--ink);
   font-size: clamp(2.2rem, 4vw, 3.1rem);
   font-weight: 900;
+}
+
+.hero__price strong {
+  font: inherit;
+}
+
+.hero__price span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.hero__price small {
+  color: #6b5a23;
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 .hero__actions {

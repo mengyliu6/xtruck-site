@@ -163,7 +163,11 @@ function normalizeQuantity() {
       <div class="product-purchase__summary">
         <p class="eyebrow">{{ product.brand }}</p>
         <h1 id="product-purchase-title">{{ product.name }}</h1>
-        <p class="product-purchase__price">{{ formatPrice(product.priceUsd) }} <span>USD</span></p>
+        <p class="product-purchase__price" aria-label="Product price, plus shipping">
+          <strong>{{ formatPrice(product.priceUsd) }}</strong>
+          <span>USD</span>
+          <small>+ Shipping</small>
+        </p>
 
         <div class="quantity-control">
           <div>
