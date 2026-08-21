@@ -479,89 +479,6 @@ p {
   display: block;
 }
 
-.capability-banner {
-  position: relative;
-  min-height: 500px;
-  overflow: hidden;
-  color: #f7f9f6;
-  background-color: #0a0b09;
-  background-image: url('/images/ohw808-capability-banner-v2.png');
-  background-position: center;
-  background-size: cover;
-}
-
-.capability-banner__inner {
-  display: flex;
-  min-height: 500px;
-  align-items: center;
-}
-
-.capability-banner__copy {
-  width: min(52%, 650px);
-  padding: 58px 0;
-}
-
-.capability-banner__copy h2 {
-  margin: 0 0 18px;
-  color: #ffd34f;
-  font-size: clamp(2.35rem, 4vw, 4.25rem);
-  line-height: 1.05;
-  text-transform: uppercase;
-}
-
-.capability-banner__copy > p:not(.eyebrow) {
-  max-width: 600px;
-  margin: 0;
-  color: #f2ddb0;
-  font-size: clamp(1rem, 1.7vw, 1.3rem);
-  line-height: 1.55;
-}
-
-.capability-banner__features {
-  display: grid;
-  max-width: 560px;
-  margin-top: 32px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.capability-banner__features > div {
-  display: grid;
-  min-height: 132px;
-  align-content: center;
-  justify-items: center;
-  padding: 16px 10px;
-  color: #fff6d6;
-  background: rgba(7, 8, 6, 0.62);
-  border: 1px solid rgba(255, 204, 55, 0.72);
-  border-radius: var(--radius);
-  text-align: center;
-  backdrop-filter: blur(5px);
-}
-
-.capability-banner__features svg {
-  width: 32px;
-  height: 32px;
-  margin-bottom: 12px;
-  color: #ffd34f;
-}
-
-.capability-banner__features span,
-.capability-banner__features small {
-  display: block;
-  line-height: 1.25;
-}
-
-.capability-banner__features span {
-  font-size: 0.88rem;
-  font-weight: 900;
-}
-
-.capability-banner__features small {
-  color: #d7cab0;
-  font-size: 0.75rem;
-}
-
 .product-section-nav {
   position: sticky;
   top: 72px;
@@ -1495,34 +1412,35 @@ p {
 .agent-hero {
   position: relative;
   display: flex;
-  min-height: 560px;
+  min-height: 600px;
   align-items: center;
   overflow: hidden;
   isolation: isolate;
-  color: var(--ink);
-  background: #eef0ed;
-  border-bottom: 1px solid #d6dbd8;
+  color: #f7f9f6;
+  background-color: #080a09;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(5, 7, 6, 0.96) 0%,
+      rgba(5, 7, 6, 0.88) 32%,
+      rgba(5, 7, 6, 0.42) 50%,
+      rgba(5, 7, 6, 0.04) 68%
+    ),
+    url('/images/ohw808-capability-banner-v2.png');
+  background-position: center;
+  background-size: cover;
+  border-bottom: 1px solid #3b3526;
 }
 
 .agent-hero::after {
   position: absolute;
-  right: 0;
+  right: auto;
   bottom: 0;
-  width: min(44vw, 720px);
-  height: 7px;
+  left: 0;
+  width: 100%;
+  height: 4px;
   background: var(--accent);
   content: '';
-}
-
-.agent-hero__product {
-  position: absolute;
-  top: 50%;
-  right: max(24px, calc((100vw - 1440px) / 2));
-  width: min(50vw, 780px);
-  max-height: 500px;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  transform: translateY(-50%);
 }
 
 .agent-hero__inner {
@@ -1531,8 +1449,8 @@ p {
 }
 
 .agent-hero__copy {
-  width: min(49%, 640px);
-  padding: 76px 0;
+  width: min(52%, 650px);
+  padding: 82px 0;
 }
 
 .agent-hero h1 {
@@ -1545,7 +1463,7 @@ p {
 .agent-hero__copy > p:not(.eyebrow) {
   max-width: 610px;
   margin: 0;
-  color: #475159;
+  color: #d7ddd9;
   font-size: 1.08rem;
   line-height: 1.72;
 }
@@ -1558,9 +1476,16 @@ p {
 }
 
 .agent-hero__actions .button--secondary {
+  color: #f7f9f6;
+  background: rgba(8, 10, 9, 0.66);
+  border-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.agent-hero__actions .button--secondary:hover {
   color: var(--ink);
   background: #ffffff;
-  border-color: #b9c1bd;
+  border-color: #ffffff;
 }
 
 .partner-fit {
@@ -2916,42 +2841,18 @@ p {
     height: 340px;
   }
 
-  .capability-banner {
-    padding-top: min(64vw, 470px);
-    background-position: 66% top;
-    background-size: auto min(64vw, 470px);
-    background-repeat: no-repeat;
-  }
-
-  .capability-banner__inner {
-    width: 100%;
-    min-height: 0;
-    background: #0a0b09;
-  }
-
-  .capability-banner__copy {
-    width: min(calc(100% - 40px), 680px);
-    margin: 0 auto;
-    padding: 42px 0 48px;
-  }
-
   .agent-hero {
     min-height: auto;
-    padding-top: min(56vw, 390px);
+    padding-top: min(54vw, 420px);
+    background-image: url('/images/ohw808-capability-banner-v2.png');
+    background-position: 70% top;
+    background-size: auto min(54vw, 420px);
+    background-repeat: no-repeat;
   }
 
   .agent-hero__inner {
     width: 100%;
-    background: #eef0ed;
-  }
-
-  .agent-hero__product {
-    top: 18px;
-    right: auto;
-    left: 50%;
-    width: min(calc(100% - 32px), 760px);
-    max-height: min(50vw, 350px);
-    transform: translateX(-50%);
+    background: #080a09;
   }
 
   .agent-hero__copy {
@@ -3059,23 +2960,20 @@ p {
     margin: 0;
   }
 
-  .capability-banner {
-    padding-top: 61vw;
-    background-position: 67% top;
-    background-size: auto 61vw;
+  .agent-hero {
+    padding-top: 62vw;
+    background-position: 72% top;
+    background-size: auto 62vw;
   }
 
-  .capability-banner__copy {
-    width: min(calc(100% - 24px), 680px);
-    padding: 34px 0 40px;
+  .agent-hero h1 {
+    font-size: clamp(2.55rem, 13vw, 3.6rem);
   }
 
-  .capability-banner__copy h2 {
-    font-size: 2.1rem;
-  }
-
-  .capability-banner__features {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .agent-hero__actions,
+  .agent-hero__actions .button,
+  .agent-hero__actions .whatsapp-button {
+    width: 100%;
   }
 
   .agent-benefits {

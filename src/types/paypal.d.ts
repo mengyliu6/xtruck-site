@@ -4,7 +4,7 @@ interface PayPalButtonActions {
 }
 
 interface PayPalButtonsConfig {
-  style?: Record<string, string | boolean>
+  style?: Record<string, string | boolean | number>
   createOrder(): Promise<string>
   onApprove(data: { orderID: string }): Promise<void>
   onCancel(): void

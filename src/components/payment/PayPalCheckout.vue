@@ -142,7 +142,7 @@ async function renderButtons() {
     buttons = window.paypal.Buttons({
       style: {
         color: 'gold',
-        height: '48',
+        height: 48,
         label: 'paypal',
         layout: 'vertical',
         shape: 'rect',
