@@ -16,6 +16,7 @@ import { siteConfig } from '@/config/site'
         <a href="/#video">Video</a>
         <a href="/agent">Agent</a>
         <a href="/blog">Blog</a>
+        <a href="/order-status">Order Status</a>
         <a href="/#faq">Q&amp;A</a>
         <a href="/#contact">Contact</a>
       </nav>

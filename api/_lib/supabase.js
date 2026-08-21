@@ -22,7 +22,7 @@ export function assertSupabaseConfiguration() {
   getSupabaseConfiguration()
 }
 
-async function supabaseRequest(resource, options = {}) {
+export async function supabaseRequest(resource, options = {}) {
   const { baseUrl, secretKey } = getSupabaseConfiguration()
   const response = await fetch(`${baseUrl}/rest/v1/${resource}`, {
     ...options,
@@ -52,10 +52,8 @@ function filteredResource(table, column, value, extra = {}) {
   return `${table}?${query.toString()}`
 }
 
-async function findOne(table, column, value) {
-  const rows = await supabaseRequest(
-    filteredResource(table, column, value, { limit: '1', select: '*' }),
-  )
+async function findOne(table, column, value, select = '*') {
+  const rows = await supabaseRequest(filteredResource(table, column, value, { limit: '1', select }))
   return Array.isArray(rows) ? rows[0] || null : null
 }
 
@@ -69,6 +67,62 @@ export function findOrderByPayPalOrderId(orderId) {
 
 export function findOrderByPayPalCaptureId(captureId) {
   return findOne('orders', 'paypal_capture_id', captureId)
+}
+
+export async function findPublicOrder(orderNumber, customerEmail) {
+  const query = new URLSearchParams({
+    order_number: `eq.${orderNumber}`,
+    limit: '1',
+    select:
+      'order_number,product_name,quantity,currency,total_amount,payment_status,fulfillment_status,created_at,shipping_carrier,tracking_number,customer_email',
+  })
+  const rows = await supabaseRequest(`orders?${query.toString()}`)
+  const order = Array.isArray(rows) ? rows[0] || null : null
+  if (order?.customer_email?.toLowerCase() !== customerEmail) return null
+  const publicOrder = { ...order }
+  delete publicOrder.customer_email
+  return publicOrder
+}
+
+export async function listAdminOrders() {
+  const query = new URLSearchParams({
+    limit: '500',
+    order: 'created_at.desc',
+    select:
+      'id,order_number,customer_name,customer_email,shipping_country,product_name,quantity,currency,total_amount,payment_status,fulfillment_status,created_at',
+  })
+  const rows = await supabaseRequest(`orders?${query.toString()}`)
+  return Array.isArray(rows) ? rows : []
+}
+
+export function findAdminOrderById(id) {
+  return findOne(
+    'orders',
+    'id',
+    id,
+    'id,order_number,product_sku,product_name,quantity,currency,unit_price,subtotal,shipping_amount,total_amount,payment_provider,payment_status,fulfillment_status,paypal_order_id,paypal_capture_id,customer_name,customer_email,customer_phone,shipping_country,shipping_address,shipping_carrier,tracking_number,confirmation_email_sent_at,shipping_email_sent_at,created_at,updated_at',
+  )
+}
+
+export function findEmailTemplate(key) {
+  return findOne('email_templates', 'key', key, 'id,key,subject,body,updated_at')
+}
+
+export async function listEmailTemplates() {
+  const rows = await supabaseRequest(
+    'email_templates?select=id,key,subject,body,updated_at&order=key.asc',
+  )
+  return Array.isArray(rows) ? rows : []
+}
+
+export async function upsertEmailTemplate(template) {
+  const rows = await supabaseRequest('email_templates?on_conflict=key', {
+    method: 'POST',
+    headers: { Prefer: 'resolution=merge-duplicates,return=representation' },
+    body: JSON.stringify(template),
+  })
+  if (!Array.isArray(rows) || !rows[0]) throw new Error('Template update did not return a row.')
+  return rows[0]
 }
 
 export function findPaymentEventByProviderEventId(eventId) {

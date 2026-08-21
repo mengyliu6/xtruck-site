@@ -19,6 +19,15 @@ export default [
       },
     },
   },
+  {
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+      },
+    },
+  },
   js.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
   ...tseslint(),

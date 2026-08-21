@@ -27,6 +27,21 @@ interface ApiResponse {
   orderNumber?: string
   paypalOrderId?: string
   paymentStatus?: string
+  productName?: string
+  quantity?: number
+  currency?: string
+  totalAmount?: number
+  fulfillmentStatus?: string
+}
+
+interface CompletedOrder {
+  currency: string
+  fulfillmentStatus: string
+  orderNumber: string
+  paymentStatus: string
+  productName: string
+  quantity: number
+  totalAmount: number
 }
 
 const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID?.trim() || ''
@@ -41,6 +56,7 @@ const message = ref(
     : 'PayPal setup required. Checkout is temporarily unavailable.',
 )
 const orderNumber = ref('')
+const completedOrder = ref<CompletedOrder | null>(null)
 const capturedOrderIds = new Set<string>()
 let checkoutRequestId = createRequestId()
 let buttons: PayPalButtonsComponent | null = null
@@ -54,6 +70,7 @@ watch(
     if (!isBusy.value) {
       checkoutRequestId = createRequestId()
       orderNumber.value = ''
+      completedOrder.value = null
       if (checkoutAvailable.value) {
         status.value = 'ready'
         message.value = 'Choose PayPal to continue to secure checkout.'
@@ -70,6 +87,14 @@ function createRequestId() {
   }
 
   return `checkout-${Date.now()}-${Math.random().toString(16).slice(2)}`
+}
+
+function formatMoney(cents: number, currency: string) {
+  return new Intl.NumberFormat('en-US', { currency, style: 'currency' }).format(cents / 100)
+}
+
+function formatStatus(value: string) {
+  return value.replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
 }
 
 async function postJson(url: string, payload: Record<string, unknown>) {
@@ -189,6 +214,24 @@ async function renderButtons() {
           orderNumber.value = result.orderNumber || orderNumber.value
 
           if (result.paymentStatus === 'paid') {
+            if (
+              result.orderNumber &&
+              result.productName &&
+              result.quantity &&
+              result.currency &&
+              typeof result.totalAmount === 'number' &&
+              result.fulfillmentStatus
+            ) {
+              completedOrder.value = {
+                currency: result.currency,
+                fulfillmentStatus: result.fulfillmentStatus,
+                orderNumber: result.orderNumber,
+                paymentStatus: result.paymentStatus,
+                productName: result.productName,
+                quantity: result.quantity,
+                totalAmount: result.totalAmount,
+              }
+            }
             status.value = 'success'
             message.value = 'Payment completed successfully. Your order has been recorded.'
             checkoutRequestId = createRequestId()
@@ -278,7 +321,40 @@ onBeforeUnmount(() => {
       <strong v-else-if="status === 'failed'">Payment unavailable</strong>
       <strong v-else-if="status === 'cancelled'">Payment cancelled</strong>
       <p>{{ message }}</p>
-      <p v-if="orderNumber">Order reference: {{ orderNumber }}</p>
+      <dl v-if="status === 'success' && completedOrder" class="payment-success-details">
+        <div>
+          <dt>Order Number</dt>
+          <dd>{{ completedOrder.orderNumber }}</dd>
+        </div>
+        <div>
+          <dt>Product</dt>
+          <dd>{{ completedOrder.productName }}</dd>
+        </div>
+        <div>
+          <dt>Quantity</dt>
+          <dd>{{ completedOrder.quantity }}</dd>
+        </div>
+        <div>
+          <dt>Total</dt>
+          <dd>{{ formatMoney(completedOrder.totalAmount, completedOrder.currency) }}</dd>
+        </div>
+        <div>
+          <dt>Payment Status</dt>
+          <dd>{{ formatStatus(completedOrder.paymentStatus) }}</dd>
+        </div>
+        <div>
+          <dt>Fulfillment Status</dt>
+          <dd>{{ formatStatus(completedOrder.fulfillmentStatus) }}</dd>
+        </div>
+      </dl>
+      <p v-else-if="orderNumber">Order reference: {{ orderNumber }}</p>
+      <a
+        v-if="status === 'success' && completedOrder"
+        class="button button--primary payment-status-link"
+        :href="`/order-status?order=${encodeURIComponent(completedOrder.orderNumber)}`"
+      >
+        View Order Status
+      </a>
     </div>
 
     <p class="paypal-checkout__security">

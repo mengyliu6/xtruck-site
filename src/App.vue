@@ -12,18 +12,52 @@ import AgentPage from '@/pages/AgentPage.vue'
 import BlogPage from '@/pages/BlogPage.vue'
 import BrandDetailPage from '@/pages/BrandDetailPage.vue'
 import ProductPage from '@/pages/ProductPage.vue'
+import AdminPage from '@/pages/AdminPage.vue'
+import OrderStatusPage from '@/pages/OrderStatusPage.vue'
 
 const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
+const hostname = window.location.hostname.toLowerCase()
+const isAdminHost =
+  hostname === 'admin.xtruckohw808.com' ||
+  (import.meta.env.DEV && new URLSearchParams(window.location.search).get('admin') === '1')
+const isBlockedAdminPath =
+  !isAdminHost && (currentPath === '/admin' || currentPath.startsWith('/admin/'))
+if (isBlockedAdminPath) window.location.replace('/')
 const isAgentPage = currentPath === '/agent'
 const isBlogPage = currentPath === '/blog'
 const isVolvoBrandPage = currentPath === '/brand/volvo'
 const isProductPage = currentPath === '/product/ohw808'
+const isOrderStatusPage = currentPath === '/order-status'
 
 function setMetaContent(selector: string, content: string) {
   document.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', content)
 }
 
 onMounted(() => {
+  if (isAdminHost) {
+    document.title = 'Xtruck Administration'
+    return
+  }
+
+  if (isBlockedAdminPath) {
+    document.title = 'Page Not Found | Xtruck'
+    return
+  }
+
+  if (isOrderStatusPage) {
+    document.title = 'Order Status | Xtruck OHW808'
+    const description = 'Check your Xtruck OHW808 payment and fulfillment status securely.'
+    const orderStatusUrl = new URL('/order-status', siteConfig.canonicalUrl).href
+    setMetaContent('meta[name="description"]', description)
+    setMetaContent('meta[property="og:title"]', document.title)
+    setMetaContent('meta[property="og:description"]', description)
+    setMetaContent('meta[property="og:url"]', orderStatusUrl)
+    document
+      .querySelector<HTMLLinkElement>('link[rel="canonical"]')
+      ?.setAttribute('href', orderStatusUrl)
+    return
+  }
+
   if (isProductPage) {
     document.title = 'Buy Xtruck OHW808 | Secure PayPal Checkout'
     const description =
@@ -113,26 +147,32 @@ onMounted(() => {
 </script>
 
 <template>
-  <SiteHeader />
-  <template v-if="isProductPage">
-    <ProductPage />
-  </template>
-  <template v-else-if="isAgentPage">
-    <AgentPage />
-  </template>
-  <template v-else-if="isBlogPage">
-    <BlogPage />
-  </template>
-  <template v-else-if="isVolvoBrandPage">
-    <BrandDetailPage />
-  </template>
+  <AdminPage v-if="isAdminHost" />
   <template v-else>
-    <ProductHero />
-    <ProductSections />
-  </template>
-  <SiteFooter />
-  <template v-if="!isProductPage">
-    <WhatsAppButton class="floating-whatsapp" label="WhatsApp" variant="floating" />
-    <WhatsAppButton class="mobile-contact-bar" label="WhatsApp" variant="mobile" />
+    <SiteHeader />
+    <template v-if="isProductPage">
+      <ProductPage />
+    </template>
+    <template v-else-if="isOrderStatusPage">
+      <OrderStatusPage />
+    </template>
+    <template v-else-if="isAgentPage">
+      <AgentPage />
+    </template>
+    <template v-else-if="isBlogPage">
+      <BlogPage />
+    </template>
+    <template v-else-if="isVolvoBrandPage">
+      <BrandDetailPage />
+    </template>
+    <template v-else>
+      <ProductHero />
+      <ProductSections />
+    </template>
+    <SiteFooter />
+    <template v-if="!isProductPage">
+      <WhatsAppButton class="floating-whatsapp" label="WhatsApp" variant="floating" />
+      <WhatsAppButton class="mobile-contact-bar" label="WhatsApp" variant="mobile" />
+    </template>
   </template>
 </template>

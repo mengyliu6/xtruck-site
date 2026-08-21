@@ -5,6 +5,7 @@ import {
   requirePost,
   sendJson,
 } from '../_lib/http.js'
+import { sendOrderConfirmationIfNeeded } from '../_lib/email.js'
 import { payPalValueToCents } from '../_lib/orders.js'
 import { verifyPayPalWebhook } from '../_lib/paypal.js'
 import {
@@ -144,6 +145,14 @@ export default async function handler(req, res) {
     const order = await findWebhookOrder(event)
     const updatedOrder = await processWebhookEvent(event, order)
     await completePaymentEvent(claimedEvent.id, updatedOrder?.id || order?.id || null)
+
+    if (updatedOrder?.payment_status === 'paid') {
+      try {
+        await sendOrderConfirmationIfNeeded(updatedOrder)
+      } catch (emailError) {
+        console.error('Unable to send webhook order confirmation email.', emailError)
+      }
+    }
 
     return sendJson(res, 200, { received: true })
   } catch (error) {

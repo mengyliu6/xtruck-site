@@ -1,4 +1,5 @@
 import { handleApiError, readJsonBody, requirePost, sendJson } from '../_lib/http.js'
+import { sendOrderConfirmationIfNeeded } from '../_lib/email.js'
 import { payPalValueToCents, normalizePayPalOrderId } from '../_lib/orders.js'
 import { PayPalApiError, capturePayPalOrder, getPayPalOrder } from '../_lib/paypal.js'
 import { findOrderByPayPalOrderId, updateOrder } from '../_lib/supabase.js'
@@ -42,6 +43,26 @@ function getPaymentStatus(paypalOrder, capture, localOrder) {
   return 'approved'
 }
 
+function checkoutResponse(order) {
+  return {
+    currency: order.currency,
+    fulfillmentStatus: order.fulfillment_status,
+    orderNumber: order.order_number,
+    paymentStatus: order.payment_status,
+    productName: order.product_name,
+    quantity: order.quantity,
+    totalAmount: order.total_amount,
+  }
+}
+
+async function sendConfirmationWithoutAffectingPayment(order) {
+  try {
+    await sendOrderConfirmationIfNeeded(order)
+  } catch (error) {
+    console.error('Unable to send order confirmation email.', error)
+  }
+}
+
 export default async function handler(req, res) {
   if (!requirePost(req, res)) return
 
@@ -51,10 +72,8 @@ export default async function handler(req, res) {
     if (!localOrder) return sendJson(res, 404, { error: 'Order not found.' })
 
     if (['paid', 'refunded'].includes(localOrder.payment_status)) {
-      return sendJson(res, 200, {
-        orderNumber: localOrder.order_number,
-        paymentStatus: localOrder.payment_status,
-      })
+      await sendConfirmationWithoutAffectingPayment(localOrder)
+      return sendJson(res, 200, checkoutResponse(localOrder))
     }
 
     let paypalOrder
@@ -83,12 +102,9 @@ export default async function handler(req, res) {
       raw_payment_data: { ...existingRawData, capture_order: paypalOrder },
     })
 
-    return sendJson(res, paymentStatus === 'paid' ? 200 : 202, {
-      currency: localOrder.currency,
-      orderNumber: localOrder.order_number,
-      paymentStatus: localOrder.payment_status,
-      totalAmount: localOrder.total_amount,
-    })
+    if (paymentStatus === 'paid') await sendConfirmationWithoutAffectingPayment(localOrder)
+
+    return sendJson(res, paymentStatus === 'paid' ? 200 : 202, checkoutResponse(localOrder))
   } catch (error) {
     return handleApiError(res, error, 'Unable to capture the PayPal payment.')
   }
