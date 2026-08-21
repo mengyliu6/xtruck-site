@@ -1,17 +1,21 @@
 function getSupabaseConfiguration() {
   const baseUrl = process.env.SUPABASE_URL?.trim().replace(/\/$/, '')
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()
+  const secretKey = process.env.SUPABASE_SECRET_KEY?.trim()
 
   if (
     !baseUrl ||
-    !serviceRoleKey ||
+    !secretKey ||
     baseUrl.startsWith('replace_with_') ||
-    serviceRoleKey.startsWith('replace_with_')
+    secretKey.startsWith('replace_with_')
   ) {
     throw new Error('CONFIG: Supabase server credentials are not configured.')
   }
 
-  return { baseUrl, serviceRoleKey }
+  if (!secretKey.startsWith('sb_secret_')) {
+    throw new Error('CONFIG: SUPABASE_SECRET_KEY must use the sb_secret_ format.')
+  }
+
+  return { baseUrl, secretKey }
 }
 
 export function assertSupabaseConfiguration() {
@@ -19,12 +23,11 @@ export function assertSupabaseConfiguration() {
 }
 
 async function supabaseRequest(resource, options = {}) {
-  const { baseUrl, serviceRoleKey } = getSupabaseConfiguration()
+  const { baseUrl, secretKey } = getSupabaseConfiguration()
   const response = await fetch(`${baseUrl}/rest/v1/${resource}`, {
     ...options,
     headers: {
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
+      apikey: secretKey,
       'Content-Type': 'application/json',
       ...(options.headers || {}),
     },

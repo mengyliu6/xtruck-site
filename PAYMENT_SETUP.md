@@ -8,9 +8,9 @@
 2. 创建一个新项目并选择合适的区域。
 3. 等待数据库初始化完成。
 4. 在 Project Settings 中记录 Project URL。
-5. 在 API Keys 中取得服务端 Secret Key；使用旧版密钥时，对应的是 `service_role` Key。
+5. 在 API Keys 中创建或取得新版 Secret Key，值应以 `sb_secret_` 开头。
 
-`SUPABASE_SERVICE_ROLE_KEY` 拥有高权限，只能放在 Vercel Functions 环境变量中。不要放到 `VITE_` 变量、前端代码、GitHub、截图或聊天消息中。
+`SUPABASE_SECRET_KEY` 拥有高权限，只能放在 Vercel Functions 环境变量中。不要使用旧版 `service_role` Key，也不要把 Secret Key 放到 `VITE_` 变量、前端代码、GitHub、截图或聊天消息中。
 
 ## 2. 执行数据库 Schema
 
@@ -20,7 +20,7 @@
 4. 点击 Run。
 5. 在 Table Editor 中确认已创建 `orders` 和 `payment_events`。
 
-Schema 使用整数美分保存金额，开启 RLS，并且没有为 `anon` 或 `authenticated` 创建读取订单的策略。所有订单读写都由持有 Service Role Key 的 Vercel Functions 完成。
+Schema 使用整数美分保存金额，开启 RLS，并且没有为 `anon` 或 `authenticated` 创建读取订单的策略。所有订单读写都由持有新版 Supabase Secret Key 的 Vercel Functions 完成。
 
 ## 3. 确认 PayPal Business 账户状态
 
@@ -64,21 +64,21 @@ Schema 使用整数美分保存金额，开启 RLS，并且没有为 `anon` 或 
 
 在 Vercel 项目的 Settings > Environment Variables 中添加：
 
-| 变量                        | 范围         | 说明                             |
-| --------------------------- | ------------ | -------------------------------- |
-| `VITE_CANONICAL_URL`        | 前端公开     | `https://www.xtruckohw808.com/`  |
-| `VITE_PAYPAL_CLIENT_ID`     | 前端公开     | Sandbox Client ID                |
-| `PAYPAL_CLIENT_ID`          | 仅服务端     | Sandbox Client ID                |
-| `PAYPAL_CLIENT_SECRET`      | 仅服务端机密 | Sandbox Secret                   |
-| `PAYPAL_WEBHOOK_ID`         | 仅服务端     | Sandbox Webhook ID               |
-| `PAYPAL_ENV`                | 仅服务端     | 第一阶段填写 `sandbox`           |
-| `SUPABASE_URL`              | 仅服务端     | Supabase Project URL             |
-| `SUPABASE_SERVICE_ROLE_KEY` | 仅服务端机密 | Supabase Secret/Service Role Key |
-| `PRODUCT_PRICE_USD`         | 仅服务端     | `2399`                           |
-| `PRODUCT_SHIPPING_USD`      | 仅服务端     | 当前填写 `0`                     |
-| `WHATSAPP_NUMBER`           | 仅服务端预留 | 联系号码，不影响 PayPal 流程     |
+| 变量                    | 范围         | 说明                                  |
+| ----------------------- | ------------ | ------------------------------------- |
+| `VITE_CANONICAL_URL`    | 前端公开     | `https://www.xtruckohw808.com/`       |
+| `VITE_PAYPAL_CLIENT_ID` | 前端公开     | Sandbox Client ID                     |
+| `PAYPAL_CLIENT_ID`      | 仅服务端     | Sandbox Client ID                     |
+| `PAYPAL_CLIENT_SECRET`  | 仅服务端机密 | Sandbox Secret                        |
+| `PAYPAL_WEBHOOK_ID`     | 仅服务端     | Sandbox Webhook ID                    |
+| `PAYPAL_ENV`            | 仅服务端     | 第一阶段填写 `sandbox`                |
+| `SUPABASE_URL`          | 仅服务端     | Supabase Project URL                  |
+| `SUPABASE_SECRET_KEY`   | 仅服务端机密 | 新版 Secret Key，以 `sb_secret_` 开头 |
+| `PRODUCT_PRICE_USD`     | 仅服务端     | `2399`                                |
+| `PRODUCT_SHIPPING_USD`  | 仅服务端     | 当前填写 `0`                          |
+| `WHATSAPP_NUMBER`       | 仅服务端预留 | 联系号码，不影响 PayPal 流程          |
 
-变量名以 `VITE_` 开头时会进入浏览器构建结果，所以绝对不要把 PayPal Secret 或 Supabase Service Role Key 加上 `VITE_` 前缀。
+变量名以 `VITE_` 开头时会进入浏览器构建结果，所以绝对不要把 PayPal Secret 或 Supabase Secret Key 加上 `VITE_` 前缀。
 
 环境变量没有配置完整时，商品页会显示 `PayPal setup required`，不会显示伪造的可支付按钮，也不会模拟支付成功。
 
@@ -180,7 +180,7 @@ Vite 的 `VITE_PAYPAL_CLIENT_ID` 是构建时变量。修改任何支付环境�
 
 - Sandbox 测试完成前不要切换到 Live。
 - 不要把 PayPal Client Secret 提交到 GitHub。
-- 不要把 Supabase Service Role Key 放到前端。
+- 不要把 Supabase Secret Key 放到前端。
 - 不要通过聊天发送真实 Secret。
 - 网站不收集或保存银行卡号、信用卡号、有效期或 CVV；付款信息由 PayPal 托管处理。
 - 当前项目只实现 PayPal，不包含银行转账。
