@@ -25,12 +25,18 @@ export const navigationItems: NavItem[] = [
   { label: 'Overview', href: '/#overview' },
   { label: 'Features', href: '/#features' },
   { label: 'Coverage', href: '/#coverage' },
-  { label: 'Download', href: '/#download' },
-  { label: 'Video', href: '/#video' },
+  {
+    label: 'Resources',
+    children: [
+      { label: 'Downloads', href: '/#download' },
+      { label: 'Videos', href: '/#video' },
+    ],
+  },
   { label: 'Agent', href: '/agent' },
   { label: 'Blog', href: '/blog' },
   { label: 'Q&A', href: '/#faq' },
-  { label: 'Buy', href: '/product/ohw808' },
+  { label: 'Track Order', href: '/order-status', kind: 'utility' },
+  { label: 'Buy', href: '/product/ohw808', kind: 'primary' },
 ]
 
 export function formatPrice(value: number): string {

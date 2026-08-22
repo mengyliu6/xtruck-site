@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import IconGlyph from '@/components/common/IconGlyph.vue'
 import PreviewImage from '@/components/common/PreviewImage.vue'
@@ -11,6 +11,17 @@ import { product } from '@/data/product'
 const coverageBrands = buildCoverageDirectory(product.coverageGroups)
 const coverageCategory = ref<CoverageCategory>('all')
 const coverageQuery = ref('')
+const productSectionLinks = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'features', label: 'Functions' },
+  { id: 'coverage', label: 'Coverage' },
+  { id: 'workflow', label: 'Workflow' },
+  { id: 'specifications', label: 'Specifications' },
+  { id: 'download', label: 'Download' },
+  { id: 'video', label: 'Video' },
+]
+const activeProductSection = ref('overview')
+let sectionObserver: IntersectionObserver | null = null
 const availableSupportListCount = new Set(
   coverageBrands.flatMap((brand) => (brand.downloadHref ? [brand.downloadHref] : [])),
 ).size
@@ -75,18 +86,45 @@ function showAllBrands() {
   coverageCategory.value = 'all'
   coverageQuery.value = ''
 }
+
+onMounted(() => {
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const visibleEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0]
+
+      if (visibleEntry?.target.id) activeProductSection.value = visibleEntry.target.id
+    },
+    { rootMargin: '-130px 0px -65% 0px', threshold: [0, 0.1] },
+  )
+
+  productSectionLinks.forEach(({ id }) => {
+    const section = document.getElementById(id)
+    if (section) sectionObserver?.observe(section)
+  })
+})
+
+onBeforeUnmount(() => sectionObserver?.disconnect())
 </script>
 
 <template>
   <main>
     <nav class="product-section-nav" aria-label="OHW808 product sections">
       <div class="section-shell product-section-nav__inner">
-        <a href="#features">Functions</a>
-        <a href="#coverage">Coverage</a>
-        <a href="#workflow">Workflow</a>
-        <a href="#specifications">Specifications</a>
-        <a href="#download">Download</a>
-        <a href="#video">Video</a>
+        <span class="product-section-nav__label">OHW808</span>
+        <div class="product-section-nav__links">
+          <a
+            v-for="item in productSectionLinks"
+            :key="item.id"
+            :href="`#${item.id}`"
+            :class="{ 'product-section-nav__link--active': activeProductSection === item.id }"
+            :aria-current="activeProductSection === item.id ? 'location' : undefined"
+            @click="activeProductSection = item.id"
+          >
+            {{ item.label }}
+          </a>
+        </div>
       </div>
     </nav>
 

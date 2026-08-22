@@ -1,6 +1,8 @@
 export interface NavItem {
   label: string
-  href: string
+  href?: string
+  kind?: 'primary' | 'utility'
+  children?: NavItem[]
 }
 
 export interface ProductMedia {

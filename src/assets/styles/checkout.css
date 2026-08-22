@@ -444,7 +444,7 @@
 
 .product-details-section {
   overflow: hidden;
-  background: var(--soft);
+  background: #ffffff;
   border-top: 1px solid var(--line);
 }
 
@@ -454,15 +454,12 @@
 }
 
 .product-details-content {
-  display: grid;
-  gap: clamp(28px, 4vw, 58px);
+  display: block;
   margin-top: 32px;
-  padding-bottom: clamp(18px, 3vw, 42px);
 }
 
 .product-detail-visual {
   margin: 0;
-  overflow: hidden;
   background: #ffffff;
 }
 
@@ -476,22 +473,37 @@
   width: 100%;
 }
 
-.product-detail-visual--feature,
-.product-detail-visual--contained {
-  margin-right: auto;
-  margin-left: auto;
-  border: 1px solid rgba(27, 34, 38, 0.14);
-  border-top: 3px solid var(--accent);
-  border-radius: 6px;
-  box-shadow: 0 16px 40px rgba(27, 34, 38, 0.08);
+.product-detail-visual--band {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: clamp(34px, 5vw, 78px) 40px;
 }
 
-.product-detail-visual--feature {
-  width: min(calc(100% - 48px), 1520px);
+.product-detail-visual--band img {
+  width: min(100%, 1360px);
 }
 
-.product-detail-visual--contained {
-  width: min(calc(100% - 48px), 1180px);
+.product-detail-visual--triptych {
+  background: #f3f5f7;
+}
+
+.product-detail-visual--actuator {
+  padding-top: clamp(28px, 4vw, 58px);
+  padding-bottom: clamp(28px, 4vw, 58px);
+}
+
+.product-detail-visual--actuator img,
+.product-detail-visual--remote img {
+  width: min(100%, 1520px);
+}
+
+.product-detail-visual--dark {
+  background: #202020;
+}
+
+.product-detail-visual--remote {
+  padding-bottom: clamp(40px, 6vw, 92px);
 }
 
 @media (max-width: 900px) {
@@ -561,12 +573,14 @@
   }
 
   .product-details-content {
-    gap: 14px;
     margin-top: 24px;
   }
 
-  .product-detail-visual--feature,
-  .product-detail-visual--contained {
-    width: calc(100% - 24px);
+  .product-detail-visual--band {
+    padding: 24px 12px;
+  }
+
+  .product-detail-visual--remote {
+    padding-bottom: 36px;
   }
 }

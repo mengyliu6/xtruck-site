@@ -235,32 +235,88 @@ p {
 .site-nav {
   display: flex;
   justify-content: flex-end;
-  gap: 17px;
+  gap: 4px;
   color: #d5dcdd;
   font-size: 0.9rem;
   font-weight: 800;
 }
 
-.site-nav a {
-  padding: 10px 0;
+.site-nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 10px;
+  color: inherit;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
   white-space: nowrap;
 }
 
-.site-nav a:hover {
+.site-nav__link:hover,
+.site-nav__link--active {
   color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.site-nav a[href='/product/ohw808'] {
-  padding: 8px 14px;
+.site-nav__link--utility {
+  margin-left: 4px;
+  border-color: #596168;
+}
+
+.site-nav__link--primary {
+  margin-left: 4px;
+  padding-right: 15px;
+  padding-left: 15px;
   color: #151a1d;
   background: var(--accent);
-  border: 1px solid #c58f00;
-  border-radius: 4px;
+  border-color: #c58f00;
 }
 
-.site-nav a[href='/product/ohw808']:hover {
+.site-nav__link--primary:hover,
+.site-nav__link--primary.site-nav__link--active {
   color: #151a1d;
   background: #ffc928;
+}
+
+.site-nav__caret {
+  width: 7px;
+  height: 7px;
+  margin: -3px 0 0 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.site-nav__submenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 176px;
+  padding: 7px;
+  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: 4px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+}
+
+.site-nav__submenu a {
+  display: block;
+  padding: 11px 12px;
+  border-radius: 3px;
+}
+
+.site-nav__submenu a:hover {
+  background: var(--soft);
 }
 
 .menu-toggle {
@@ -491,15 +547,41 @@ p {
 }
 
 .product-section-nav__inner {
+  display: grid;
+  min-height: 50px;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.product-section-nav__label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 12px;
+  padding-right: 18px;
+  color: var(--ink);
+  border-right: 1px solid var(--line);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.product-section-nav__label::before {
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  background: var(--accent);
+  content: '';
+}
+
+.product-section-nav__links {
   display: flex;
-  min-height: 54px;
   align-items: stretch;
   justify-content: center;
   overflow-x: auto;
   scrollbar-width: none;
 }
 
-.product-section-nav__inner::-webkit-scrollbar {
+.product-section-nav__links::-webkit-scrollbar {
   display: none;
 }
 
@@ -507,7 +589,7 @@ p {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 16px;
   color: #3e474e;
   border-bottom: 3px solid transparent;
   font-size: 0.84rem;
@@ -518,7 +600,8 @@ p {
     background 0.18s ease;
 }
 
-.product-section-nav a:hover {
+.product-section-nav a:hover,
+.product-section-nav__link--active {
   color: var(--ink);
   background: var(--soft);
   border-bottom-color: var(--accent);
@@ -2664,12 +2747,35 @@ p {
     box-shadow: var(--shadow);
   }
 
+  .site-nav__item {
+    display: block;
+  }
+
   .site-nav--open {
     display: flex;
   }
 
-  .site-nav a {
-    padding: 13px 10px;
+  .site-nav__link {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 10px;
+  }
+
+  .site-nav__link--utility,
+  .site-nav__link--primary {
+    margin: 4px 0 0;
+  }
+
+  .site-nav__submenu {
+    position: static;
+    width: auto;
+    margin: 0 8px 6px;
+    padding: 4px;
+    background: var(--soft);
+    border: 0;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 3px 3px 0;
+    box-shadow: none;
   }
 
   .menu-toggle {
@@ -2914,7 +3020,17 @@ p {
   }
 
   .product-section-nav__inner {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .product-section-nav__label {
+    display: none;
+  }
+
+  .product-section-nav__links {
     justify-content: flex-start;
+    padding: 0 12px;
   }
 
   .site-nav {

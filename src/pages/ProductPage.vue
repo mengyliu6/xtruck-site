@@ -240,7 +240,16 @@ function normalizeQuantity() {
             loading="lazy"
           />
         </figure>
-        <figure class="product-detail-visual product-detail-visual--feature">
+        <figure
+          class="product-detail-visual product-detail-visual--band product-detail-visual--triptych"
+        >
+          <img
+            src="/images/product/details/connectivity-and-hdmi-features-triptych.png"
+            alt="OHW808 Bluetooth cordless operation, dual-mode VCI and HDMI screen mirroring"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="product-detail-visual product-detail-visual--full">
           <img
             src="/images/product/details/oe-level-system-diagnosis.png"
             alt="OHW808 OE-level system diagnostic functions"
@@ -254,10 +263,30 @@ function normalizeQuantity() {
             loading="lazy"
           />
         </figure>
-        <figure class="product-detail-visual product-detail-visual--contained">
+        <figure
+          class="product-detail-visual product-detail-visual--band product-detail-visual--actuator"
+        >
           <img
-            src="/images/product/details/connectivity-and-hdmi-features-triptych.png"
-            alt="OHW808 Bluetooth, USB and HDMI screen mirroring features"
+            src="/images/product/details/actuator-testing-special-calibration.png"
+            alt="OHW808 actuator testing and special calibration functions"
+            loading="lazy"
+          />
+        </figure>
+        <figure
+          class="product-detail-visual product-detail-visual--full product-detail-visual--dark"
+        >
+          <img
+            src="/images/product/details/engineer-exclusive-toolkit.png"
+            alt="OHW808 engineer-exclusive pin inspection and CAN node search toolkit"
+            loading="lazy"
+          />
+        </figure>
+        <figure
+          class="product-detail-visual product-detail-visual--band product-detail-visual--remote"
+        >
+          <img
+            src="/images/product/details/international-remote-technical-support.png"
+            alt="OHW808 international remote technical support workflow"
             loading="lazy"
           />
         </figure>
